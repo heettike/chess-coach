@@ -1,11 +1,10 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { Chess } from "chess.js";
 
 interface Msg {
   role: "user" | "assistant";
-  content: string;       // raw (may contain [FEN:] markers)
+  content: string;
   streaming?: boolean;
 }
 
@@ -14,69 +13,30 @@ interface Props {
   playedUci?: string;
   bestUci?: string;
   pattern?: string;
+  evalBefore?: string;
+  evalAfter?: string;
   color?: string;
   moveNum?: number;
   opponent?: string;
-  onBoardUpdate?: (fen: string) => void;   // called when Viktor references a position
+  onBoardUpdate?: (fen: string) => void;
 }
 
-function uciLabel(uci: string): string {
-  if (!uci || uci.length < 4) return uci;
-  return `${uci.slice(0, 2)}-${uci.slice(2, 4)}`;
+interface ExplainResult {
+  viktorMessage: string;
+  bestMoveSan: string;
+  engineLine: string[];
+  engineEval: string;
+  depth: number;
+  structuredContext: string;
 }
 
-function movesToFen(movesStr: string): string | null {
-  const moves = movesStr.trim().split(/\s+/).filter(Boolean);
-  const chess = new Chess();
-  for (const m of moves) {
-    try { chess.move(m); } catch { break; }
-  }
-  return chess.fen();
-}
-
-// Strip any [FEN:] / [MOVES:] the LLM sneaks in — we don't trust its positions
+// Strip any [FEN:] / [MOVES:] markers — Viktor in position mode must not output them
 function cleanForDisplay(text: string): string {
   return text
     .replace(/\[FEN:[^\]]+\]/g, "")
     .replace(/\[MOVES:[^\]]+\]/g, "")
     .replace(/\n{3,}/g, "\n\n")
     .trim();
-}
-
-// Parse FEN into a plain-English piece list so Viktor knows exactly where things are
-function fenToPieceList(fen: string, playerColor: string): string {
-  const boardStr = fen.split(" ")[0];
-  const ranks = boardStr.split("/");
-  const files = "abcdefgh";
-  const map: Record<string, string[]> = {};
-
-  ranks.forEach((rank, ri) => {
-    const rankNum = 8 - ri;
-    let fi = 0;
-    for (const ch of rank) {
-      if (ch >= "1" && ch <= "8") { fi += parseInt(ch); continue; }
-      const sq = files[fi] + rankNum;
-      if (!map[ch]) map[ch] = [];
-      map[ch].push(sq);
-      fi++;
-    }
-  });
-
-  const names: Record<string, string> = { K: "King", Q: "Queen", R: "Rook", B: "Bishop", N: "Knight", P: "Pawn" };
-  const isWhite = playerColor !== "black";
-  const yours = isWhite ? "KQRBNP" : "kqrbnp";
-  const theirs = isWhite ? "kqrbnp" : "KQRBNP";
-
-  function describe(keys: string, label: string) {
-    const parts: string[] = [];
-    for (const k of keys) {
-      const sqs = map[k];
-      if (sqs?.length) parts.push(`${names[k.toUpperCase()]}${sqs.length > 1 ? "s" : ""} on ${sqs.join(", ")}`);
-    }
-    return `${label}: ${parts.join("; ") || "none"}`;
-  }
-
-  return [describe(yours, "Your pieces"), describe(theirs, "Opponent pieces")].join("\n");
 }
 
 // Very simple inline renderer: bold **text** support
@@ -89,15 +49,12 @@ function renderText(text: string): React.ReactNode[] {
   );
 }
 
-interface SfLine { rank: number; firstMoveSan: string; eval: string; sanMoves: string[] }
-interface SfResult { lines: SfLine[]; depth: number; error?: string }
-
-export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum, opponent, onBoardUpdate }: Props) {
+export function PositionChat({ fen, playedUci, bestUci, pattern, evalBefore, evalAfter, color, moveNum, opponent, onBoardUpdate }: Props) {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
-  const [sfData, setSfData] = useState<SfResult | null>(null);
-  const [sfLoading, setSfLoading] = useState(false);
+  const [explainData, setExplainData] = useState<ExplainResult | null>(null);
+  const [explainLoading, setExplainLoading] = useState(false);
   const [streaming, setStreaming] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -109,40 +66,34 @@ export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum,
   useEffect(() => {
     setMessages([]);
     setInput("");
-    setSfData(null);
+    setExplainData(null);
   }, [fen]);
 
-  // Pre-fetch Stockfish on mount so data is ready before user opens chat
+  // Pre-fetch position explanation on mount — Viktor's first message is ready before user opens chat
   useEffect(() => {
-    if (sfData || sfLoading) return;
-    setSfLoading(true);
-    fetch(`/api/stockfish?fen=${encodeURIComponent(fen)}`)
+    if (explainData || explainLoading) return;
+    setExplainLoading(true);
+    fetch("/api/position-explain", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ fen, playedUci, bestUci, pattern, evalBefore, evalAfter, color }),
+    })
       .then((r) => r.json())
-      .then((d) => setSfData(d))
-      .catch(() => setSfData({ lines: [], depth: 0, error: "unavailable" }))
-      .finally(() => setSfLoading(false));
+      .then((d: ExplainResult) => {
+        setExplainData(d);
+        // Immediately show Viktor's pre-built first message (no Claude call)
+        if (d.viktorMessage) {
+          setMessages([{ role: "assistant", content: d.viktorMessage }]);
+        }
+      })
+      .catch(() => setExplainData(null))
+      .finally(() => setExplainLoading(false));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fen]);
 
   useEffect(() => {
     if (open) setTimeout(() => inputRef.current?.focus(), 50);
   }, [open]);
-
-  const buildContext = useCallback(() => {
-    const best = sfData?.lines?.[0];
-    const bestLine = best ? `${best.firstMoveSan} (${best.eval}) — line: ${best.sanMoves.slice(0, 4).join(" ")}` : null;
-
-    const parts: string[] = [fenToPieceList(fen, color ?? "white")];
-    if (color) parts.push(`Playing as: ${color}, move ${moveNum ?? "?"}`);
-    if (opponent) parts.push(`Opponent: ${opponent}`);
-    if (pattern) parts.push(`Pattern: ${pattern.replace(/_/g, " ")}`);
-    if (playedUci) parts.push(`Their move (the mistake): ${uciLabel(playedUci)}`);
-    if (bestLine) parts.push(`Engine says best was: ${bestLine}`);
-    else parts.push(`No engine data — only describe what you can verify from the piece list.`);
-
-    parts.push(`\nTone: friendly, casual, 2-3 sentences max per answer. Explain like you're texting a friend who just started chess. No jargon without explanation. Only reference moves from the engine line above — never invent your own. Use [FEN: ...] if showing a position.`);
-    return parts.join("\n");
-  }, [fen, moveNum, color, opponent, pattern, playedUci, sfData]);
 
   const send = useCallback(async (text: string) => {
     if (!text.trim() || streaming) return;
@@ -160,7 +111,7 @@ export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: history.map(({ role, content }) => ({ role, content })),
-          positionContext: buildContext(),
+          positionContext: explainData?.structuredContext ?? null,
         }),
       });
 
@@ -193,7 +144,7 @@ export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum,
     } finally {
       setStreaming(false);
     }
-  }, [messages, streaming, buildContext]);
+  }, [messages, streaming, explainData]);
 
   const patternLabel = pattern ? pattern.replace(/_/g, " ") : null;
 
@@ -230,14 +181,14 @@ export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum,
             <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
               <span style={{ width: 20, height: 20, borderRadius: "50%", background: "var(--bg-2)", border: "1px solid var(--border)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.65rem", fontWeight: 700, color: "var(--accent)", flexShrink: 0 }}>V</span>
               <span style={{ fontSize: "0.75rem", fontWeight: 600 }}>Viktor</span>
-              {sfLoading && (
-                <span style={{ fontSize: "0.65rem", color: "var(--text-dim)" }}>· fetching engine...</span>
+              {explainLoading && (
+                <span style={{ fontSize: "0.65rem", color: "var(--text-dim)" }}>· analyzing...</span>
               )}
-              {!sfLoading && sfData && !sfData.error && sfData.lines.length > 0 && (
-                <span style={{ fontSize: "0.65rem", color: "var(--win)" }}>· engine ready (depth {sfData.depth})</span>
+              {!explainLoading && explainData && (
+                <span style={{ fontSize: "0.65rem", color: "var(--win)" }}>· Stockfish depth {explainData.depth}</span>
               )}
-              {!sfLoading && (!sfData || sfData.error || sfData.lines.length === 0) && (
-                <span style={{ fontSize: "0.65rem", color: "var(--text-dim)" }}>— ask about this position</span>
+              {!explainLoading && !explainData && (
+                <span style={{ fontSize: "0.65rem", color: "var(--text-dim)" }}>· ask about this position</span>
               )}
             </div>
             <button onClick={() => setOpen(false)} style={{ background: "none", border: "none", color: "var(--text-muted)", cursor: "pointer", fontSize: "0.75rem", padding: "2px 6px" }}>✕</button>
@@ -247,10 +198,7 @@ export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum,
           <div style={{ maxHeight: 300, overflowY: "auto", padding: "12px 14px", display: "flex", flexDirection: "column", gap: 12 }}>
             {messages.length === 0 && (
               <div style={{ fontSize: "0.78rem", color: "var(--text-muted)", lineHeight: 1.65 }}>
-                {patternLabel
-                  ? <>This is a <strong style={{ color: "var(--text)" }}>{patternLabel}</strong> position. Ask me why the move was wrong, what the best response is, or how to avoid this in future games.</>
-                  : "Ask me anything about this position."}
-                {onBoardUpdate && <div style={{ marginTop: 6, fontSize: "0.7rem", color: "var(--text-dim)" }}>When I reference a different position, the board on the left will update.</div>}
+                {explainLoading ? "Analyzing position..." : "Ask me anything about this position."}
               </div>
             )}
             {messages.map((msg, i) => {
