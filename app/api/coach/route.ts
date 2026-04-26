@@ -100,25 +100,12 @@ export async function POST(req: NextRequest) {
     ? `${buildSystemPrompt()}\n\n== CURRENT DRILL POSITION (answer questions about this) ==\n${positionContext}`
     : buildSystemPrompt();
 
-  // For position-specific chats, enable extended thinking so Viktor verifies
-  // every move against the piece list before committing to any text.
-  // The thinking block is internal — only the final text_delta streams to the user.
-  const streamParams = positionContext
-    ? {
-        model: "claude-sonnet-4-6",
-        max_tokens: 5000,
-        thinking: { type: "enabled" as const, budget_tokens: 3000 },
-        system,
-        messages,
-      }
-    : {
-        model: "claude-sonnet-4-6",
-        max_tokens: 1024,
-        system,
-        messages,
-      };
-
-  const stream = await client.messages.stream(streamParams as Parameters<typeof client.messages.stream>[0]);
+  const stream = await client.messages.stream({
+    model: "claude-sonnet-4-6",
+    max_tokens: 900,
+    system,
+    messages,
+  });
 
   const encoder = new TextEncoder();
   const readable = new ReadableStream({
