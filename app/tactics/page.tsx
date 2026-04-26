@@ -594,10 +594,12 @@ function DrillView({ pool, week, onBack, onMarkComplete, isComplete }: {
   const bestArrow = parseUCI(blunder?.best_uci ?? "");
 
   const arrows = useMemo(() => {
-    if (!revealed || tab !== "drill") return [];
+    if (tab !== "drill") return [];
     const a: any[] = [];
+    // Red always shown — this is your mistake
     if (playedArrow) a.push({ startSquare: playedArrow.from, endSquare: playedArrow.to, color: "rgba(239,68,68,0.9)" });
-    if (bestArrow) a.push({ startSquare: bestArrow.from, endSquare: bestArrow.to, color: "rgba(74,222,128,0.9)" });
+    // Green only after you guess
+    if (revealed && bestArrow) a.push({ startSquare: bestArrow.from, endSquare: bestArrow.to, color: "rgba(74,222,128,0.9)" });
     return a;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [revealed, index, tab]);
@@ -671,7 +673,7 @@ function DrillView({ pool, week, onBack, onMarkComplete, isComplete }: {
                     <div style={{ marginTop: 6, fontSize: "0.82rem", color: "var(--text-muted)" }}>move {blunder.move_num} · playing as {blunder.color}</div>
                   </div>
                   {!revealed ? (
-                    <button onClick={() => setRevealed(true)} style={{ background: "var(--accent)", color: "#000", border: "none", borderRadius: 6, padding: "11px 18px", fontSize: "0.88rem", fontWeight: 600, cursor: "pointer" }}>Show best move</button>
+                    <button onClick={() => setRevealed(true)} style={{ background: "var(--accent)", color: "#000", border: "none", borderRadius: 6, padding: "11px 18px", fontSize: "0.88rem", fontWeight: 600, cursor: "pointer" }}>What's the best move? →</button>
                   ) : (
                     <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                       <div style={{ padding: "12px 14px", background: "var(--bg-2)", border: "1px solid var(--border)", borderRadius: 6 }}>

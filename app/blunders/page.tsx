@@ -129,15 +129,16 @@ function DrillView({ pool, onBack }: { pool: any[]; onBack: () => void }) {
   const bestArrow = parseUCI(blunder.best_uci ?? "");
 
   const arrows = useMemo(() => {
-    if (!revealed) return [];
     const a: { startSquare: string; endSquare: string; color: string }[] = [];
+    // Red arrow (your move) always shown
     if (playedArrow)
       a.push({
         startSquare: playedArrow.from,
         endSquare: playedArrow.to,
         color: "rgba(239,68,68,0.9)",
       });
-    if (bestArrow)
+    // Green arrow (best move) only after reveal
+    if (revealed && bestArrow)
       a.push({
         startSquare: bestArrow.from,
         endSquare: bestArrow.to,
@@ -210,7 +211,7 @@ function DrillView({ pool, onBack }: { pool: any[]; onBack: () => void }) {
           >
             {revealed
               ? "red = your move  ·  green = best move"
-              : `move ${blunder.move_num} · ${blunder.color} · ${blunder.time_control}`}
+              : `red = your move  ·  move ${blunder.move_num} · ${blunder.color}`}
           </div>
         </div>
 
@@ -273,7 +274,7 @@ function DrillView({ pool, onBack }: { pool: any[]; onBack: () => void }) {
                 cursor: "pointer",
               }}
             >
-              Show best move
+              What's the best move? →
             </button>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
