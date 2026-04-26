@@ -1,1 +1,2947 @@
-[]
+[
+  {
+    "id": "piece_activity",
+    "label": "Give Every Piece a Real Job",
+    "concept": "Piece activity means ensuring every one of your pieces is placed on a square where it influences the game — controlling key squares, supporting an attack, or restraining your opponent. A piece that sits idle on the back rank or behind its own pawns is effectively playing a man down. Capablanca emphasized that superior piece coordination, not just tactics, is what separates consistent winners from club-level players.",
+    "why": "At the 1300-1600 level, games are frequently lost not by blunders but by letting the opponent build a decisive advantage while one or two of your pieces watch from the sidelines — your opponent simply has more firepower in the critical area of the board.",
+    "howToSpot": "Before every move, scan the board and ask: which of my pieces has done nothing for the last 3+ moves, and where should it go? If you can name a piece that has no clear purpose or useful destination, improving it is almost certainly your best move.",
+    "drill": "Play 5 slow games this week (15+10 minimum) and after each game use the engine to identify your least-active piece at moves 15, 20, and 25 — note the pattern to build self-awareness.",
+    "commonMistake": "Players often make 'busy' moves with already-active pieces rather than bringing the sleeping piece into the game, mistaking local activity for overall piece coordination.",
+    "source": "Capablanca — Chess Fundamentals",
+    "boards": [
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 O-O Nf6 d3 O-O Nc3 d6 Be3 Bxe3 fxe3 Ne7 d4 Ng6 d5",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "g6",
+            "to": "e7",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "e7",
+            "to": "g6",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "c1",
+            "to": "d2",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f1",
+            "to": "f5",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "Black's knight on g6 and bishop are passive with no clear purpose, while White's rooks can become active on the f-file. Improving the worst piece — here the c1 bishop toward d2-e1-g3 or the rook to f5 — is the principled plan."
+      },
+      {
+        "fen": "r1bq1rk1/pp2bppp/2np1n2/2p1p3/2B1P3/2NP1N2/PPP2PPP/R1BQR1K1 w - - 0 9",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "c1",
+            "to": "e3",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "c1",
+            "to": "g5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e1",
+            "to": "e3",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d1",
+            "to": "d2",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "White's c1 bishop and e1 rook are both without purpose. The principle: activate the rook to e3 (doubling on the e-file) and develop the bishop to g5, pinning the f6 knight — every piece earns its keep."
+      }
+    ]
+  },
+  {
+    "id": "open_files",
+    "label": "Seize Open Files Before Your Opponent",
+    "concept": "An open file is any column with no pawns blocking it, giving rooks a direct highway into the enemy position. The player who places a rook on an open file first gains a significant spatial advantage, especially if that rook can penetrate to the 7th or 8th rank. Capablanca stressed that rooks are largely useless behind pawn chains — getting them active on open files is one of the most fundamental skills in chess.",
+    "why": "Club players routinely leave rooks on their starting squares long after the center opens, letting the opponent seize files for free and dominate the position without a tactical fight. Failing to contest or occupy an open file often allows enemy rooks to reach the 7th rank, winning pawns or creating decisive threats.",
+    "howToSpot": "After any pawn exchange, immediately ask: which files are now open or half-open, and can I place a rook there in one or two moves? Also check whether your opponent's rooks are already aimed at the same file — if so, doubling rooks or contesting with your own rook becomes urgent.",
+    "drill": "In your practice games this week, write down every open file that appears and note which move you first placed (or should have placed) a rook on it — review after the game to see if your opponent beat you to it.",
+    "commonMistake": "Players often move a rook to an open file but then leave the other rook passive, rather than doubling rooks on the same file to maximize control and create an unstoppable invasion.",
+    "source": "Capablanca — Chess Fundamentals",
+    "boards": [
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 O-O d4 Bg4 d5 Na5 Bc2 c6 h3 Bc8 dxc6 Nxc6",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d1",
+            "to": "d8",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e1",
+            "to": "e8",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f1",
+            "to": "d1",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "After cxd6 recapture, the d-file and e-file are both open. White should immediately challenge or occupy these files with Qd1 or doubling rooks — the player who seizes the open d-file gains a lasting initiative down the center."
+      },
+      {
+        "fen": "3r2k1/pp3ppp/8/3R4/8/8/PP3PPP/6K1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d5",
+            "to": "d8",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d8",
+            "to": "d7",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "d5",
+            "to": "d7",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "White's rook dominates the open d-file and threatens to invade on d7 or d8. This is the reward for seizing an open file early — the rook becomes a monster piece that ties down the opponent and wins material."
+      }
+    ]
+  },
+  {
+    "id": "outpost_squares",
+    "label": "Outpost Squares: Plant Unstoppable Pieces",
+    "concept": "An outpost is a square — typically in your opponent's half of the board — that cannot be attacked by any of their pawns. A piece planted on an outpost becomes a permanent thorn: it cannot be chased away by pawns and forces the opponent to use valuable tempo with pieces to dislodge it. Knights benefit most from outposts because they cannot be traded off by a bishop of the wrong color, but bishops and rooks can also occupy outposts with great effect.",
+    "why": "Club players routinely give up outpost squares by trading away the pawn that would have defended them, then watch helplessly as an enemy knight on e5 or d5 paralyzes their position for many moves — a structural disadvantage that compounds every turn.",
+    "howToSpot": "Ask yourself: is there a central or advanced square in the opponent's half that none of their pawns can reach? If yes, and you have a knight or bishop that can safely land there, that is your outpost.",
+    "drill": "Each day this week, play 5 games and before every move scan specifically for a square in your opponent's half that their pawns cannot attack — if you find one, make a plan to route your knight there within 3 moves.",
+    "commonMistake": "Players correctly identify the outpost but then place a bishop or queen on it instead of a knight, missing that knights uniquely resist being traded off by a same-colored bishop and are hardest to dislodge from closed central squares.",
+    "source": "Capablanca — Chess Fundamentals",
+    "boards": [
+      {
+        "moves": "e4 e6 d4 d5 e5 c5 c3 Nc6 Nf3 Qb6 Be2 cxd4 cxd4 Nge7 Nc3 Nf5",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "c3",
+            "to": "d5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f3",
+            "to": "d2",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d2",
+            "to": "b3",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "b3",
+            "to": "d4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d5",
+            "to": "d5",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "In this French Defence structure, d5 is a classic outpost for White: Black's pawns on c6 and e6 are gone or blocked and no Black pawn can ever reach d5. White should manoeuvre Nc3-d1-b2-d3-c5 or directly via Nd5 to install a knight there permanently."
+      },
+      {
+        "fen": "r1bq1rk1/pp2bppp/2n1pn2/3pN3/3P4/2NB4/PPP1QPPP/R1B2RK1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e5",
+            "to": "e5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c6",
+            "to": "e5",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "f6",
+            "to": "e4",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White's knight on e5 is a textbook outpost: no Black pawn on d6 or f6 exists to challenge it, and removing it costs Black material or positional concessions. Compare this dominant knight to Black's knight on c6, which has no such secure home."
+      }
+    ]
+  },
+  {
+    "id": "endgame_king",
+    "label": "King as an Endgame Weapon",
+    "concept": "In the endgame, once most pieces have been exchanged, the king transforms from a liability into a powerful attacking piece. Capablanca emphasised that centralising your king — marching it toward the centre or toward passed pawns — is often the single most important task once queens are off the board. A centralised king controls key squares, supports its own pawns, and harasses the opponent's pawns directly.",
+    "why": "Club players routinely lose won or drawn endgames by leaving their king passive on the back rank while their opponent's king invades unchallenged, converting extra pawns or creating unstoppable passed pawns.",
+    "howToSpot": "Ask yourself: 'Are queens off the board or likely to come off soon?' If yes, immediately look at your king's route to the centre or to the most contested sector of the board — if your king is two or more steps closer to the action, it is almost certainly winning time.",
+    "drill": "This week, play 10 king-and-pawn endgames on Lichess or Chess.com and before every move ask 'Can my king move closer to the critical square?' — only move a pawn when you cannot improve the king.",
+    "commonMistake": "Players rush to push their passed pawn immediately rather than first bringing the king up to escort and support it, allowing the opposing king to blockade and hold the draw.",
+    "source": "Capablanca — Chess Fundamentals",
+    "boards": [
+      {
+        "fen": "8/8/8/3k4/8/8/3K4/8 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d2",
+            "to": "d3",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d3",
+            "to": "d4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d4",
+            "to": "e4",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "Both kings race for the centre. White should immediately centralise with Kd3–d4–e4, marching toward the key e5 outpost. A passive king on d2 gives Black's king a free hand to dominate the board."
+      },
+      {
+        "fen": "8/8/8/8/2P5/8/6K1/3k4 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "g2",
+            "to": "f3",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f3",
+            "to": "e4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e4",
+            "to": "d5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c4",
+            "to": "c5",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "White has a passed c-pawn but must escort it with the king. The correct plan is Kf3–e4–d5, marching toward the pawn and dominating key squares. Pushing c5 immediately (red arrow) without king support allows Black's king to blockade on c5 and hold the draw."
+      }
+    ]
+  },
+  {
+    "id": "rook_endgame",
+    "label": "Lucena and Philidor Rook Endgames",
+    "concept": "The Lucena position is a winning technique where the stronger side uses their rook to 'build a bridge' — cutting off the enemy king with the rook on the fourth rank so the friendly king can escape check. The Philidor position is the defender's drawing method: keep your rook on the third rank to cut off the advancing king, then switch to checking from behind once the pawn advances. Mastering both positions gives you a complete framework for most practical rook-and-pawn endgames.",
+    "why": "Club players routinely throw away won rook endgames by not knowing how to escort a passed pawn to promotion, or draw lost ones by panicking instead of applying Philidor's method — these two errors alone can cost 50-100 rating points over a season.",
+    "howToSpot": "When you reach a rook endgame with one side having a passed pawn on the 7th rank with king nearby, look for the Lucena bridge-building pattern. When you are the defender facing a rook + pawn vs your rook, immediately ask: can I place my rook on the third rank to apply Philidor's defense?",
+    "drill": "Set up both the Lucena position (white king on g7, pawn on g6, rook on a1 vs black king on e7, rook on g8) and the Philidor position (white king on e5, pawn on e6, rook on a7 vs black king on e8, rook on e1) on a board and practice the winning and drawing techniques until each sequence feels automatic.",
+    "commonMistake": "In the Philidor defense, players prematurely move the rook away from the third rank to give checks before the pawn has advanced to the 6th rank, allowing the stronger side to shelter their king and promote.",
+    "source": "Capablanca — Chess Fundamentals",
+    "boards": [
+      {
+        "fen": "6k1/6P1/6K1/8/8/8/8/R7 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "a1",
+            "to": "a4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "a4",
+            "to": "f4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "g6",
+            "to": "f6",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "The Lucena Position: White wins by moving the rook to a4, then sliding it to f4 to 'build a bridge' — shielding the king from checks so the g7 pawn promotes. The yellow arrow shows the king's escape path once the bridge is in place."
+      },
+      {
+        "fen": "4k3/4P3/8/4K3/8/8/8/4r3 b - - 0 1",
+        "orientation": "black",
+        "arrows": [
+          {
+            "from": "e1",
+            "to": "e6",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "e1",
+            "to": "a1",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "a1",
+            "to": "a8",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "The Philidor Position: Black must NOT give checks immediately (red arrow) — instead, Black should keep the rook on the third rank (or move it behind the pawn with Ra1-a8) to check from behind once the pawn advances, ensuring a draw. The green arrows show the correct defensive rook path."
+      }
+    ]
+  },
+  {
+    "id": "blockade",
+    "label": "Knight Blockade of Passed Pawns",
+    "concept": "A passed pawn's greatest danger is its ability to advance and promote, but a knight placed directly in front of it — on its queening square or a square it must cross — stops it cold. Nimzowitsch called this the 'blockade': the piece sitting on the square in front of the pawn immobilises it while suffering no real attack from that pawn. Knights are the ideal blockaders because they cannot be attacked by a pawn on the square they occupy and retain full activity even while blockading.",
+    "why": "Club players often trade off or retreat their knight when it could sit in front of a passed pawn, allowing that pawn to march forward and win games that should have been drawn or won. Letting a passed pawn advance freely is one of the most common ways 1300-1600 players lose endgames they should hold.",
+    "howToSpot": "Look for any passed pawn on the d, e, or f file (or any file) that has at least two squares to advance — if you can land a knight on the square directly in front of it, ask whether that square is safe and whether the knight has a future there. Also check: does your opponent have no pawn or piece that can easily dislodge your knight from that blockading square?",
+    "drill": "This week, load three games from your own database where you or your opponent had a passed pawn, and for each position find the ideal knight blockade square — then replay the game to see if it was used.",
+    "commonMistake": "Players place the knight in front of the pawn but then voluntarily trade it off for a bishop or another piece, destroying the blockade and allowing the pawn to run.",
+    "source": "Nimzowitsch — My System",
+    "boards": [
+      {
+        "moves": "e4 e5 d4 exd4 c3 dxc3 Nxc3 Bb4 Nf3 Nf6 Bd3 d5 exd5 O-O O-O Nbd7 Re1 Nb6 d6 cxd6 Bg5 Be7 Qd2 Nfd5 Nxd5 Nxd5",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e1",
+            "to": "e7",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "d5",
+            "to": "d4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d5",
+            "to": "f4",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "Black's knight on d5 is a model blockader: it sits in front of any central pawn advance, cannot be attacked by a White pawn, and radiates control to f4 and b4. This is exactly the blockading knight Nimzowitsch praised — active, centralised, and immovable."
+      },
+      {
+        "fen": "8/8/4k3/3pN3/8/8/8/4K3 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e5",
+            "to": "d3",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d5",
+            "to": "d4",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "e5",
+            "to": "d5",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "A pure endgame blockade: the White knight on e5 prevents Black's passed d5-pawn from moving. The red arrow shows the pawn cannot advance, while the green arrows highlight the knight's control over d3 and its grip on d5. White holds easily — without the knight, the pawn would be unstoppable."
+      }
+    ]
+  },
+  {
+    "id": "overprotection",
+    "label": "Guard Key Squares Before Attack",
+    "concept": "Overprotection means deliberately adding more defenders to an important square or piece than is strictly necessary, before your opponent has even threatened it. Nimzowitsch argued that key squares — especially outposts, passed pawns, and central pawns — should be guarded so thoroughly that no combination can dislodge them. This transforms a potential weakness into an unshakeable strongpoint that ties down your opponent's pieces indefinitely.",
+    "why": "Club players routinely lose strong-looking positions because they only react to threats after they appear, leaving key squares briefly unguarded during the one moment an opponent can exploit them. A square or piece that looks safe with one defender can collapse the moment your opponent adds pressure, costing material or positional control that is hard to recover.",
+    "howToSpot": "Ask yourself: do I have a pawn, outpost square, or piece that my opponent will logically want to attack in the next few moves? Count its defenders and attackers, then add one extra defender now, before the attack arrives.",
+    "drill": "In your games this week, after each of your first 15 moves pause and identify your single most important square or piece; if it has only one defender, find a way to add a second before continuing.",
+    "commonMistake": "Players over-concentrate on attacking and assume their defended squares are safe, then discover too late that a single tactical trick removes the one defender they were relying on.",
+    "source": "Nimzowitsch — My System",
+    "boards": [
+      {
+        "moves": "d4 d5 c4 e6 Nc3 Nf6 Bg5 Be7 e3 O-O Nf3 Nbd7 Rc1 c6 Bd3 dxc4 Bxc4 Nd5 Bxe7 Qxe7 O-O Nxc3 Rxc3 e5 dxe5 Nxe5 Nxe5 Qxe5 Re1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "c3",
+            "to": "c6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e1",
+            "to": "e5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c4",
+            "to": "e6",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White's rooks on c3 and e1 overprotect the central files and the e5 square well before Black can create counterplay. The green arrows show how both rooks control critical squares; the yellow arrow highlights the e6 pawn White intends to target, making every defender count."
+      },
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 O-O h3 Na5 Bc2 c5 d4 Qc7 Nbd2 Nc6 d5 Nd8 Nf1 Ne8 N3h2 g6 Ng3 Ng7 Nhf1 f6 Ne3",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e3",
+            "to": "d5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e3",
+            "to": "f5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e1",
+            "to": "e3",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d5",
+            "to": "d5",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "This is the famous Ruy Lopez Breyer structure where White's knight manoeuvres to e3 to overprotect the critical d5 outpost before Black can challenge it. The knight on e3, supported by the rook on e1 and pawn on d5, illustrates Nimzowitsch's principle: pile on defenders now so the outpost becomes permanently unassailable."
+      }
+    ]
+  },
+  {
+    "id": "pawn_chain",
+    "label": "Attack the Base, Not the Head",
+    "concept": "A pawn chain is a diagonal line of pawns where each pawn protects the one in front of it. Nimzowitsch's key insight is that the head of the chain (the most advanced pawn) is well-protected by its neighbor, making direct attacks on it inefficient. Instead, you should attack the base of the chain — the rearmost pawn — because destroying the base collapses the entire structure, leaving the chain's pawns weak and potentially isolated.",
+    "why": "Club players instinctively push pawns or pieces toward the most advanced enemy pawn, wasting tempo attacking a well-defended target. Missing the correct base-attack plan means your opponent gets a stable, space-grabbing pawn chain for free while you drift without a strategy.",
+    "howToSpot": "Identify any diagonal line of two or more connected enemy pawns and locate the rearmost pawn — that is your target. Ask yourself: can I place a rook, bishop, knight outpost, or my own pawn lever directly against that base pawn?",
+    "drill": "Load five French Defence or King's Indian positions into a board editor each day this week; label the pawn chain's base and head, then find and play out the thematic break or piece maneuver that attacks the base.",
+    "commonMistake": "Players correctly identify the base but then try to win it immediately with one move, rather than first preparing the attack by repositioning pieces so the pressure on the base becomes irresistible.",
+    "source": "Nimzowitsch — My System",
+    "boards": [
+      {
+        "moves": "e4 e6 d4 d5 e5 c5 c3 Nc6 Nf3 Qb6 Be2 cxd4 cxd4 Nge7 Nc3 Nf5 Na4 Qa5 Bd2 Bb4 Bc3 Bxc3 Nxc3",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e5",
+            "to": "e5",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "d4",
+            "to": "d4",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "f5",
+            "to": "d4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d8",
+            "to": "d4",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "White has a classic pawn chain e5–d4. The head on e5 looks dangerous but is well-guarded; Black should target the base on d4 with piece pressure (knight on f5 eyes d4, and ...Rd8 will add rook pressure). Winning or undermining d4 collapses the whole chain."
+      },
+      {
+        "moves": "d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 f4 O-O Nf3 c5 d5 e6 dxe6 fxe6 Be2 Nc6 O-O Ne8 f5 exf5 exf5 Bxf5 Bh6 Bxh6 Qxh6 Qe7",
+        "orientation": "black",
+        "arrows": [
+          {
+            "from": "d5",
+            "to": "d5",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "c4",
+            "to": "c4",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "c5",
+            "to": "c4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d6",
+            "to": "c5",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "In this King's Indian-style position, White's pawn chain points toward d5 with c4 as its base. Black's plan of ...b5 or direct pressure on c4 targets that base; attacking the advanced d5 pawn instead would be misguided since it is solidly supported by c4."
+      }
+    ]
+  },
+  {
+    "id": "mysterious_rook",
+    "label": "The Mysterious Rook Move on Rank One",
+    "concept": "Nimzowitsch coined the term 'mysterious rook move' to describe a rook maneuver along the first rank (or back rank) that doesn't have an obvious immediate purpose but prepares a powerful future plan — often centralizing the rook behind a pawn break, clearing a square, or connecting major pieces. The move appears quiet and even puzzling to the opponent, yet it prophylactically addresses future threats and sets up long-term pressure. Think of it as 'making room' for your pieces before the position demands it.",
+    "why": "Club players at this level tend to only make moves that do something immediately obvious; they miss quiet preparatory rook moves and fall behind in long-term piece coordination, often finding their rooks misplaced when the critical moment arrives.",
+    "howToSpot": "Ask yourself: 'Is my rook on the first rank blocked or inactive, and is there a square one or two files over where it would support an upcoming pawn break or central file?' If the answer is yes and no piece needs to move urgently, a quiet rook slide is probably the right idea.",
+    "drill": "In your practice games this week, before every move, consciously check whether sliding one of your rooks along the first rank — even one square — would improve its long-term placement or support a coming pawn push.",
+    "commonMistake": "Players try to make the rook 'do something' immediately by putting it on an open file that isn't relevant yet, rather than parking it quietly behind the pawn they actually intend to advance.",
+    "source": "Nimzowitsch — My System",
+    "boards": [
+      {
+        "moves": "d4 d5 c4 e6 Nc3 Nf6 Nf3 Be7 Bg5 O-O e3 Nbd7 Rc1 c6 Bd3 dxc4 Bxc4 Nd5 Bxe7 Qxe7 O-O Nxc3 Rxc3 e5 Bb3 exd4 exd4 Nf6 Re1 Qd6 Rd1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "f1",
+            "to": "d1",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d1",
+            "to": "d4",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "c3",
+            "to": "d3",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "White has just played Rd1 — the mysterious rook move. The rook slides from f1 to d1 with no immediate threat, but now it powerfully supports the isolated d4 pawn and prepares to centralize along the d-file. Black has no obvious way to counter this quiet coordination."
+      },
+      {
+        "fen": "r4rk1/pp3ppp/2n1pn2/2ppb3/3P1B2/2NBPN2/PP3PPP/R2QR1K1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e1",
+            "to": "c1",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d1",
+            "to": "d2",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d4",
+            "to": "d5",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White's mysterious plan: slide the rook from e1 to c1 and nudge the queen to d2, preparing the d4-d5 pawn break. The rook isn't doing anything dramatic yet — but once d5 is played, it will explode into activity on the c-file or d-file, justifying the quiet preparation."
+      }
+    ]
+  },
+  {
+    "id": "centralisation",
+    "label": "Controlling the Board from the Centre",
+    "concept": "Centralisation means placing your pieces — especially knights, bishops, and rooks — on squares where they influence the maximum number of squares, particularly the central squares e4, d4, e5, and d5. A centralised piece radiates power in all directions and can quickly shift to any part of the board. Nimzowitsch taught that a piece in the centre is worth more than the same piece sitting passively on the edge, because its range and flexibility are dramatically greater.",
+    "why": "Club players routinely lose games not through tactical blunders but by letting their opponent's pieces dominate the centre while their own pieces sit on the rim doing little — leading to gradual positional suffocation and losing endgames they should draw.",
+    "howToSpot": "Ask yourself after each move: 'Is this piece on its best central square, or could it reach d4/e4/d5/e5 with one or two moves?' Also check whether your opponent has a knight or bishop actively posted in the centre that you have not yet challenged.",
+    "drill": "Play 10 rapid games this week and after each one review where your knights ended up — award yourself a point for every game where both knights reached c3/f3/c6/f6 or better central posts, and identify one game where an offside knight cost you.",
+    "commonMistake": "Players centralise one piece correctly but neglect the others, creating an imbalance where one well-placed piece is outweighed by the opponent's overall central harmony.",
+    "source": "Nimzowitsch — My System",
+    "boards": [
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Nc3 Bc5 d3 d6 O-O O-O",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "f3",
+            "to": "f3",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c3",
+            "to": "c3",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f3",
+            "to": "d4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c3",
+            "to": "d5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f6",
+            "to": "f6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c6",
+            "to": "d4",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "Both sides have centralised their knights on f3/c3 and f6/c6, giving each piece control over key central squares. The green arrows show White's Nf3 eyeing d4 and Nc3 covering d5 — this harmony is the foundation of central control Nimzowitsch describes."
+      },
+      {
+        "moves": "d4 Nf6 c4 e6 Nc3 Bb4 e3 O-O Nf3 d5 Bd3 c5 O-O Nc6 a3 Bxc3 bxc3 dxc4 Bxc4 Qc7 Bd3 e5 dxe5 Nxe5 Nxe5 Qxe5",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e5",
+            "to": "e5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e5",
+            "to": "h2",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "e5",
+            "to": "b2",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "e5",
+            "to": "a1",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "d3",
+            "to": "e4",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "Black's queen has recaptured on e5, a model centralised piece controlling long diagonals in all directions. The yellow arrows illustrate how a centralised queen radiates threats across the board, while the red arrow highlights White's bishop on d3 which has been displaced from its ideal central diagonal — a reminder that poor centralisation creates targets."
+      }
+    ]
+  },
+  {
+    "id": "imbalances",
+    "label": "Identifying What Makes One Side Better",
+    "concept": "An imbalance is any difference between the two sides — a bishop vs. knight, an open file, a pawn majority, a strong outpost, or a space advantage. Silman teaches that good strategy means first identifying all the imbalances on the board, then building a plan that exploits the imbalances in your favour. Rather than making random moves or just reacting, you learn to ask: 'What do I have that my opponent doesn't, and how do I make it matter?'",
+    "why": "Club players at this level often play without a plan because they never stop to catalogue what is actually different about the position — they treat every move as a tactical puzzle rather than asking whose position is structurally better and why. This leads to drifting, letting advantages evaporate, and being outplayed in quiet positions where no tactics exist.",
+    "howToSpot": "After each sequence of moves, pause and run a quick mental checklist: Who has the bishop pair? Are any knights on strong outposts? Who controls open files or the centre? Who has a pawn majority or a weak pawn? The side with more favourable answers to these questions has the better imbalances and should be making active plans.",
+    "drill": "Pick five games from your recent loss database, freeze the position after move 15, write down every imbalance you can find for both sides, decide whose imbalances are more valuable, then compare with the engine evaluation to calibrate your assessment.",
+    "commonMistake": "Players identify one imbalance (usually material) and ignore all the others, so they miss that a sacrificed pawn might be fully compensated by an open file, a dominant outpost, or a bishop that has become a monster.",
+    "source": "Silman — How to Reassess Your Chess",
+    "boards": [
+      {
+        "moves": "d4 Nf6 c4 e6 Nc3 Bb4 e3 O-O Nf3 d5 Bd3 c5 O-O Nc6 a3 Bxc3 bxc3",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "c1",
+            "to": "h6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d3",
+            "to": "b5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c3",
+            "to": "c3",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "c4",
+            "to": "c4",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "After Black trades on c3, White accepts doubled c-pawns but gains the bishop pair (green arrows show their long diagonal potential). The key imbalance: White has two bishops and long-term piece activity; Black has a solid structure but no outpost yet for the knights. Identifying this early tells White to open the position and tells Black to keep it closed."
+      },
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 O-O h3 Na5 Bc2 c5 d4 Qc7 Nbd2 cxd4 cxd4 Nc6 d5 Nb4 Bb1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d5",
+            "to": "d5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "b4",
+            "to": "d3",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "f1",
+            "to": "h7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e4",
+            "to": "e4",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "A classic Ruy Lopez tabiya: White's space advantage and the passed-pawn chain give a spatial imbalance (green arrow on d5), while Black's knight on b4 eyes d3 as a potential outpost (yellow). The imbalance checklist reveals White controls more space and has a kingside attack coming; Black's plan must be queenside counterplay with a5-a4. Recognising this guides both players toward coherent plans rather than random moves."
+      }
+    ]
+  },
+  {
+    "id": "weak_squares",
+    "label": "Exploiting Weak Squares and Colour Complexes",
+    "concept": "A weak square is one that cannot be defended by a pawn, making it a permanent outpost for your pieces. When one side advances or exchanges pawns of one colour, the squares of the opposite colour become chronically weak — this is called a colour complex weakness. The side with the bishop covering those squares often dominates, while the side without that bishop struggles to contest them.",
+    "why": "Club players routinely trade off their good bishop (the one that defends weak squares) or push pawns onto the same colour as their bishop without realising it, handing the opponent a permanent positional advantage that slowly converts into a winning endgame.",
+    "howToSpot": "Ask yourself: after recent pawn moves or exchanges, are there squares of one colour that no pawn can guard? Then check whether your opponent has a piece — especially a knight or bishop — that can sit on those squares without ever being chased away by a pawn.",
+    "drill": "Each day this week, play one slow game and after every five moves pause to identify which colour of squares is becoming weaker for each side, then make one decision based purely on controlling or occupying those squares.",
+    "commonMistake": "Players recognise the weak square but rush to occupy it with any piece rather than first eliminating the defender (often the opponent's bishop of that colour) that could challenge the outpost.",
+    "source": "Silman — How to Reassess Your Chess",
+    "boards": [
+      {
+        "moves": "e4 e6 d4 d5 e5 c5 c3 Nc6 Nf3 Qb6 Be2 cxd4 cxd4 Nge7 Nc3 Nf5 Na4 Qa5 Bd2 Bb4 Bc3 Bxc3 Nxc3",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "f5",
+            "to": "d4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f5",
+            "to": "h4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c3",
+            "to": "e2",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "d4",
+            "to": "d4",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "Black's knight on f5 is a dream outpost: it sits on a light square that White cannot attack with a pawn, and Black has exchanged off White's light-squared bishop (Bxc3), meaning the f5 knight can never be dislodged. White's dark-squared bishop on e2 is completely irrelevant to contesting f5 — this is a textbook colour complex problem for White."
+      },
+      {
+        "fen": "6k1/pp3ppp/2p1pb2/3pN3/3P4/1PP2PP1/P5KP/8 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e5",
+            "to": "d3",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e5",
+            "to": "f7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e5",
+            "to": "c4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f6",
+            "to": "e5",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "White's knight on e5 is a permanent fixture: Black's bishop is locked on the dark squares (f6, e7 type) and all of Black's pawns sit on dark squares (c6, d5, f7), meaning Black's own pawns define the weakness. The knight on e5 cannot be driven away and dominates the entire board — a classic example of the 'good knight vs. bad bishop' colour complex imbalance Silman emphasises."
+      }
+    ]
+  },
+  {
+    "id": "bishop_vs_knight",
+    "label": "Bishop vs Knight: Open and Closed Positions",
+    "concept": "Bishops thrive in open positions where long diagonals are unobstructed, allowing them to influence multiple parts of the board simultaneously. Knights prefer closed positions where pawns block the bishop's diagonals and the knight can use fixed outpost squares to hop around the board. The key principle: when choosing to trade bishop for knight (or vice versa), ask yourself whether the resulting pawn structure is open or closed.",
+    "why": "Club players routinely trade their good bishop for a knight without considering pawn structure, then spend the rest of the game fighting against an opponent whose piece suits the position perfectly — a subtle material imbalance that slowly loses games without an obvious blunder.",
+    "howToSpot": "Count how many central pawns are locked against each other: if 2 or more pawn chains are fixed and immovable, knights are better. If the center is open or half-open with clear diagonal highways, favour the bishop.",
+    "drill": "Play 5 slow games this week and after each game identify every moment you traded bishop for knight or vice versa — write one sentence justifying each trade based on whether the position was open or closed.",
+    "commonMistake": "Players keep a bishop in a position where all their own pawns are on the same color as the bishop, making it a 'tall pawn' that is worse than the opponent's knight.",
+    "source": "Silman — How to Reassess Your Chess",
+    "boards": [
+      {
+        "moves": "d4 d5 c4 c6 Nc3 Nf6 e3 e6 Nf3 Nbd7 Bd3 dxc4 Bxc4 b5 Bd3 Bb7 e4 e5 d5 c5",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "f6",
+            "to": "e4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f6",
+            "to": "d7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c1",
+            "to": "h6",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "A closed pawn structure has formed in the center with pawns locked on d5/c5 and e4/e5. The knights (especially f6) have stable outposts and can maneuver effectively, while White's light-squared bishop on c1 is completely blocked by its own pawns on c5, d5, and e4 — a classic 'bad bishop' scenario where the knight is the superior minor piece."
+      },
+      {
+        "fen": "8/pp3p2/2p1pb2/4n3/4P1P1/2N2B2/PPP2P2/6K1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "f3",
+            "to": "b7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f3",
+            "to": "a8",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e5",
+            "to": "c4",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "e5",
+            "to": "f3",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "An open endgame where White's bishop on f3 dominates: it controls two long diagonals and attacks pawns on a8 and b7 from a distance. Black's knight on e5 is active but limited to short hops — in this open structure the bishop's long-range power is clearly superior, illustrating why you should trade your knight for the opponent's bishop when the position opens up."
+      }
+    ]
+  },
+  {
+    "id": "two_bishops",
+    "label": "Exploiting the Two Bishops Advantage",
+    "concept": "The two bishops advantage means you have both bishops while your opponent has a bishop and knight, or two knights. Bishops become increasingly powerful in open positions because their long diagonals let them control squares on both sides of the board simultaneously — something a knight simply cannot do. The goal is to open the position, create pawn breaks, and use your bishops to dominate the long diagonals while your opponent's knight struggles to keep up.",
+    "why": "Club players often trade one of their bishops for a knight without compensation, giving up the bishop pair for free, or they fail to open the position and let the opponent neutralize the bishops with a closed pawn structure — both habits quietly bleed rating points.",
+    "howToSpot": "Ask yourself: do I have both bishops while my opponent has at least one knight? If yes, look for pawn breaks (like d4-d5 or f4-f5) that open central or kingside diagonals for your bishops to become active.",
+    "drill": "This week, play 5 slow games (15+10 or longer) as White after 1 e4 e5 2 Nf3 Nc6 3 Bc4 Nf6 4 d3, aiming to trade both your knights for Black's knights while keeping your bishops, then practice converting the resulting bishop-pair endgame.",
+    "commonMistake": "Players with the two bishops rush to activate them immediately without first creating open diagonals, leaving the bishops as tall pawns and wasting the advantage entirely.",
+    "source": "Silman — How to Reassess Your Chess",
+    "boards": [
+      {
+        "moves": "d4 Nf6 c4 e6 Nc3 d5 Bg5 Be7 e3 O-O Nf3 h6 Bh4 b6 cxd5 Nxd5 Bxe7 Qxe7 Nxd5 exd5 Bd3",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d3",
+            "to": "h7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d3",
+            "to": "b1",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f1",
+            "to": "f8",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White has traded off both knights and obtained the bishop pair in a semi-open position. The bishop on d3 eyes the kingside while White will later push e4 to open the center and unleash the second bishop."
+      },
+      {
+        "fen": "8/pp3pp1/2p1b2k/3p4/3P1B2/5B2/PP3PPP/6K1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "f4",
+            "to": "b8",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f3",
+            "to": "c6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e6",
+            "to": "d5",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "A classic bishop-pair endgame: White's two bishops cover both diagonals and both wings simultaneously, tying Black's lone bishop to passive defense. White wins by advancing pawns on both flanks, forcing Black's bishop to choose which threat to meet."
+      }
+    ]
+  },
+  {
+    "id": "minority_attack",
+    "label": "Minority Attack: Create Weaknesses with Fewer Pawns",
+    "concept": "The minority attack is a strategic plan where you advance fewer pawns (usually two) into the opponent's pawn chain of three or more, with the goal of forcing pawn exchanges that leave your opponent with a weak, isolated or backward pawn. It is most commonly seen in Queen's Gambit structures where White has a queenside majority of two pawns against Black's three, yet White advances b4-b5 to create a weakness on c6 or b6. The power lies not in winning material immediately, but in creating a long-term structural weakness that your pieces can target.",
+    "why": "Club players often ignore this plan entirely, either advancing all pawns randomly or failing to recognize when a pawn minority can be weaponized — losing the game slowly to a structurally superior opponent who knows exactly what target to aim for. Understanding the minority attack turns positional pressure into a concrete, executable plan rather than vague maneuvering.",
+    "howToSpot": "Look for positions where you have two queenside pawns facing the opponent's three (especially the b and c pawns vs their a, b, c formation) after a Queen's Gambit exchange structure. If your b-pawn can advance to b5 and force ...cxb5 or ...c5 creating a backward or isolated pawn on c6, the minority attack is available.",
+    "drill": "Play 10 games this week specifically reaching a Queen's Gambit Exchange structure as White and execute the b4-b5 minority attack plan every game, recording which weakness you created and whether you successfully targeted it with your rooks and knights.",
+    "commonMistake": "Players initiate the minority attack by pushing b4-b5 but then fail to follow up by placing a knight on d4 or doubling rooks on the c-file to pressure the resulting weak pawn, letting the opponent consolidate and neutralize the advantage.",
+    "source": "Silman — How to Reassess Your Chess",
+    "boards": [
+      {
+        "moves": "d4 d5 c4 e6 Nc3 Nf6 Bg5 Be7 e3 O-O Nf3 Nbd7 Rc1 c6 Bd3 dxc4 Bxc4 Nd5 Bxe7 Qxe7 O-O Nxc3 Rxc3 e5 dxe5 Nxe5 Nxe5 Qxe5 b4",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "b4",
+            "to": "b5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "b5",
+            "to": "c6",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "c3",
+            "to": "c6",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "White has just played b4, launching the minority attack. The plan is b4-b5, forcing ...cxb5 or creating a weak pawn on c6. White's rook on c3 is already poised to swing to c6 or support the queenside advance."
+      },
+      {
+        "fen": "r1b2rk1/pp3ppp/2p1b3/4p3/1P6/2P1B3/P4PPP/R2R2K1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "b4",
+            "to": "b5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "b5",
+            "to": "c6",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "d1",
+            "to": "d6",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "A classic minority attack endgame: White plays b5, and after ...cxb5 or if Black allows bxc6, White creates a permanent weakness on c6 or b6. White's rooks are ready to occupy the d- and c-files to hammer the resulting weak pawn."
+      }
+    ]
+  },
+  {
+    "id": "candidate_moves",
+    "label": "Generate and Organise Your Candidate Moves",
+    "concept": "Before calculating deeply, you must first decide which moves are worth examining at all — these are your candidate moves. Kotov teaches that you should list all plausible candidates first, then analyse each one fully in a single pass, like branches on a tree, rather than jumping back and forth randomly. This disciplined approach prevents you from missing strong moves and stops you wasting time re-analysing the same lines repeatedly.",
+    "why": "Club players routinely overlook winning moves because they start calculating the first move that looks good and never consider alternatives — if that move fails, they panic and make impulsive decisions rather than returning to a structured list of candidates.",
+    "howToSpot": "When it is your turn, ask yourself: what are all the checks, captures, and threats available to me right now? Then extend the list to any other moves that change the position significantly before committing to calculate any single line.",
+    "drill": "In your practice games this week, pause after your opponent's move and write down (or mentally name) at least three candidate moves before calculating any of them, then compare which one your tree analysis favours versus your first instinct.",
+    "commonMistake": "Players generate candidates correctly but then abandon a promising branch halfway through calculation and jump to another, meaning they never reach the critical position where the winning idea appears.",
+    "source": "Kotov — Think Like a Grandmaster",
+    "boards": [
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 O-O Nf6 d3 O-O Nc3 d6 Bg5 h6 Bh4 g5 Bg3 Nh5",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d1",
+            "to": "h5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f3",
+            "to": "g5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c3",
+            "to": "d5",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White has several candidate moves to consider: Qxh5 wins a piece immediately, Nxg5 attacks aggressively, and Nd5 threatens a fork. List all three before calculating — Qxh5 wins a piece outright and should be confirmed first before exploring the others."
+      },
+      {
+        "moves": "d4 d5 c4 e6 Nc3 Nf6 Bg5 Be7 e3 O-O Nf3 Nbd7 Rc1 c6 Bd3 dxc4 Bxc4 Nd5 Bxe7 Qxe7 O-O Nxc3 Rxc3 e5 dxe5 Nxe5 Nxe5 Qxe5",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "f1",
+            "to": "e1",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c3",
+            "to": "e3",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c4",
+            "to": "f7",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "d1",
+            "to": "d8",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "White must organise candidates systematically: Re1 pins the queen to the king, Rce3 doubles rooks with tempo, and Bxf7+ is a flashy sacrifice worth checking. Qxd8 is a blunder losing the rook — identifying it as a bad candidate early saves calculation time."
+      }
+    ]
+  },
+  {
+    "id": "tree_of_analysis",
+    "label": "Build Your Calculation Tree Efficiently",
+    "concept": "Kotov's 'tree of analysis' is a method for organizing your calculation so you never waste time re-examining the same variation. Before calculating deeply, identify all candidate moves at each branch point, then calculate each line fully from start to finish exactly once — like following branches of a tree without doubling back. This prevents the common habit of jumping randomly between lines and losing your place.",
+    "why": "Club players routinely blunder in time pressure because they recalculate the same three moves over and over instead of committing to a conclusion — burning clock on lines they've already seen and missing deeper resources in lines they never fully explored.",
+    "howToSpot": "When you find yourself thinking 'wait, what happens if I do X again?' about a line you already considered, that is the warning sign. Before calculating, ask: have I listed all candidate moves first, and am I following each branch to its conclusion before switching?",
+    "drill": "Take any tactical puzzle this week and before moving a piece, write down every candidate move on paper, then calculate each one fully left to right without revisiting — check your written tree against the solution afterward.",
+    "commonMistake": "Players list candidate moves correctly but then abandon a line halfway through because it 'looks bad', only to return to it later and waste time — Kotov insists you must follow each branch to a definite evaluation before moving on.",
+    "source": "Kotov — Think Like a Grandmaster",
+    "boards": [
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 O-O Nf6 d3 d6 Nc3 O-O Bg5 h6 Bh4 g5 Bg3 Nh5",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d1",
+            "to": "h5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "h5",
+            "to": "g3",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "c4",
+            "to": "f7",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "White has multiple forcing candidate moves: Qxh5, Bxf7+, and Nxg5. A Kotov tree means evaluating Bxf7+ Rxf7 Qxh5 fully first, then Qxh5 Nxg3 fully second — never bouncing between them mid-calculation."
+      },
+      {
+        "fen": "r4rk1/pp2qppp/2pb1n2/3p4/3P1B2/2NB4/PP3PPP/R2Q1RK1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d3",
+            "to": "h7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f4",
+            "to": "h6",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "d1",
+            "to": "h5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f6",
+            "to": "h5",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "A typical middlegame decision point with three candidate moves for White: Bxh7+, Qh5, and Ne4. Draw your mental tree — branch A is Bxh7+ Kxh7 Qh5+, branch B is Qh5 g6, branch C is Ne4 — calculate each branch once, fully, before deciding."
+      }
+    ]
+  },
+  {
+    "id": "forcing_sequences",
+    "label": "Checks, Captures, Threats Order",
+    "concept": "When calculating tactics, always examine forcing moves in a strict priority order: checks first, then captures, then threats. This systematic approach, championed by Kotov, ensures you never miss a winning combination by scanning the most forcing moves before quieter ones. A check limits your opponent to a small set of legal replies, making the calculation tree manageable and concrete.",
+    "why": "Club players routinely calculate captures and threats before checking moves, meaning they often miss a zwischenzug (in-between check) that completely changes the evaluation of an exchange sequence. This oversight leads to blundered tactics and missed wins several times per game.",
+    "howToSpot": "Before executing any tactical idea, pause and ask: 'Does my opponent have a check or capture I am ignoring, and do I have a check or capture I have not yet considered?' If a forcing sequence leads to an unclear position, restart the scan from checks before accepting a result.",
+    "drill": "Each day this week, take five tactical puzzles and before touching a piece write down all checks available to the side to move, then all captures, then all threats — only then calculate the full line.",
+    "commonMistake": "Players find an appealing capture or threat and calculate it deeply, completely forgetting to first check whether an intermediate check (zwischenzug) disrupts the entire sequence in their favour or their opponent's.",
+    "source": "Kotov — Think Like a Grandmaster",
+    "boards": [
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Na5 Bb5 c6 dxc6 bxc6 Be2 h6 Nf3 e4 Ne5 Bd6 d4 exd3 Nxd3 Qc7 O-O O-O Nc3 Bf5 Bf4 Bxf4 Nxf4 Rad8 Qd2 Nb7 Rad1 Nd6 Rfe1 Nfe4 Nxe4 Nxe4 Qe3 Nd6 Bd3 Bxd3 Nxd3",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d1",
+            "to": "d8",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e3",
+            "to": "d4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d3",
+            "to": "f4",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White has just recaptured on d3. Before making a 'natural' developing move, scan checks first: Rd8 would be check, forcing the king to move. Always ask 'what checks do I have?' before calculating anything else in the position."
+      },
+      {
+        "fen": "3r2k1/pp3ppp/2n5/3Rp3/4P3/2N2Q2/PPP2PPP/6K1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "f3",
+            "to": "f7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d5",
+            "to": "d8",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c6",
+            "to": "e5",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "f7",
+            "to": "g8",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White to move: applying checks-captures-threats, the first scan reveals Qxf7+ is a check. After Qxf7+ Kh8, now scan again — Rxd8+ is a check that wins the rook. Only after exhausting checks does White consider capturing on e5, which would be premature and lose the winning sequence."
+      }
+    ]
+  },
+  {
+    "id": "blunder_check",
+    "label": "Stop Missing Your Opponent's Reply",
+    "concept": "The blunder check is a habit Kotov advocates: before executing any move, pause and ask 'what can my opponent do after this?' Most club-level blunders are not caused by missing your own tactics, but by forgetting that your opponent gets a turn too. Systematically scanning for checks, captures, and threats your opponent gains after your intended move catches the majority of one-move blunders before they happen.",
+    "why": "At the 1300-1600 level, a large share of decisive mistakes are single-move oversights where a player spots their own idea but fails to consider the opponent's best response — a free piece, a back-rank mate, or a zwischenzug that changes everything. These are not calculation failures; they are habit failures, and they directly bleed rating points every session.",
+    "howToSpot": "Before lifting your hand from the piece, run a three-second checklist: Can my opponent give check? Can they capture something for free? Does my move create a new undefended piece or a weak square they can immediately exploit? If the answer to any of these is yes, re-evaluate.",
+    "drill": "In every tactical puzzle this week, after you find your candidate move, deliberately spend 10 seconds writing down (or mentally listing) every check, capture, and threat your opponent has in the resulting position before confirming your answer.",
+    "commonMistake": "Players apply the blunder check only after quiet moves and skip it when they are the ones attacking, assuming their initiative makes the opponent's reply irrelevant — but this is exactly when an opponent's zwischenzug or counter-capture is most likely to be missed.",
+    "source": "Kotov — Think Like a Grandmaster",
+    "boards": [
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Nxd5 Nxf7 Kxf7 Qf3 Ke6 Nc3 Nce7 d4 c6 Bg5 Qd6 O-O-O Nf4 Bxe7 Bxe7 d5 cxd5 Nxd5 Nxd5 Rxd5 Qc7 Re5 Kd6",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "f3",
+            "to": "f7",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "d8",
+            "to": "d1",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "A chaotic middlegame position where White is tempted by an aggressive queen move toward f7. The red arrow shows the impulsive idea; before playing it, White must ask: does my opponent have a back-rank check or counter-attack? The yellow arrow illustrates the kind of latent threat along the d-file that punishes players who skip the blunder check."
+      },
+      {
+        "fen": "r4rk1/ppp2ppp/2n5/3p4/3P4/2N2N2/PPP2PPP/R3R1K1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "f3",
+            "to": "d2",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "c6",
+            "to": "d4",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "e1",
+            "to": "e8",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "White wants to reroute the knight with Nd2 (red arrow), but before doing so the blunder check reveals that Black's knight can immediately snap off the d4 pawn (yellow arrow) with tempo. The correct approach first contests the e-file with Re8 (green arrow), asking what Black can do at every step before committing to the knight maneuver."
+      }
+    ]
+  },
+  {
+    "id": "opposition",
+    "label": "Opposition and Key Squares in Pawns",
+    "concept": "Opposition occurs when two kings stand on the same rank, file, or diagonal with exactly one square between them, and it is the other side's turn to move — the side NOT to move holds the opposition and forces the opponent's king to give way. Key squares are specific squares that, if your king reaches, guarantee pawn promotion regardless of where the defending king stands. For a pawn on the e-file, for example, the key squares are d6, e6, and f6 (for White); reaching any of those with the king wins.",
+    "why": "Club players routinely draw won king-and-pawn endgames by advancing the pawn too early instead of first using the king to seize opposition and reach a key square — or they lose drawn positions because they don't know how to use the opposition to blockade the enemy king and hold a draw.",
+    "howToSpot": "Ask yourself: 'If I ignore the pawn for a moment, can my king reach one of the three key squares in front of the pawn?' If yes, calculate whether you can seize the opposition on the way there. Count the number of squares between the kings on the same rank or file — if it is odd and it is your turn, you already have the opposition.",
+    "drill": "Set up a White king on e4 and White pawn on e3 vs Black king on e6 with White to move, then practice finding the winning king route to d6, e6, or f6 while maintaining or recapturing the opposition before touching the pawn.",
+    "commonMistake": "Players push the pawn immediately to gain space, but this releases the opposition and lets the defending king reach the critical blocking square in front of the pawn, turning a win into a draw.",
+    "source": "de la Villa — 100 Endgames You Must Know",
+    "boards": [
+      {
+        "fen": "4k3/8/4K3/4P3/8/8/8/8 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e6",
+            "to": "d6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e6",
+            "to": "e7",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "e5",
+            "to": "e6",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "White king on e6 holds the opposition against Black's king on e8. The winning move is Kd6 (green), marching toward key square d6 and forcing Black's king aside — NOT Ke7 or pushing e6 yet (red), which stalemates or lets Black draw."
+      },
+      {
+        "fen": "8/8/8/3k4/8/8/3P4/3K4 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d1",
+            "to": "d2",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "d1",
+            "to": "e2",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e2",
+            "to": "c4",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "With the pawn far back on d2, White must use the king aggressively. Ke2 (green) starts the king march toward the key squares c4, d4, e4 — avoiding the premature d4 pawn push (red) which lets Black's king race to block. The yellow arrow shows the king's target zone."
+      }
+    ]
+  },
+  {
+    "id": "zugzwang",
+    "label": "Zugzwang: When Moving Loses",
+    "concept": "Zugzwang is a situation where any move a player makes worsens their position — they would be better off passing, but chess requires you to move. It appears most often in king-and-pawn endgames, where one player's king is perfectly placed and any pawn or king move hands over a decisive advantage. Recognising it lets you either steer into it against your opponent or desperately avoid it yourself.",
+    "why": "Club players routinely draw won K+P endgames or lose won positions because they don't know how to use opposition and triangulation to force zugzwang on the enemy king, giving away half or full points that were already on the board.",
+    "howToSpot": "Ask: 'If it were my opponent's turn right now, would they lose?' If yes, and it IS their turn, you have zugzwang — focus on maintaining that pressure. If it's your turn, look for a triangulation move (a king detour in 3 moves back to the same square) to transfer the move to your opponent.",
+    "drill": "Set up a basic king-and-pawn vs king position each day this week and practice using opposition and triangulation to force zugzwang before promoting the pawn — aim to do 5 positions daily on Lichess Studies or with a board.",
+    "commonMistake": "Players rush forward with their king or pawn instead of first securing the opposition, accidentally handing the move order back to their opponent and turning a win into a draw.",
+    "source": "de la Villa — 100 Endgames You Must Know",
+    "boards": [
+      {
+        "fen": "8/8/8/3k4/8/3K4/3P4/8 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d3",
+            "to": "e3",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d5",
+            "to": "e5",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "White to move must triangulate rather than advance. Ke3! (green) sidesteps into a triangle so that after Black mirrors, White recaptures the opposition and forces the Black king away from d5 — any direct advance like d4 lets Black's king stay in front of the pawn and draw."
+      },
+      {
+        "fen": "8/8/3k4/8/3K4/8/3P4/8 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d4",
+            "to": "d5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d6",
+            "to": "d5",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "d2",
+            "to": "d4",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "White has the opposition: Black's king on d6 is directly in front with an odd number of squares between them. Kd5! (green) marches forward under the shield of the opposition, putting Black in zugzwang — any Black king move opens a path for the pawn to queen. Rushing d4 (red) instead throws away the opposition and allows Black to draw by keeping the king in front of the pawn."
+      }
+    ]
+  },
+  {
+    "id": "triangulation",
+    "label": "Triangulation: King Loses a Tempo",
+    "concept": "Triangulation is a king maneuver where one king traces a triangle of three squares to arrive at the same square but with the opponent's king to move, effectively 'losing' a tempo. This technique is used in king-and-pawn endings to break a zugzwang deadlock — you maneuver your king in a triangle while the opponent's king, constrained to a smaller area, cannot copy the route. The result is a position that looks identical to before, but now it is your opponent who must move and be put in a losing situation.",
+    "why": "Club players routinely accept draws in king-and-pawn endings that are actually won, because they don't know how to transfer the move to the opponent. Recognising that a triangulation maneuver exists can convert a half-point into a full point several times per tournament.",
+    "howToSpot": "Ask yourself: 'If it were my opponent's turn right now, would they be in zugzwang and lose?' If yes, check whether your king has access to a triangle of three squares (usually on one side of the board) that your opponent's king cannot mirror — if so, triangulation is likely available.",
+    "drill": "Set up a king-and-pawn vs king position where the kings are in direct opposition and practice finding the three-square triangulation path that transfers the move to your opponent, verifying the win each time.",
+    "commonMistake": "Players try to triangulate but choose a triangle that allows the defending king to mirror the route, wasting the tempo without achieving zugzwang.",
+    "source": "de la Villa — 100 Endgames You Must Know",
+    "boards": [
+      {
+        "fen": "8/8/8/3k4/8/3K4/3P4/8 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d3",
+            "to": "c3",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c3",
+            "to": "c4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c4",
+            "to": "d4",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "White king triangulates via c3–c4–d4 to reach d4 with Black to move. Black's king on d5 cannot mirror this three-square route and will be forced to give way, allowing the white king to advance and support the pawn to promotion."
+      },
+      {
+        "fen": "8/8/3k4/8/3K4/8/3P4/8 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d4",
+            "to": "d5",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "d4",
+            "to": "c4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c4",
+            "to": "c3",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c3",
+            "to": "d3",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "If White naively plays Kd5 (red arrow), Black replies Kd7 and holds the opposition — a draw. Instead, White must triangulate: Kc4–Kc3–Kd3, arriving on d3 with Black to move and unable to maintain the opposition, making the pawn's advance decisive."
+      }
+    ]
+  },
+  {
+    "id": "rook_vs_pawn",
+    "label": "Rook vs Pawn: Cut Off the King",
+    "concept": "When your rook faces an advanced enemy pawn, one of the most powerful techniques is to cut off the opposing king along a rank or file, preventing it from supporting the pawn. By placing your rook on a rank behind the enemy king (or on a file between the king and pawn), you force the pawn to advance without royal escort, making it much easier to capture. This technique transforms a dangerous passed pawn into a harmless target.",
+    "why": "Club players routinely lose drawn rook endings by allowing the enemy king to walk up and escort a passed pawn to promotion — or they fail to use this technique when defending, letting a pawn queen unnecessarily. A single misplaced rook move can flip a draw into a loss or a win into a draw.",
+    "howToSpot": "Ask yourself: is there an advanced passed pawn that could become a queening threat? If yes, check whether placing your rook on a rank or file cuts the enemy king off from the pawn's path before chasing the pawn directly.",
+    "drill": "Set up positions from de la Villa's Endgame 4 and 5 (rook vs advanced pawn) and practice finding the cutting-off square first, then mop up — aim to solve five positions without moving the pieces until you see the full plan.",
+    "commonMistake": "Players rush the rook to attack the pawn from behind rather than first cutting off the enemy king, allowing the king to step in front of the pawn and escort it safely to promotion.",
+    "source": "de la Villa — 100 Endgames You Must Know",
+    "boards": [
+      {
+        "fen": "8/8/8/1k6/1p6/8/8/R3K3 w Q - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "a1",
+            "to": "a5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "b5",
+            "to": "a5",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "b4",
+            "to": "b3",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White plays Ra5+, cutting the black king off along the 5th rank. The king cannot step in front of the b4-pawn, so White's rook mops it up easily. The red arrow shows where the king wants to go but cannot — the green arrow shows the correct rook destination."
+      },
+      {
+        "fen": "8/8/8/8/1k6/1p6/8/4K2R w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "h1",
+            "to": "h4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "b4",
+            "to": "a3",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "b3",
+            "to": "b2",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White cuts the black king off along the 4th rank with Rh4+. The king is banished to the a-file or beyond, leaving the b3-pawn undefended and easy to win. Without this idea White would struggle as the king escorts the pawn forward."
+      }
+    ]
+  },
+  {
+    "id": "bishop_endgame",
+    "label": "Same vs Opposite Color Bishop Endgames",
+    "concept": "In same-color bishop endgames, both bishops travel on the same colored squares, meaning the stronger side's bishop can both attack pawns and support its own — making these endings often decisive. In opposite-color bishop endgames, each bishop controls squares the other cannot touch, so the defending side can blockade enemy pawns with its bishop and create a fortress that is almost impossible to break, making these endings famous for their drawing tendency even when one side is a pawn or two ahead.",
+    "why": "Club players regularly convert or resign opposite-color bishop endings incorrectly — either throwing away a draw by advancing pawns onto the wrong color, or failing to win a winning same-color ending by misplacing their bishop. These mistakes directly cost half-points and full points in games that were already decided.",
+    "howToSpot": "Check the color of each bishop's starting square: if both bishops stand on the same color, the endgame is same-color and the stronger side likely has real winning chances. If the bishops stand on opposite colors, immediately look for a blockading square for the defending bishop and assess whether the attacker's pawns can be stopped.",
+    "drill": "Load three opposite-color bishop endings from online databases (Lichess studies or Chessable) where one side is a pawn up, and practice finding the drawing fortress for the defender; then find one same-color bishop ending and practice triangulating with the king to win a pawn.",
+    "commonMistake": "In opposite-color endings, attackers push pawns onto the same color as their own bishop, handing the defender a trivial blockade — the pawns should instead be placed on the color the defending bishop controls to create real threats.",
+    "source": "de la Villa — 100 Endgames You Must Know",
+    "boards": [
+      {
+        "fen": "8/8/3b4/3P4/8/3B4/8/4K1k1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d3",
+            "to": "f5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d6",
+            "to": "f8",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "d5",
+            "to": "d6",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "Opposite-color bishops: White has an extra pawn on d5, but Black's bishop on d6 perfectly blockades it on the opposite color. Despite being a pawn up, White cannot make progress — a classic drawing fortress."
+      },
+      {
+        "fen": "8/5p2/5b2/4PB2/8/8/5K2/6k1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "f5",
+            "to": "d7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f5",
+            "to": "e6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f6",
+            "to": "e7",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "Same-color bishops: both bishops are on light squares. White's bishop on f5 can simultaneously attack Black's pawn on f7 and support the e5 passer, while Black's bishop cannot defend both — this is a winning advantage unique to same-color endings."
+      }
+    ]
+  },
+  {
+    "id": "knight_endgame",
+    "label": "Knights Need Targets, Not Open Lines",
+    "concept": "Unlike bishops, knights do not benefit from open diagonals or long lines — they need fixed enemy pawns to attack and stable squares (outposts) to sit on. In a knight endgame, your goal is to plant your knight on a strong central square where it attacks weak pawns that your opponent cannot easily defend or trade away. The side whose knight has more targets and a better outpost almost always wins.",
+    "why": "Club players routinely activate their knight by moving it to an 'active-looking' square near the center, when in reality the knight is doing nothing because all enemy pawns are mobile and can simply step away. This loses tempos and lets the opponent consolidate a winning position into a draw.",
+    "howToSpot": "Ask yourself: does my knight currently attack at least one pawn the opponent cannot easily move or guard? If not, reroute it — even if the journey takes two or three moves — to a square where it does.",
+    "drill": "Set up a knight vs. knight endgame with imbalanced pawn structures on Lichess Studies and practice maneuvering your knight to the strongest outpost before pushing pawns, repeating five times per side.",
+    "commonMistake": "Players rush to advance their passed pawn immediately instead of first improving their knight to a dominant outpost, allowing the opponent's knight to blockade and hold the draw.",
+    "source": "de la Vila — 100 Endgames You Must Know",
+    "boards": [
+      {
+        "fen": "8/8/4p3/3pNp2/3k1P2/8/3K4/8 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e5",
+            "to": "d7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e5",
+            "to": "c6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e5",
+            "to": "e6",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "e5",
+            "to": "d3",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "White's knight on e5 is beautifully placed: it eyes the fixed black pawns on d5, e6, and f5 simultaneously. Moving it backward toward d3 (red) would surrender all targets; instead, rerouting via c6 or d7 (green) keeps maximum pressure on Black's weak pawns and illustrates why knights must always be anchored to targets."
+      },
+      {
+        "fen": "8/8/8/3kn3/8/3K4/5N2/8 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "f2",
+            "to": "e4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e4",
+            "to": "d6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f2",
+            "to": "h3",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "In a pure knight vs. knight ending with no pawns, the position is a draw — but the lesson is the route: White should steer the knight toward the center via e4 and d6 (green arrows) rather than drifting to the rim with Nh3 (red), which reduces its mobility to just two squares and hands Black a practical advantage in any follow-up pawn race."
+      }
+    ]
+  },
+  {
+    "id": "discovered_attack",
+    "label": "Unmasking a Hidden Piece",
+    "concept": "A discovered attack occurs when you move one piece out of the way to reveal an attack from a piece behind it. The moved piece often creates a second threat simultaneously, leaving your opponent unable to deal with both dangers at once. The hidden piece delivers the real punch — it was loaded and waiting the moment the blocker stepped aside.",
+    "why": "Club players routinely miss discovered attacks because they focus on the moving piece rather than scanning what is newly unblocked, gifting opponents free material or checkmate from seemingly quiet moves.",
+    "howToSpot": "Ask yourself: do I have a piece (bishop, rook, or queen) that is blocked by one of my own pieces? If yes, check whether moving that blocker to an attacking or checking square creates two threats at once.",
+    "drill": "Solve 15-20 discovered-attack puzzles from Polgar's 5334 Problems this week, pausing before each solution to physically identify the hidden piece and both threats before moving.",
+    "commonMistake": "Players move the blocking piece to a safe square instead of an aggressive one, throwing away the chance to create a double threat and letting the opponent simply defend.",
+    "source": "Polgar — Chess 5334 Problems",
+    "boards": [
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Na5 Bb5 c6 dxc6 bxc6 Be2 h6 Nf3 e4 Ne5 Qd4 Ng4 Nxg4 Bxg4 Bc5 O-O O-O d3 exd3 Bxd3",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d3",
+            "to": "h7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d1",
+            "to": "h5",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White's bishop on d3 has just been unmasked along the d3-h7 diagonal. The queen on d1 can now swing to h5, threatening both Bxh7+ and Qxf7 — a classic discovered-attack setup where the blocking piece moves with tempo."
+      },
+      {
+        "fen": "r1bq1rk1/ppp2ppp/2n5/3pP3/1b1Pn3/2NB1N2/PPP2PPP/R1BQK2R w KQ - 0 9",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "f3",
+            "to": "e5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d3",
+            "to": "h7",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "e5",
+            "to": "c6",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "White plays Ne5, moving the knight to a strong central square while simultaneously unmasking the bishop on d3 which now eyes h7. Black must deal with the knight fork threat on c6 AND the bishop's long diagonal — a textbook discovered attack forcing material gain."
+      }
+    ]
+  },
+  {
+    "id": "double_check",
+    "label": "Double Check: Chess's Most Forcing Move",
+    "concept": "A double check occurs when a piece moves and simultaneously places the enemy king in check from two different pieces at once. Because the king cannot block or capture both attackers in one move, the only legal response is to move the king — making double check the most forcing tactical motif in chess. This makes it an especially powerful tool for delivering unexpected checkmates or winning decisive material.",
+    "why": "Club players at this level often miss double check opportunities because they stop calculating once they see one checking move, not realising a discovered check can be a double check. Missing these moments means letting the opponent escape combinations that should end the game immediately.",
+    "howToSpot": "Ask yourself: if I move this piece to give check, does it also unmask an attack on the king from a piece behind it? Look for bishops, rooks, or queens lined up behind another piece that is about to move toward the king.",
+    "drill": "Solve at least 15 double-check puzzles from Polgar 5334 this week, covering both the motif of recognising the double check and calculating the forced king moves that follow.",
+    "commonMistake": "Players often deliver the discovered check without realising the moving piece itself can also give check, settling for a simple check instead of the far more powerful double check.",
+    "source": "Polgar — Chess 5334 Problems",
+    "boards": [
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Nxd5 Nxf7",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "g5",
+            "to": "f7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c4",
+            "to": "f7",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "Nxf7 is a fork, but after Kxf7 White can play Qf3+ — setting up the idea that a subsequent bishop move could deliver double check. Notice how the bishop on c4 and queen together can create a double check threat on the exposed king."
+      },
+      {
+        "fen": "r1bqkb1r/ppp2ppp/2n5/3pP3/2B5/8/PPPP1PPP/RNBQK2R w KQkq - 0 7",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e5",
+            "to": "d7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c4",
+            "to": "f7",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "d1",
+            "to": "h5",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White's advanced pawn on e5 and bishop on c4 are perfectly placed to create double check threats. If the e5 pawn advances with check and unmasks the bishop's diagonal simultaneously, Black's king has nowhere to hide — study this geometry to train your eye for double check patterns."
+      }
+    ]
+  },
+  {
+    "id": "deflection",
+    "label": "Deflection: Removing a Key Defender",
+    "concept": "Deflection is a tactic where you force an opponent's piece away from a square or duty it must cover, exposing a weakness or allowing a winning follow-up. You sacrifice or attack a piece so that capturing or moving it abandons a critical defensive role. The result is that a mate threat, fork, or material gain that was previously impossible suddenly becomes unstoppable.",
+    "why": "Club players routinely miss deflection because they stop calculation once they see a piece is 'defended' — they don't ask whether that defender can be lured away. Missing one deflection opportunity per game can cost a full point.",
+    "howToSpot": "Ask: which one piece is doing the most defensive work for my opponent (guarding a back rank, covering a fork square, protecting the queen)? Then ask: can I attack or sacrifice onto that piece so that moving or capturing it abandons its duty?",
+    "drill": "Solve 15–20 deflection puzzles from Polgar 5334 this week; for each, write down in one word what duty the deflected piece was performing before you lure it away.",
+    "commonMistake": "Players find the deflecting sacrifice but play it in the wrong order — executing it after the follow-up combination is no longer available because the position has changed.",
+    "source": "Polgar — Chess 5334 Problems",
+    "boards": [
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 O-O Nf6 Ng5 O-O Nxf7 Rxf7 Bxf7 Kxf7 Qh5 Ke7 Qxe5",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "g5",
+            "to": "f7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c4",
+            "to": "f7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "h5",
+            "to": "e5",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White deflects Black's rook from f7 by sacrificing two pieces there. Once the rook is lured to f7 and the king is drawn to e7, the queen delivers a decisive blow on e5 — the rook on f7 can no longer cover e5."
+      },
+      {
+        "fen": "6k1/5ppp/8/8/8/8/r4PPP/3R2K1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d1",
+            "to": "d8",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "a2",
+            "to": "g2",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "d8",
+            "to": "g8",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "White plays Rd8+, deflecting the Black king away from defending against back-rank threats. If Black's king moves, Rxg8 is checkmate — the rook on a2 threatening g2 is irrelevant because the deflection wins first."
+      }
+    ]
+  },
+  {
+    "id": "decoy",
+    "label": "Decoy: Luring Pieces Onto Bad Squares",
+    "concept": "A decoy is a tactical device where you sacrifice material to force an enemy piece onto a square where it becomes vulnerable or blocks its own side. The key idea is that the opponent feels compelled to accept the sacrifice (by capturing your piece), but in doing so their piece lands on a square that enables your follow-up tactic — often a fork, pin, skewer, or checkmate. Unlike a simple sacrifice, a decoy works because the destination square is specifically bad for the opponent.",
+    "why": "Club players routinely miss decoys because they only look one move deep — they see the opponent's capture as a free piece and take it, not realising the recapture or follow-up is devastating. Failing to spot decoys both offensively (missing wins) and defensively (walking into them) is a consistent source of rating-point losses at the 1300-1600 level.",
+    "howToSpot": "Ask yourself: if I sacrifice a piece and my opponent takes it, where does their piece land — and does that square create a fork, pin, or mating net? Look especially for situations where a queen, rook, or king can be lured onto a file, rank, or diagonal that your other pieces already cover.",
+    "drill": "Solve at least 20 decoy puzzles from Polgar's Chess 5334 Problems this week, and before each solution write down the 'bad square' the enemy piece is being lured to and why that square is fatal.",
+    "commonMistake": "Players execute the decoy sacrifice correctly but then play the follow-up move too slowly or in the wrong order, giving the opponent time to escape — always calculate the entire sequence, including the forced response, before sacrificing.",
+    "source": "Polgar — Chess 5334 Problems",
+    "boards": [
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 O-O Nf6 Ng5 O-O Nxf7",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "g5",
+            "to": "f7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f8",
+            "to": "f7",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "d1",
+            "to": "f3",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White plays Nxf7 — a classic decoy sacrifice. If Black's rook captures on f7, the rook is lured away from protecting the back rank and White plays Qxf3 or launches a devastating attack. The f7 square becomes the 'bad square' for whatever piece Black uses to recapture."
+      },
+      {
+        "fen": "6k1/8/6K1/8/8/8/8/1Q6 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "b1",
+            "to": "g6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "g8",
+            "to": "g6",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "b1",
+            "to": "b8",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White plays Qg6+, decoying the Black king onto g6. After Kxg6, the king is lured into a stalemate-breaking square in endgame studies, or in tactical positions onto a square where it can be forked or mated — here illustrating how a queen sacrifice forces the king to a worse square. Always identify where the decoyed piece lands and what follows."
+      }
+    ]
+  },
+  {
+    "id": "interference",
+    "label": "Cutting Connections Between Defenders",
+    "concept": "Interference is a tactic where you place a piece on a square that disrupts the coordination between two enemy pieces, forcing one of them to lose its defensive function. By sacrificing or simply inserting a piece onto that critical square, you sever a line, rank, or diagonal that a defender relies on to protect another piece or key square. This often leads to winning material or delivering checkmate because the opponent's pieces can no longer support each other.",
+    "why": "Club players frequently overlook interference because they focus on direct attacks rather than the hidden connections between enemy pieces, leaving combinations that win material completely off their radar. Missing these shots means letting the opponent maintain an artificial defense that a single forcing move would collapse.",
+    "howToSpot": "Ask yourself: 'Which two enemy pieces are cooperating along a rank, file, or diagonal, and can I park a piece between them to break that link?' Look specifically for situations where a rook defends a queen, or a bishop guards a rook, along a shared line — a piece dropped onto that line forces the opponent to either capture (losing tempo) or accept the broken defense.",
+    "drill": "Solve 10-15 interference puzzles from Polgar's Chess 5334 Problems each day this week, and for every puzzle pause before moving to identify which two defenders are connected and exactly which square, when occupied, cuts that connection.",
+    "commonMistake": "Players correctly spot the interference square but choose the wrong piece to place there, ignoring whether the interposing piece needs to be a sacrifice that cannot simply be captured without losing material on the other side of the broken line.",
+    "source": "Polgar — Chess 5334 Problems",
+    "boards": [
+      {
+        "fen": "r4rk1/pp2qppp/2p1b3/4n3/3QP3/2N2N2/PPP2PPP/R1B1R1K1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d4",
+            "to": "e5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e5",
+            "to": "e7",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "e6",
+            "to": "e7",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "White plays Qxe5!, a classic interference sacrifice. The queen lands on e5, physically cutting the e6-bishop off from defending the e7-queen. Now if Black plays Bxe5, the queen on e7 hangs with no protection — White wins material by breaking the bishop-queen defensive link along the e-file diagonal."
+      },
+      {
+        "fen": "6k1/5ppp/8/3r4/3Q4/8/5PPP/6K1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d4",
+            "to": "d5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d5",
+            "to": "d8",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "A simplified illustration: White's queen steps to d5, inserting itself between Black's rook on d5 and any back-rank piece it was defending along the d-file. This pattern shows how even a non-sacrificial interference move can paralyse the opponent's defensive coordination and create immediate winning threats."
+      }
+    ]
+  },
+  {
+    "id": "zwischenzug",
+    "label": "The In-Between Move Changes Everything",
+    "concept": "A zwischenzug (German for 'in-between move') is an unexpected intermediate move played instead of the expected recapture or obvious reply — one that gains a tempo or creates a decisive threat before completing the sequence your opponent anticipated. Rather than playing the 'natural' response, you insert a move that forces your opponent to deal with a new problem, often turning a losing or equal position into a winning one. The power lies in disrupting your opponent's calculation tree entirely.",
+    "why": "Club players consistently lose material or miss wins because they assume their opponent must recapture immediately — they calculate long sequences without checking for in-between checks, captures, or threats that break the assumed order. Missing a zwischenzug in either direction (playing or failing to see your opponent's) is one of the most common sources of one-move blunders in the 1300–1600 range.",
+    "howToSpot": "Before every recapture, pause and ask: 'Is there a check, a capture of a higher-value piece, or a decisive threat I can play first?' If your opponent appears to be forcing a sequence, look for any intermezzo that attacks something more valuable or delivers check before you comply.",
+    "drill": "This week, work through Polgar 5334 Problems in the tactics sections on pins and discovered attacks, and every time you see a forced recapture in the solution, verify whether an intermediate check or capture exists first — deliberately look for the zwischenzug before accepting the obvious move.",
+    "commonMistake": "Players find the zwischenzug concept but play it too hastily — they insert an 'in-between' move that is not forcing enough, allowing the opponent to ignore it and simply recapture, leaving them a piece down.",
+    "source": "Polgar — Chess 5334 Problems",
+    "boards": [
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bc4 Nf6 Ng5 d5 exd5 Nxd5 Nxf7",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "g5",
+            "to": "f7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f7",
+            "to": "d8",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "f7",
+            "to": "h8",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White plays Nxf7 — a classic zwischenzug in the Fried Liver Attack. Instead of retreating the attacked knight on g5, White inserts this fork on f7 that simultaneously attacks Black's queen on d8 and rook on h8, winning material before Black can consolidate."
+      },
+      {
+        "moves": "d4 d5 c4 e6 Nc3 Nf6 Bg5 Be7 e3 O-O Nf3 Nbd7 Rc1 c6 Bd3 dxc4 Bxc4 Nd5 Bxe7 Qxe7 Ne4 Nxc3",
+        "orientation": "black",
+        "arrows": [
+          {
+            "from": "e4",
+            "to": "f6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c3",
+            "to": "e4",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "f6",
+            "to": "e4",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "Before recapturing on c3, White has the zwischenzug Ne4-f6+, forking the Black king and queen — a tempo-gaining intermezzo that Black must answer immediately. Only after Black resolves the fork does White recapture on c3, having gained a decisive advantage."
+      }
+    ]
+  },
+  {
+    "id": "x_ray",
+    "label": "X-Ray Attacks Through Enemy Pieces",
+    "concept": "An x-ray attack occurs when a long-range piece (queen, rook, or bishop) exerts indirect pressure through an intervening piece, affecting a square or piece behind it. The classic example is a rook bearing down on a square even though an enemy piece temporarily blocks the line — if that blocker moves or is captured, the x-ray becomes a real threat. Understanding x-rays lets you see threats that appear one move deep but actually require two-move calculation.",
+    "why": "Club players routinely miss that a rook or queen is already 'aimed' at a key square through a blocker, so they walk into skewers and discovered attacks that could have been avoided. Missing x-ray threats also means missing winning tactical shots where your own piece uses a friendly blocker as a temporary shield before a devastating follow-up.",
+    "howToSpot": "After every move, scan each long-range piece (rook, bishop, queen) and draw an imaginary line through any piece in its path — ask 'what is behind that blocker?' If the answer is the enemy king, queen, or an undefended piece, an x-ray threat exists. Look especially for rooks on the same file or rank as the enemy king even when a pawn or piece stands in between.",
+    "drill": "Each day this week, take 10 positions from Polgar's tactical collection and before calculating any move, spend 60 seconds only tracing x-ray lines for every long-range piece on the board, writing down what each piece 'attacks through' before choosing a candidate move.",
+    "commonMistake": "Players see the piece blocking the line and assume the long-range attacker is neutralised, forgetting that a capture, deflection, or removal of the blocker instantly activates the latent x-ray and wins material or delivers checkmate.",
+    "source": "Polgar — Chess 5334 Problems",
+    "boards": [
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 O-O Nf6 d3 O-O Nc3 d6 Bg5 h6 Bh4 g5 Bg3 Nh5 Nxe5 Nxe5 Qxh5",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "h5",
+            "to": "h8",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "g3",
+            "to": "e5",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "h5",
+            "to": "e5",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "The white queen on h5 attacks directly through the h-file — but notice the bishop on g3 x-rays through the e5 knight toward the black king's diagonal. If Black recaptures carelessly with ...Nxg3, the queen delivers check while the bishop's x-ray pressure on f7 becomes a real attack. Always check what a piece is hitting through a blocker before recapturing."
+      },
+      {
+        "fen": "6k1/8/6K1/8/8/8/8/R6r b - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "h1",
+            "to": "a1",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "a1",
+            "to": "h1",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "a1",
+            "to": "a8",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "A pure x-ray endgame study: both rooks see each other along the first rank. Whoever captures the other rook simply loses their own rook to the king's recapture — the 'x-ray' of each rook through the other means neither side can win material by direct exchange. White instead uses the rook's x-ray vision along the a-file to control the back rank while the king advances, a key endgame technique."
+      }
+    ]
+  },
+  {
+    "id": "rook_seventh",
+    "label": "Rook on Seventh Rank Dominance",
+    "concept": "A rook on the seventh rank (your opponent's second rank) is enormously powerful because it attacks pawns that haven't moved from their starting squares and cuts the enemy king off from the action. This is so strong that two rooks on the seventh are often called 'pigs' because they devour pawns. Even a single rook on the seventh can force a draw from a losing position or squeeze out a win from equality.",
+    "why": "Club players routinely miss the opportunity to penetrate to the seventh rank because they're focused on piece exchanges or local tactics, giving up a dominant rook position for a modest material gain. Conversely, they often fail to prevent the opponent's rook from reaching their second rank, losing pawns and the game without understanding why.",
+    "howToSpot": "Ask yourself: is your rook able to reach the seventh rank with or without a forcing sequence? Check if the enemy king is on the back rank and multiple pawns sit on their starting squares — that's the classic 'pig' setup waiting to happen.",
+    "drill": "Set up positions with one rook each and practice maneuvering your rook to the seventh rank, then identify which pawns it attacks and whether you can create a passed pawn or force king passivity.",
+    "commonMistake": "Players trade the dominant seventh-rank rook too quickly for a pawn or minor piece, relieving all the pressure instead of maintaining the rook's activity and looking for a follow-up invasion.",
+    "source": "Dvoretsky — Endgame Manual",
+    "boards": [
+      {
+        "fen": "6k1/R7/8/8/8/8/r7/6K1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "a7",
+            "to": "h7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "a2",
+            "to": "h2",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "Both rooks sit on the seventh rank — the classic 'pigs' position. White's rook on a7 sweeps the entire rank, and Black's rook mirrors on a2. Whoever activates their rook more effectively and coordinates with the king wins the battle for pawn hunting."
+      },
+      {
+        "fen": "6k1/1R6/6K1/8/8/8/1r5P/8 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "b7",
+            "to": "h7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "b2",
+            "to": "h2",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "h2",
+            "to": "h1",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White's rook on b7 dominates, threatening to sweep across and support the h2 pawn's advance. Black's rook on b2 is on the seventh but passively reacts — notice how White's active king on g6 combines with the rook to create decisive threats that a reactive rook cannot match."
+      }
+    ]
+  },
+  {
+    "id": "outside_passed",
+    "label": "Outside Passed Pawn: Endgame's Decisive Diversion",
+    "concept": "An outside passed pawn is a passed pawn located far from the main cluster of pawns, usually on the opposite wing. Its power lies in forcing the enemy king to chase it, which pulls that king away from the real battlefield — your other pawns. By creating this diversion, your king can march in and gobble up the undefended pawns on the other side of the board.",
+    "why": "Club players often trade into equal-looking king-and-pawn endings without realising that a far-away passed pawn is a game-winning weapon, not just a minor advantage. Failing to create or exploit this diversion costs decisive wins — and failing to recognise it as a defender causes avoidable losses.",
+    "howToSpot": "Ask yourself: do I have (or can I create) a passed pawn on one wing while most pawns are on the other wing? If the enemy king must spend multiple tempos running to stop that pawn, your king will arrive first to the unguarded pawns on the opposite side.",
+    "drill": "Set up a king-and-pawn endgame with an outside passed pawn on the a-file and a pawn majority on the kingside, then practice marching the outside pawn first to lure the enemy king before switching your king to collect the kingside pawns.",
+    "commonMistake": "Players advance the outside passed pawn too slowly or too quickly — the key is to push it just far enough that the enemy king is committed to stopping it, then immediately switch the king to exploit the vacated territory.",
+    "source": "Dvoretsky — Endgame Manual",
+    "boards": [
+      {
+        "fen": "8/8/3k4/1p6/1P2K3/8/p7/8 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e4",
+            "to": "d4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "a2",
+            "to": "a1",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "d6",
+            "to": "c5",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "White's king heads toward the b5 pawn while Black's king is forced to deal with the a2 outside passed pawn. The green arrow shows the correct king route; the yellow arrow marks the pawn threatening to queen; the red arrow shows Black's king being diverted away from its own pawns."
+      },
+      {
+        "fen": "8/5ppp/8/8/8/8/PPP5/3K1k2 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d1",
+            "to": "c2",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "a2",
+            "to": "a4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f1",
+            "to": "e2",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "White has an outside passed pawn majority on the queenside opposite Black's kingside pawns. White's plan: push the a-pawn to lure the Black king across, then the White king swings to h7 to harvest the kingside. The red arrow shows the defensive move Black wants to play but cannot execute in time."
+      }
+    ]
+  },
+  {
+    "id": "fortress",
+    "label": "Building a Fortress: Drawing Lost Endgames",
+    "concept": "A fortress is a defensive setup where the weaker side creates an impenetrable position that the stronger side cannot break through, despite being materially down. The defending king and pieces occupy key squares, block entry points, and neutralize the opponent's winning plans — turning a theoretically lost position into a draw. Common examples include a rook blockading a passed pawn, or a bishop guarding a critical promotion square the opponent's bishop cannot reach.",
+    "why": "Club players routinely resign or play passively in endgames that are technically drawable, gifting points they didn't have to lose. Knowing when to stop fighting for equality and instead build a wall can save half a point multiple times per tournament.",
+    "howToSpot": "Ask yourself: can my king or a piece permanently occupy a square that stops all of the opponent's winning plans? If the answer is yes and you can reach that square in time, a fortress is available — stop advancing your own pieces and start constructing the barrier.",
+    "drill": "Each day this week, set up the Rook vs. Rook + h-pawn fortress position (h-pawn on h5, defending rook on h1) and practice holding the draw against an engine set to 2000 Elo for 30 moves.",
+    "commonMistake": "Players abandon the fortress prematurely by moving the key blockading piece to 'improve' it, immediately reopening the entry point the opponent needed to win.",
+    "source": "Dvoretsky — Endgame Manual",
+    "boards": [
+      {
+        "fen": "8/8/8/7p/8/8/6K1/7R w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "h1",
+            "to": "h5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "g2",
+            "to": "h2",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "h5",
+            "to": "h8",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White's rook rushes to h5 to blockade Black's dangerous passed pawn. Once the rook sits on h5 and the king approaches, Black can make no progress — this is the simplest rook fortress blueprint."
+      },
+      {
+        "fen": "8/8/8/3k4/3p4/8/3K4/3B4 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d1",
+            "to": "c2",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d2",
+            "to": "c1",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d4",
+            "to": "d3",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "With a dark-squared bishop against a pawn on d4, White keeps the king on d2 and the bishop oscillating on the c2-b3 diagonal, permanently blockading the pawn. Black's king cannot break through because the bishop controls all key entry squares."
+      }
+    ]
+  },
+  {
+    "id": "development_lead",
+    "label": "Convert Your Development Lead Fast",
+    "concept": "A development lead means your pieces are ready to fight while your opponent's are still at home — but this advantage is temporary. If you allow your opponent to catch up by making slow or pointless moves, the lead evaporates. The correct plan is to open the position immediately with concrete actions (attacks, sacrifices, pawn breaks) before your opponent finishes developing.",
+    "why": "Club players routinely win the opening battle and then drift into routine moves, giving their opponent free turns to castle and connect rooks — turning a winning position into equality. This failure to convert a development lead is one of the most common reasons promising positions are thrown away between 1300 and 1600.",
+    "howToSpot": "Count developed pieces for both sides — if you have 2 or more pieces out than your opponent, ask 'what forcing move can I make right now?' If your opponent has an uncastled king or weak central squares, that is your signal to act immediately rather than developing another piece.",
+    "drill": "This week, play 10 games and after each one review the moment you had the most developed pieces — write down whether you opened the position immediately or wasted a move, and what the result was.",
+    "commonMistake": "Players with a development lead make one more 'safe' developing move instead of launching the concrete attack, giving the opponent exactly the one tempo needed to consolidate.",
+    "source": "Euwe — Chess Master vs Chess Amateur",
+    "boards": [
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bc4 h6 d4 exd4 Nxd4 Bc5 Be3 Bb6 Nc3 Nf6 f3 d6 Qd2 Ne5 O-O-O",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d1",
+            "to": "d6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c1",
+            "to": "b2",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e8",
+            "to": "e8",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White has castled queenside and leads in development — Black's king is still in the center. White must act now with d5 or Nd5 breaks to punish the uncastled king before Black consolidates."
+      },
+      {
+        "moves": "e4 e5 Nf3 d6 d4 Bg4 dxe5 Bxf3 Qxf3 dxe5 Bc4 Nf6 Qb3 Qe7 Nc3 c6 Bg5",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "g5",
+            "to": "f6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c4",
+            "to": "f7",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "b3",
+            "to": "b7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e8",
+            "to": "e8",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "White's three developed pieces and active queen create enormous pressure on Black's uncastled king. The red marker on e8 highlights that Black cannot castle safely — White should now strike with Bxf6 followed by Nd5, exploiting the lead before Black untangles."
+      }
+    ]
+  },
+  {
+    "id": "open_file_attack",
+    "label": "Open Files: From Control to Attack",
+    "concept": "Controlling an open file with a rook means little unless you can penetrate to the 7th or 8th rank, coordinate with other pieces, or use the file as a highway to shift pressure across the board. The key is to convert file domination into concrete threats: invading weak squares, doubling rooks, or targeting the enemy king. Euwe's games repeatedly show that the player who first activates their rooks on open files dictates the pace of the whole game.",
+    "why": "Club players often place a rook on an open file and then stop, satisfied with the 'good position,' while failing to find the follow-up invasion or piece coordination that actually wins material or attacks the king. This passive use of a theoretically strong asset is one of the most common reasons promising positions turn into drawn or lost games.",
+    "howToSpot": "Ask yourself: does my rook on the open file have a target square on the 6th, 7th, or 8th rank where it can invade, and is there a weak enemy pawn, piece, or back-rank vulnerability to exploit? If yes and your rook is unopposed or will soon be, the time to act is now.",
+    "drill": "Each day this week, take one of your recent games, find the moment you had a rook on an open file, and map out in a board editor every forcing continuation that could have penetrated to the 7th rank or created a passed-pawn threat.",
+    "commonMistake": "Players double rooks on the open file without first clearing the invasion square, allowing the opponent to blockade with a well-placed knight or rook and neutralize all the pressure.",
+    "source": "Euwe — Chess Master vs Chess Amateur",
+    "boards": [
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 O-O h3 Na5 Bc2 c5 d4 Qc7 Nbd2 cxd4 cxd4 Nc6 d5 Nd4 Nxd4 exd4 Nf3 Bd7 Nxd4 Rfe8 Nf5 Bf8 Bg5 g6 Nh6 Bxh6 Bxh6 Re6 Qd2 Rae8",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e1",
+            "to": "e6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e6",
+            "to": "e8",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "h6",
+            "to": "g7",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White's rook on e1 eyes the e-file where Black's rooks are stacked but passive. The green arrow shows White's plan to challenge and dominate the e-file, while yellow arrows highlight threats against g7 and the back rank that will emerge once White doubles rooks on the e-file."
+      },
+      {
+        "fen": "r4rk1/1pp2ppp/p1np4/4p3/4P3/1B3N2/PPP2PPP/R3R1K1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e1",
+            "to": "e8",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "a1",
+            "to": "e1",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e8",
+            "to": "f8",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White converts open-file control into a decisive invasion: Re8 crashes into the back rank, and Ra1-e1 doubles the rooks to apply overwhelming pressure. Black's rooks are passive and cannot contest the e-file, illustrating how file domination becomes a material-winning attack."
+      }
+    ]
+  },
+  {
+    "id": "queenside_majority",
+    "label": "Converting Queenside Pawn Majority to Win",
+    "concept": "A queenside pawn majority means you have more pawns than your opponent on the a, b, and c files, giving you the ability to create a passed pawn on that side of the board. The plan is straightforward: advance your majority pawns to force the opponent to either create a weakness or allow a passed pawn to form. In the endgame especially, a remote passed pawn on the queenside can act as a decoy, pulling the enemy king away while your king wins material on the other side.",
+    "why": "Club players often sit passively with a queenside majority, not realising it is a long-term winning advantage that requires an active plan to exploit — letting the opponent reorganise and neutralise the advantage for free.",
+    "howToSpot": "Count pawns on each side: if you have two pawns vs one (e.g. a- and b-pawns vs only a b-pawn), you have a queenside majority. Check that your majority pawns are not blocked or doubled, as a healthy majority can be advanced to create a passed pawn.",
+    "drill": "Set up positions from closed or semi-open game endings where one side has a 3-vs-2 queenside majority and practice advancing c4-b4-a4 (or equivalent) while keeping your king active, until a passed pawn queens or wins decisive material.",
+    "commonMistake": "Players push only one pawn of the majority and stall, rather than coordinating all majority pawns together to ensure one of them becomes passed and unstoppable.",
+    "source": "Euwe — Chess Master vs Chess Amateur",
+    "boards": [
+      {
+        "moves": "d4 d5 c4 e6 Nc3 Nf6 Nf3 Be7 e3 O-O Bd3 dxc4 Bxc4 c5 O-O cxd4 exd4 Nc6 Be3 b6 Qd3 Bb7 Rad1 Rc8 Bb3 Na5 Bc2 Nc4 Bc1 Nd6 Ne5 Nf5 Bf4 Nd6 Rfe1 Nf5 g4 Nd6 Bxd6 Bxd6 Nxf7 Rxf7 gxf5 exf5 Rxe7 Rxe7 Qxf5",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d4",
+            "to": "d5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c2",
+            "to": "c4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "b2",
+            "to": "b4",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "White has a queenside pawn majority (c and d pawns vs Black's isolated structure). The green arrows show the ideal plan: advance d4-d5 and c4-c5 in coordination to generate a passed pawn and queenside pressure."
+      },
+      {
+        "fen": "8/8/1p6/pPp5/P1P5/8/6K1/6k1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "b5",
+            "to": "b6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c4",
+            "to": "c5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "a5",
+            "to": "a4",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "A pure pawn endgame showing White's queenside majority in action. White plays b6 and c5 to create a passed pawn; the yellow arrow marks Black's only counterplay attempt with a5-a4, which White's pawn structure can withstand while the b-pawn queens."
+      }
+    ]
+  },
+  {
+    "id": "dynamic_sacrifice",
+    "label": "Trading Material for Initiative",
+    "concept": "A dynamic piece sacrifice means voluntarily giving up material — a pawn, exchange, or even a piece — not for immediate tactical gain, but to seize the initiative: open lines, activate pieces, and create threats your opponent must constantly answer. The compensation is positional and time-based rather than concrete, meaning your lead in development or attacking chances outweighs the lost material. Bronstein's Zurich 1953 games are a masterclass in this idea, showing how top players consistently preferred rapid piece activity over passive material equality.",
+    "why": "Club players at this level tend to evaluate positions purely by material count and hesitate to sacrifice unless they see an immediate recapture or forced win, so they miss positions where giving up a pawn or the exchange unlocks a devastating attack or leaves the opponent's pieces permanently passive.",
+    "howToSpot": "Ask yourself: if I give up this material, will my remaining pieces become dramatically more active while the opponent's pieces stay tangled or defensive? Also check whether the resulting position creates threats that take more than two moves to neutralize — if yes, the initiative may be worth more than the material.",
+    "drill": "Each day this week, load one Bronstein or Tal game from 1953–1960, pause before each sacrifice moment, and write down in one sentence what the attacker gets in return — open files, king exposure, piece dominance — before looking at the continuation.",
+    "commonMistake": "Players sacrifice correctly but then fail to follow up with tempo-gaining moves, allowing the opponent to consolidate and use the extra material to win the endgame.",
+    "source": "Bronstein — Zurich 1953",
+    "boards": [
+      {
+        "moves": "d4 Nf6 c4 e6 Nc3 Bb4 e3 O-O Bd3 d5 Nf3 c5 O-O cxd4 exd4 dxc4 Bxc4 b6 Bg5 Bb7 Re1 Nbd7 Rc1 Rc8 Bd3 Bxc3 bxc3 Qc7 c4 Bxf3 Qxf3 e5 d5",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d5",
+            "to": "e6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d3",
+            "to": "h7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "g5",
+            "to": "f6",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White has just pushed d5, a classic pawn sacrifice to rip open the center and diagonals. The bishop on d3 eyes h7, the bishop on g5 pressures f6, and White's rooks will flood the open files — Black's extra pawn buys nothing against this wave of initiative."
+      },
+      {
+        "moves": "e4 e5 Nf3 Nc6 d4 exd4 Nxd4 Nf6 Nc3 Bb4 Nxc6 bxc6 Bd3 d5 exd5 cxd5 O-O O-O Bg5 c6 Qf3 Bd6 Rae1 Rb8 b3 h6 Bh4 Re8 Ne2 Rxe1 Rxe1 Bg4 Qg3 Bxe2 Rxe2 Qd7 Bg6",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e2",
+            "to": "e8",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "g6",
+            "to": "f7",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "g3",
+            "to": "g7",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White has sacrificed the exchange on e1 to dominate the e-file and plant the bishop aggressively on g6. The threats against f7 and along the g-file mean Black must spend every move defending — this is pure initiative compensating for lost material."
+      }
+    ]
+  },
+  {
+    "id": "attack_planning",
+    "label": "Coordinating Pieces for Kingside Attacks",
+    "concept": "A successful kingside attack requires multiple pieces working together toward a common target — typically the enemy king. This means pointing your bishop toward the enemy king's diagonal, placing a knight on a strong outpost like f5 or e5, doubling rooks on a half-open file, and using your queen as the final hammer. No single piece wins the attack alone; the art is in arranging them so they reinforce each other.",
+    "why": "Club players often launch premature attacks with only one or two pieces, allowing the defender to trade off the attacking piece and defuse the danger. Failing to coordinate costs tempos and lets the opponent consolidate, turning your attack into a lost endgame.",
+    "howToSpot": "Ask yourself: do I have at least three pieces (queen, rook, minor piece) aimed at or near the enemy kingside? Check whether your pieces have clear, unobstructed paths to the king's zone — if pawns or your own pieces are blocking those diagonals and files, coordinate first before attacking.",
+    "drill": "Each day this week, set up a middlegame position with an uncastled or kingside-castled enemy king and spend five minutes identifying which three pieces you would activate and in what order before launching any pawn break or sacrifice.",
+    "commonMistake": "Players rush the attack by pushing the g- or h-pawn before their minor pieces are actively placed, weakening their own king and giving the opponent counterplay before the attack has any real force.",
+    "source": "Bronstein — Zurich 1953",
+    "boards": [
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 O-O Nf6 d3 d6 Nc3 O-O Bg5 Be6 Nd5 Bxd5 exd5 Ne7 Bxf6 gxf6 Nh4 Ng6 Nxg6 hxg6 Qg4 Kh7 Qh4 Rh8 f4",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "c4",
+            "to": "f7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "h4",
+            "to": "h8",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f1",
+            "to": "f4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "h7",
+            "to": "h7",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White's bishop on c4, queen on h4, and advancing f-pawn all bear down on the kingside together. Notice how each piece has a clear role: the bishop eyes f7, the queen presses h8, and the f-pawn will open lines — textbook piece coordination before the final assault."
+      },
+      {
+        "moves": "d4 Nf6 c4 e6 Nc3 Bb4 e3 O-O Bd3 d5 Nf3 c5 O-O Nc6 a3 Bxc3 bxc3 dxc4 Bxc4 Qc7 Bd3 e5 Qc2 Re8 e4 exd4 cxd4 Nb4 axb4 cxb4 e5 Nd7 Bf4 Qb6 Rae1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d3",
+            "to": "h7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f4",
+            "to": "d6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e1",
+            "to": "e4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f1",
+            "to": "e1",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "White has coordinated both bishops and both rooks toward the center and kingside before the break. The bishop on d3 eyes h7, the bishop on f4 covers d6, and the rooks stack on the e-file — three distinct weapons pointing at the same target zone, a hallmark of the Zurich 1953 positional masterpieces."
+      }
+    ]
+  },
+  {
+    "id": "two_weaknesses",
+    "label": "Overload the Defence with Two Weaknesses",
+    "concept": "The principle of two weaknesses states that if your opponent has only one weakness, they can usually defend it by shuttling their pieces back and forth. To win, you must create a second weakness on a different part of the board, so their defenders are stretched too thin to cover both. You attack one weakness to force the defender to commit, then switch pressure to the second weakness that has been left unguarded.",
+    "why": "Club players often grind away at a single weak pawn and let the opponent hold because they never open a second front — the position simplifies into a draw they should have won. Knowing when and how to create that second target turns comfortable advantages into full points.",
+    "howToSpot": "Ask yourself: does my opponent have a weak pawn or square that ties down at least one of their pieces? If yes, look for a pawn break or piece manoeuvre on the opposite wing that would force them to choose which weakness to abandon.",
+    "drill": "This week, in your practice games, deliberately identify your opponent's first weakness early, then spend five moves planning a pawn break on the other side of the board before you start winning material.",
+    "commonMistake": "Players create the second weakness but then go straight back to attacking the first one, giving the defender time to reorganise instead of immediately switching pressure to the newly exposed target.",
+    "source": "Yusupov — Build Up Your Chess",
+    "boards": [
+      {
+        "fen": "6k1/5pp1/6np/4p3/4P1P1/5N2/r4PKP/3R4 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d1",
+            "to": "d6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "g4",
+            "to": "g5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "a2",
+            "to": "a2",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White has a strong rook and the e5 pawn is a long-term weakness, but Black's rook on a2 keeps White busy. White should advance g4-g5 to create a second weakness on the kingside, splitting Black's defensive resources between e5 and the kingside pawns."
+      },
+      {
+        "fen": "5rk1/1b3ppp/p3pn2/1p6/3P4/1BN1BP2/PP4PP/R4RK1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "c3",
+            "to": "a4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f3",
+            "to": "f4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "b5",
+            "to": "b5",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "a6",
+            "to": "a6",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "Black has two queenside pawn weaknesses on a6 and b5 that tie down the bishop on b7. White should use the knight manoeuvre Na4 to pressure b6/b5, and simultaneously prepare f3-f4-f5 to open a second front on the kingside — Black cannot defend both flanks at once."
+      }
+    ]
+  },
+  {
+    "id": "passed_pawn_power",
+    "label": "Passed Pawns: Push or Hold?",
+    "concept": "A passed pawn is a pawn with no enemy pawns blocking or guarding its path to promotion. The key decision is timing: pushing too early can lose the pawn or distract your pieces, while holding it as a long-term threat ties down the opponent's pieces and keeps strategic pressure. Generally, push when your pieces actively support the advance and the opponent cannot easily blockade; hold when the passed pawn is safest where it stands and its mere existence restricts the enemy.",
+    "why": "Club players often push passed pawns reflexively without checking whether pieces support the advance, gifting the opponent a blockade or a free tempo. Alternatively, they forget the pawn entirely and allow the opponent to regroup, throwing away a decisive advantage.",
+    "howToSpot": "Ask: 'Can my opponent place a piece — especially a knight — directly in front of this pawn?' If not, the pawn is ready to advance. Also check whether pushing now wins material or forces a concession; if neither, holding and improving other pieces first is usually better.",
+    "drill": "Each day this week, set up a K+P vs K endgame and a rook endgame with a passed pawn (use Yusupov exercises), and before moving the passed pawn ask yourself three questions: Is the path clear? Do my pieces support it? Can the opponent blockade it immediately?",
+    "commonMistake": "Players push the passed pawn to the 6th or 7th rank prematurely, allowing the opponent's rook or knight to blockade it and suddenly making the 'winning' pawn a weakness that requires constant defense.",
+    "source": "Yusupov — Build Up Your Chess",
+    "boards": [
+      {
+        "fen": "8/8/4k3/8/8/3PK3/8/8 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d3",
+            "to": "d4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e3",
+            "to": "d4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d4",
+            "to": "d8",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White has a protected passed pawn on d3. The correct plan is to march the king to d4 to escort the pawn, only then pushing it. The yellow arrow shows the pawn's promotion highway — advance only once the king leads the way."
+      },
+      {
+        "fen": "8/8/8/1k6/1p6/8/1P4K1/8 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "b4",
+            "to": "b3",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "b5",
+            "to": "b4",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "g2",
+            "to": "f3",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f3",
+            "to": "e4",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "Black's passed pawn on b4 looks threatening but is best held — pushing it to b3 allows White's king to rush over and blockade. The red arrows show premature advances; the green arrows show how White's king marches toward the queenside to neutralize both passed pawns by active king play."
+      }
+    ]
+  },
+  {
+    "id": "space_advantage",
+    "label": "Space Advantage: Restricting Enemy Pieces",
+    "concept": "A space advantage means your pawns control more territory, especially in the centre, forcing your opponent's pieces onto passive squares with limited mobility. By pushing pawns to the 5th rank or beyond, you create a spatial clamp that cramps your opponent's pieces — they have fewer good squares to go to and struggle to coordinate. The goal is not just to gain space, but to convert that space into concrete piece activity while keeping your opponent's pieces bottled up.",
+    "why": "Club players often gain space and then fail to exploit it, allowing the cramped side to break free with ...d5 or ...c5 pawn breaks. Recognising when to prevent those breaks — and acting before they happen — is where rating points are lost and won.",
+    "howToSpot": "Ask yourself: do my pawns sit on the 4th or 5th rank in the centre while my opponent's pieces lack good outpost squares? If your opponent's knights have no advanced squares and their bishops are blocked by their own pawns, you likely have a space advantage worth exploiting.",
+    "drill": "This week, play 5 rapid games aiming for the King's Indian Attack or a Closed Sicilian setup as White — focus on the pawn advance e4-e5 to clamp the centre and then identify which piece to post on the newly restricted squares.",
+    "commonMistake": "Players advance pawns to gain space but then neglect to blockade the opponent's key pawn break, allowing a single ...d5 or ...c5 thrust to dissolve the entire advantage instantly.",
+    "source": "Yusupov — Build Up Your Chess",
+    "boards": [
+      {
+        "moves": "e4 e6 d4 d5 e5 c5 c3 Nc6 Nf3 Qb6 Be2 Nh6 b3 cxd4 cxd4 Nf5 Bb2 Be7 O-O O-O Nc3",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e5",
+            "to": "d6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e5",
+            "to": "f6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f5",
+            "to": "d4",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "c6",
+            "to": "e7",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "White's pawn on e5 is the cornerstone of the space advantage in the French Defence. The green arrows show squares e5 controls, denying Black's pieces access to d6 and f6; the red arrows highlight how Black's knight on c6 and the f5-knight are restricted — c6 is passive and if the f5-knight moves, Black loses grip on the centre."
+      },
+      {
+        "moves": "d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 f3 O-O Be3 e5 d5 Nh5 Qd2 Qh4 g3 Qe7 O-O-O f5 Bd3 Nd7 Nge2 Ndf6 Ng1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d5",
+            "to": "c6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c4",
+            "to": "b5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f6",
+            "to": "d7",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "h5",
+            "to": "f4",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "This King's Indian tabiya shows White's space clamp: the pawn chain c4-d5-e4 seals off the queenside and centre, leaving Black's knight on f6 bouncing back to d7 (red arrow) because e5 and g4 are both controlled. White's plan is to advance on the queenside with a4-a5 exploiting the space, while Black's pieces are stuck defending — the yellow arrow warns that Black's Nh5 eyes f4 as counterplay, so White must stay alert."
+      }
+    ]
+  },
+  {
+    "id": "transition",
+    "label": "When to Trade Into the Endgame",
+    "concept": "Transitioning to the endgame means simplifying the position through piece trades, usually by exchanging queens, to reach a phase where long-term advantages like a better king, superior pawn structure, or an extra pawn become decisive. The key skill is recognising when your advantages will grow in an endgame rather than fade — for example, an extra pawn or a passed pawn is often more powerful with fewer pieces on the board. Conversely, if you have the initiative or attacking chances, trading into an endgame prematurely can throw away your advantage.",
+    "why": "Club players frequently either miss forced winning endgames because they chase unnecessary attacks, or blindly trade pieces and hand the opponent a drawn or winning endgame. This confusion about when to simplify is one of the most common sources of half-points lost between 1300 and 1600.",
+    "howToSpot": "Ask yourself two questions before trading: (1) Do I have a structural or material advantage that will be easier to convert with fewer pieces? (2) Does my opponent have active piece play or an attack that disappears once queens come off? If yes to (1) and no to (2), seek the endgame.",
+    "drill": "In your practice games this week, pause before every queen trade and write down one reason the endgame favours you or your opponent before making the decision.",
+    "commonMistake": "Players trade into the endgame when they are a pawn up but fail to check whether the resulting pawn structure is actually winning — opposite-coloured bishops or a blockaded passed pawn can make the extra pawn worthless.",
+    "source": "Yusupov — Build Up Your Chess",
+    "boards": [
+      {
+        "fen": "4k3/pp3ppp/8/2pp4/3P4/2P2PP1/PP5P/4K3 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e1",
+            "to": "d2",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e8",
+            "to": "d7",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "d4",
+            "to": "d5",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White's king should march to d3 and then dominate the centre — the pawn structure gives White a long-term space advantage on the queenside. This is exactly the type of position where entering the endgame (here already reached) favours White, because the king becomes a powerful active piece."
+      },
+      {
+        "moves": "d4 d5 c4 e6 Nc3 Nf6 Bg5 Be7 e3 O-O Nf3 Nbd7 Rc1 c6 Bd3 dxc4 Bxc4 Nd5 Bxe7 Qxe7 O-O Nxc3 Rxc3 e5 dxe5 Nxe5 Nxe5 Qxe5 Qd4 Qxd4 exd4",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d4",
+            "to": "d5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c3",
+            "to": "d3",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "f8",
+            "to": "d8",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "After the queen trade White has the d4 passed pawn and the rook already on the c-file — this is a textbook case where White should welcome the endgame. White's plan is to advance d4-d5, activate the rook, and centralise the king, while Black's position is passive and without counterplay."
+      }
+    ]
+  },
+  {
+    "id": "exchange_sacrifice",
+    "label": "Rook for Minor Piece: When It Works",
+    "concept": "An exchange sacrifice means giving up your rook (worth ~5 points) for your opponent's bishop or knight (worth ~3 points), accepting a material deficit in return for positional or dynamic compensation. This compensation can take many forms: a dominant knight on a strong outpost, destroying the opponent's pawn structure, gaining a powerful passed pawn, or eliminating a key defensive piece. In Zurich 1953, Bronstein and other elite players demonstrated repeatedly that a rook on a passive square is often worth less than a minor piece doing real work.",
+    "why": "Club players tend to evaluate positions purely by material count, so they either miss the chance to sacrifice the exchange for a decisive positional advantage, or they fail to recognize when their opponent's exchange sacrifice has given them long-lasting compensation that must be neutralized urgently.",
+    "howToSpot": "Look for a knight that has reached a deep outpost (e.g. d5, e6) supported by pawns where your rook cannot easily attack it — if trading your rook for that piece ruins your opponent's structure or removes a key defender, the sacrifice deserves serious calculation. Also ask: is my rook currently doing nothing useful, while the enemy minor piece is dominating the game?",
+    "drill": "This week, play 10 games as both colors and after each game find every moment where an exchange sacrifice was possible — write down whether the rook or the minor piece was more active at that moment, and decide in hindsight whether the sacrifice would have been sound.",
+    "commonMistake": "Players sacrifice the exchange impulsively to 'activate' their position without first confirming they have concrete compensation — a strong outpost, structural damage, or a direct attack — resulting in simply being a rook down with no real benefit.",
+    "source": "Bronstein — Zurich 1953",
+    "boards": [
+      {
+        "moves": "d4 Nf6 c4 e6 Nc3 Bb4 e3 O-O Bd3 d5 Nf3 c5 O-O Nc6 a3 Bxc3 bxc3 dxc4 Bxc4 Qc7 Bd3 e5 Qc2 Re8 e4 exd4 cxd4 Nb4 axb4 cxd4 e5 d3 Qb3 Ng4 exf6 Rxe1 fxg7",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e1",
+            "to": "e8",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "g7",
+            "to": "g8",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d3",
+            "to": "d2",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White has sacrificed the exchange by allowing Rxe1, but the advanced passed pawn on g7 and the monster pawn on d3 deep in White's camp create enormous compensation. The rook on e8 is temporarily powerful, but White's passed pawns and piece activity more than compensate for the material deficit — a classic Bronstein-style exchange sacrifice where dynamic trumps material."
+      },
+      {
+        "fen": "r4rk1/pp3ppp/2n1b3/3Np3/3nP3/3B4/PPP2PPP/R1BQR1K1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d1",
+            "to": "d4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e1",
+            "to": "e5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d4",
+            "to": "e2",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "d5",
+            "to": "c7",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White's knight on d5 is a dominating piece — deeply planted, supported, and attacking multiple targets. White can consider Rxd4 exd4 followed by using the powerful d5 knight and bishop pair as full compensation for the rook. The red arrow shows that Black's knight on d4, though temporarily active, has no long-term home and can be eliminated, justifying the exchange sacrifice."
+      }
+    ]
+  },
+  {
+    "id": "connected_rooks",
+    "label": "Connected Rooks and the Battery",
+    "concept": "Connected rooks are two rooks on the same rank or file with no pieces between them, so each rook protects the other and they can coordinate powerfully. A rook battery means doubling both rooks on the same open file or rank to maximize pressure on the opponent's position. Capablanca emphasized that connecting your rooks — typically by castling and developing all minor pieces first — is one of the key milestones of completing your opening.",
+    "why": "Club players routinely leave rooks disconnected on their starting squares, missing chances to seize open files and double on them before the opponent does. Failing to connect rooks means one rook is always undefended and your coordination is half as strong as it should be.",
+    "howToSpot": "Ask yourself: are there any pieces standing between your two rooks? If yes, your rooks are not yet connected — prioritize clearing that piece. Once connected, scan for open or half-open files and ask which one your rook battery should occupy.",
+    "drill": "In your practice games this week, pause after move 12 and count how many moves it took to connect your rooks — aim to connect them by move 10-12 consistently.",
+    "commonMistake": "Players double rooks on a file that is already blocked by pawns, gaining no real pressure, instead of first opening or identifying a file that is genuinely open or soon-to-be-open.",
+    "source": "Capablanca — Chess Fundamentals",
+    "boards": [
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7 Re1 b5 Bb3 d6 c3 O-O h3 Nb8 d4 Nbd7 Nbd2 Bb7 Bc2 Re8 Nf1 Bf8 Ng3 g6 b3 Bg7 d5",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "a1",
+            "to": "d1",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d1",
+            "to": "d5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e1",
+            "to": "e5",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "White has fully connected rooks on e1 and a1 — the next step is to place one rook on d1, doubling on the d-file behind the advanced pawn on d5. Green arrows show the plan: slide the a1 rook to d1, creating a battery that dominates the open d-file."
+      },
+      {
+        "fen": "6k1/pp3ppp/2p5/8/3R4/3R4/PP3PPP/6K1 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d3",
+            "to": "d7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d4",
+            "to": "d7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d7",
+            "to": "f7",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "A classic rook battery: both white rooks are doubled on the open d-file, ready to invade on d7. The yellow arrow highlights the threat to the f7 pawn once the rook reaches d7 — this kind of 7th-rank invasion is the payoff for connecting and doubling your rooks correctly."
+      }
+    ]
+  },
+  {
+    "id": "piece_coordination",
+    "label": "Coordinated Pieces Dominate the Board",
+    "concept": "Piece coordination means arranging your pieces so they work together, covering each other's weaknesses, controlling key squares as a team, and amplifying each other's power. A knight on a strong outpost becomes even more powerful when supported by a bishop or rook, and two rooks doubled on an open file create pressure no single piece can match. Silman emphasizes that a collection of individually active pieces is still inferior to a harmonious unit where every piece has a clear purpose and relationship to the others.",
+    "why": "Club players often move pieces to seemingly active squares without asking how each piece helps the others, resulting in scattered forces that can be challenged and driven back one by one. This leads to losing material or conceding key positional advantages simply because pieces never acted as a team.",
+    "howToSpot": "After each move, ask: does this piece support at least one other piece, or is it a lone ranger? Look for cases where your knight on an outpost has no pawn or bishop backing it, or where your rooks are on different files with no coordination.",
+    "drill": "In your practice games this week, before every move write down one other friendly piece that your candidate move either supports or receives support from — if you cannot name one, look for a better move.",
+    "commonMistake": "Players focus on making one piece as active as possible (often a queen or knight) while ignoring that the rest of the army is doing nothing, creating imbalanced positions where the opponent can target the lone active piece and unravel the position.",
+    "source": "Silman — How to Reassess Your Chess",
+    "boards": [
+      {
+        "moves": "d4 d5 c4 e6 Nc3 Nf6 Bg5 Be7 e3 O-O Nf3 Nbd7 Rc1 c6 Bd3 dxc4 Bxc4 Nd5 Bxe7 Qxe7 O-O Nxc3 Rxc3 e5 dxe5 Nxe5 Nxe5 Qxe5 f4 Qe7 Qc2 Rd8 Rfc1 Bd7 Bb3 Bc8 Rd3 Rxd3 Qxd3",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d3",
+            "to": "d8",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c1",
+            "to": "c6",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "b3",
+            "to": "f7",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "White's pieces form a coordinated battery: the queen on d3 and rook on c1 both target the weak c6 pawn, while the bishop on b3 eyes f7. No single piece wins material alone, but together they create threats Black cannot meet simultaneously."
+      },
+      {
+        "fen": "6k1/5ppp/p1r5/1p6/3R4/1B3PP1/P4K1P/8 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d4",
+            "to": "d7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "b3",
+            "to": "f7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d4",
+            "to": "b4",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White's rook on d4 and bishop on b3 coordinate perfectly: the rook invades on d7 threatening the 7th rank pawns while the bishop covers f7 and supports the rook's penetration. The b5 pawn is also under indirect pressure — Black cannot defend everything."
+      }
+    ]
+  },
+  {
+    "id": "good_vs_bad_bishop",
+    "label": "Good vs Bad Bishop: Pawn Colour",
+    "concept": "A bishop is called 'bad' when most of your own pawns are fixed on the same colour squares as the bishop, blocking its diagonals and limiting its scope. A 'good' bishop, by contrast, has its pawns on the opposite colour, leaving the diagonals open and the bishop active. The key insight from Silman is that you should place your pawns on the colour opposite to your bishop's colour whenever possible.",
+    "why": "Club players routinely lock their pawns on the same colour as their bishop without realising it, then wonder why their pieces feel passive — the resulting endgames are often lost purely due to this structural flaw, costing many rating points in games that feel 'mysteriously' difficult.",
+    "howToSpot": "Ask yourself: what colour squares are most of my pawns fixed on? If the answer matches your bishop's colour, you have a bad bishop and need a plan to either activate it, trade it off, or reposition your pawns.",
+    "drill": "This week, find 5 endgame studies or games (Silman Chapter 4 is a great source) featuring good vs bad bishop, and for each position write down which pawns are making the bishop bad and what the winning plan is.",
+    "commonMistake": "Players recognise they have a bad bishop but try to activate it by moving it around rather than addressing the root cause — the pawn structure — or failing to trade the bad bishop for the opponent's good knight or bishop.",
+    "source": "Silman — How to Reassess Your Chess",
+    "boards": [
+      {
+        "moves": "e4 e6 d4 d5 e5 c5 c3 Nc6 Nf3 Qb6 Be2 cxd4 cxd4 Bd7 Nc3 Nge7 Na4 Qd8 Nc3",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "c1",
+            "to": "h6",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "e6",
+            "to": "e6",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "d5",
+            "to": "d5",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "A classic French Defence structure: Black's light-squared bishop on c8/d7 is hemmed in by its own pawns on e6 and d5, which are all on light squares. This is the archetypal bad bishop — Red arrows highlight the bishop's diagonal is completely blocked by its own pawns."
+      },
+      {
+        "fen": "8/pp4kp/6p1/3Bp3/4P3/5KP1/PP5P/8 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d5",
+            "to": "b3",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d5",
+            "to": "f7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e5",
+            "to": "e5",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "g6",
+            "to": "g6",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "White's bishop on d5 is a 'good' bishop: White's own pawns on e4, g3, and h2 sit on dark squares while the bishop commands the light diagonals freely. Black's pawns on e5 and g6 are fixed on light squares — the same colour as Black would need a bishop to defend them, illustrating how pawn colour determines bishop quality."
+      }
+    ]
+  },
+  {
+    "id": "endgame_technique",
+    "label": "Converting a Material Advantage to Victory",
+    "concept": "When you are ahead in material — typically by a full piece or more — the winning plan is not to attack immediately, but to simplify the position, eliminate counterplay, and use your extra material to create a passed pawn or force a king-and-pawn endgame you can win. The key principle is: trade pieces (not pawns) to reduce your opponent's fighting chances, then activate your king as a powerful attacking piece. A rook and king working together to shepherd a passed pawn to promotion is one of the most reliable conversion techniques at every level.",
+    "why": "Club players routinely let winning endgames slip by either rushing into a lost pawn endgame after bad trades, or by passively shuffling pieces while the opponent builds a fortress — both mistakes hand back the point and bleed rating.",
+    "howToSpot": "Count the material balance at the start of every endgame: if you are up a rook, bishop, or knight, ask immediately 'can I trade the remaining pieces and reach a won K+P endgame?' Also check whether your king is active — if it is still on the back rank while your opponent's king is centralised, fix that before pushing pawns.",
+    "drill": "Set up positions from de la Villa's chapters on rook endings and piece-up endings, then practice converting them against a chess engine set to strength level 5-8, focusing on simplification and king activation rather than direct attacks.",
+    "commonMistake": "The most common error is advancing passed pawns too early without rook support or king escort, allowing the defending king to blockade the pawn and create an unbreakable fortress.",
+    "source": "de la Villa — 100 Endgames You Must Know",
+    "boards": [
+      {
+        "fen": "8/8/3k4/3P4/8/8/8/3RK3 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e1",
+            "to": "e2",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "e2",
+            "to": "d3",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d1",
+            "to": "d8",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d6",
+            "to": "d5",
+            "color": "rgba(239,68,68,0.9)"
+          }
+        ],
+        "caption": "White is up a rook and has a passed pawn on d5. The winning method is to march the king toward the centre (e1-e2-d3) to support the pawn, while keeping the rook active — ideally cutting the black king off on a back rank with Rd8. Moving the pawn immediately (d6?) lets Black's king blockade on d7 and makes the win much harder."
+      },
+      {
+        "fen": "8/8/8/3k4/8/3K4/3R4/8 w - - 0 1",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "d2",
+            "to": "d5",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "d3",
+            "to": "e4",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "d2",
+            "to": "a2",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "In a pure rook-vs-king endgame with no pawns, White wins by cutting the black king off with the rook (Ra2 or Rd8 depending on position) while centralising the white king — the two pieces work together to drive the black king to the edge of the board and deliver checkmate. The yellow arrow shows the immediate threat if the rook moves to d5, harassing the black king."
+      }
+    ]
+  },
+  {
+    "id": "opening_principles",
+    "label": "Core Opening Principles Every Book Agrees On",
+    "concept": "The opening has three universal goals that virtually every chess author agrees on: control the center (especially e4, d4, e5, d5) with pawns and pieces, develop your minor pieces (knights before bishops, generally) toward active squares, and castle early to connect your rooks and safeguard your king. These principles work together — a piece that is developed but not pointing at the center, or a king still stuck in the middle when the position opens up, is a warning sign that something has gone wrong.",
+    "why": "At the 1300–1600 level, games are frequently decided in the first 15 moves simply because one player develops two or three pieces while the other makes pawn moves or moves the same piece twice. A lead in development translates almost directly into tactical opportunities: pins, forks, and open-file pressure that the under-developed side cannot meet.",
+    "howToSpot": "After each of your first ten moves, ask: did I develop a new piece, castle, or meaningfully fight for the center? If the answer is 'no' two moves in a row, you are likely falling behind. Also count your opponent's developed pieces vs yours — if they have four out and you have two, expect an attack.",
+    "drill": "Play 10 rapid games this week (5+3 or 10+0) and after each game count, on move 10, how many minor pieces each side has developed and whether both kings are castled — record the numbers and look for correlation with who won.",
+    "commonMistake": "Players correctly learn to 'develop pieces' but then place them on passive squares (Bd2 blocking the queen, Nc3 before playing d4 when they want to play d4, or Nf3 retreated to e1) — development only counts if the piece is active and pointing at the center or the opponent's position.",
+    "source": "Euwe — Chess Master vs Chess Amateur",
+    "boards": [
+      {
+        "moves": "e4 e5 Nf3 Nc6 Bc4 Bc5 O-O Nf6 d3 d6 Nc3",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "f3",
+            "to": "e5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c4",
+            "to": "f7",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c3",
+            "to": "d5",
+            "color": "rgba(74,222,128,0.9)"
+          },
+          {
+            "from": "c5",
+            "to": "f2",
+            "color": "rgba(74,222,128,0.9)"
+          }
+        ],
+        "caption": "A model Italian Game position after 11 moves: both sides have developed both knights and a bishop, castled or are about to, and all developed pieces point actively toward the center or the opponent's king. Green arrows show the pressure each developed piece exerts — this is what 'good development' looks like."
+      },
+      {
+        "moves": "e4 e5 Nc3 Nf6 f4 d6 f5 Be7 Bc4 O-O Nge2 c6 d3 Nbd7",
+        "orientation": "white",
+        "arrows": [
+          {
+            "from": "e2",
+            "to": "e2",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "f5",
+            "to": "f5",
+            "color": "rgba(239,68,68,0.9)"
+          },
+          {
+            "from": "d7",
+            "to": "f6",
+            "color": "rgba(250,204,21,0.6)"
+          },
+          {
+            "from": "f6",
+            "to": "g4",
+            "color": "rgba(250,204,21,0.6)"
+          }
+        ],
+        "caption": "White has violated two principles: the f-pawn lunge on f5 wasted a tempo and weakened e5, while the knight is awkwardly placed on e2 blocking the bishop's retreat and the queen's scope. The yellow arrows show how Black's knight on f6 can target the weakened kingside with ...Ng4, punishing White's principled violations."
+      }
+    ]
+  }
+]
