@@ -34,20 +34,12 @@ function movesToFen(movesStr: string): string | null {
   return chess.fen();
 }
 
-// Extract the first [FEN: ...] or [MOVES: ...] from Viktor's response
-function extractBoardFen(text: string): string | null {
-  const fenMatch = text.match(/\[FEN:\s*([^\]|]+)/);
-  if (fenMatch) return fenMatch[1].trim();
-  const movesMatch = text.match(/\[MOVES:\s*([^\]|]+)/);
-  if (movesMatch) return movesToFen(movesMatch[1].trim());
-  return null;
-}
-
-// Strip [FEN: ...] and [MOVES: ...] markers from display, replace with a small indicator
+// Strip any [FEN:] / [MOVES:] the LLM sneaks in — we don't trust its positions
 function cleanForDisplay(text: string): string {
   return text
-    .replace(/\[FEN:[^\]]+\]/g, "↑ board updated")
-    .replace(/\[MOVES:[^\]|]+(?:\|[^\]]+)?\]/g, "↑ board updated")
+    .replace(/\[FEN:[^\]]+\]/g, "")
+    .replace(/\[MOVES:[^\]]+\]/g, "")
+    .replace(/\n{3,}/g, "\n\n")
     .trim();
 }
 
@@ -187,10 +179,6 @@ export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum,
         });
       }
 
-      // When streaming finishes, check for a board directive and fire callback
-      const boardFen = extractBoardFen(full);
-      if (boardFen && onBoardUpdate) onBoardUpdate(boardFen);
-
       setMessages((prev) => {
         const next = [...prev];
         next[next.length - 1] = { role: "assistant", content: full };
@@ -205,7 +193,7 @@ export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum,
     } finally {
       setStreaming(false);
     }
-  }, [messages, streaming, buildContext, onBoardUpdate]);
+  }, [messages, streaming, buildContext]);
 
   const patternLabel = pattern ? pattern.replace(/_/g, " ") : null;
 

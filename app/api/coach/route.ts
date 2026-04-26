@@ -89,6 +89,21 @@ Example of a quiz board:
 You know their game history deeply. Draw on it when relevant.`;
 }
 
+function buildPositionPrompt(positionContext: string): string {
+  return `You are Viktor, a chess coach answering a question about a specific position the player just blundered in.
+
+${positionContext}
+
+YOUR ONLY JOB: Explain what went wrong and why the engine's best move is better. 2-3 sentences maximum. Plain English — no jargon unless you explain it immediately after.
+
+STRICT RULES:
+- Do NOT output any FEN strings, [FEN:...] markers, or [MOVES:...] markers. Ever. You cannot reliably generate correct chess positions and it confuses the player.
+- Do NOT invent move sequences not given above. Only reference the exact moves from the engine line.
+- Do NOT pad with "great question", "as you can see", "interestingly", or any filler.
+- If you don't know something, say "I'm not sure" — never guess.
+- Short is better. If you can say it in one sentence, do that.`;
+}
+
 export async function POST(req: NextRequest) {
   const { messages, positionContext } = await req.json();
 
@@ -97,7 +112,7 @@ export async function POST(req: NextRequest) {
   }
 
   const system = positionContext
-    ? `${buildSystemPrompt()}\n\n== CURRENT DRILL POSITION (answer questions about this) ==\n${positionContext}`
+    ? buildPositionPrompt(positionContext)
     : buildSystemPrompt();
 
   const stream = await client.messages.stream({
