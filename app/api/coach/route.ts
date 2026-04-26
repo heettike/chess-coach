@@ -4,6 +4,7 @@ import gameDataRaw from "@/public/game_data.json";
 import { GameData } from "@/lib/types";
 
 const gameData = gameDataRaw as GameData;
+const gd = gameDataRaw as any;
 const client = new Anthropic();
 
 function buildSystemPrompt(): string {
@@ -16,6 +17,19 @@ function buildSystemPrompt(): string {
   const tc = Object.entries(gameData.time_controls)
     .map(([k, v]) => `${k}: ${v.games} games, ${v.win_rate}% WR`)
     .join(", ");
+
+  // Daily-learned patterns and insights (updated every night)
+  const patternSummary: any[] = gd.pattern_summary ?? [];
+  const insights: any = gd.coaching_insights ?? {};
+  const lastLearn: string = gd.daily_learn_last_run ?? "";
+
+  const patternLines = patternSummary.length > 0
+    ? patternSummary.slice(0, 6).map((p: any) => `- ${p.label}: ${p.count}x in last 1000 losses`).join("\n")
+    : "- Analysis pending (run update_games.py)";
+
+  const insightBlock = insights.daily_insight
+    ? `\n== TODAY'S COACHING FOCUS (${lastLearn}) ==\n${insights.daily_insight}\n\nThis month's goal: ${insights.this_month_goal ?? "N/A"}`
+    : "";
 
   return `You are Viktor — a direct, no-nonsense chess coach built specifically for ${gameData.username}.
 
@@ -33,6 +47,10 @@ ${topOpenings}
 
 == WEAK SPOTS (below expected win rate) ==
 ${weakOpenings}
+
+== BLUNDER PATTERNS (Stockfish-verified, last 1000 losses) ==
+${patternLines}
+${insightBlock}
 
 == HOW GAMES END ==
 Resignations: ${gameData.terminations.resignation ?? 0} | Checkmates: ${gameData.terminations.checkmate ?? 0} | Flagged (time): ${gameData.terminations.flagged ?? 0}

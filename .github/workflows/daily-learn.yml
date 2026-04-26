@@ -1,0 +1,45 @@
+name: Daily Chess Learning
+
+on:
+  schedule:
+    # Every night at 02:00 UTC
+    - cron: "0 2 * * *"
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  learn:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Stockfish
+        run: sudo apt-get install -y stockfish
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install chess
+
+      - name: Run daily learning agent
+        run: python3 scripts/daily_learn.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Commit updated knowledge
+        run: |
+          git config user.name "chess-coach-bot"
+          git config user.email "tk@noice.so"
+          git add public/game_data.json
+          git diff --cached --quiet || git commit -m "chore: nightly learning consolidation"
+
+      - name: Push
+        run: git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
