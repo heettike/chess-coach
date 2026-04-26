@@ -6,6 +6,7 @@ import { Chess } from "chess.js";
 import gameDataRaw from "@/public/game_data.json";
 import chessKnowledgeRaw from "@/public/chess_knowledge.json";
 import { PositionChat } from "@/components/PositionChat";
+import { explainResult } from "@/lib/evalText";
 
 const Chessboard = dynamic(
   () => import("react-chessboard").then((m) => m.Chessboard),
@@ -682,14 +683,18 @@ function DrillView({ pool, week, onBack, onMarkComplete, isComplete }: {
                     <button onClick={() => setRevealed(true)} style={{ background: "var(--accent)", color: "#000", border: "none", borderRadius: 6, padding: "11px 18px", fontSize: "0.88rem", fontWeight: 600, cursor: "pointer" }}>What's the best move? →</button>
                   ) : (
                     <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                      <div style={{ padding: "12px 14px", background: "var(--bg-2)", border: "1px solid var(--border)", borderRadius: 6 }}>
-                        <div style={{ fontSize: "0.72rem", color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 10 }}>result</div>
-                        <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-                          <div><div style={{ fontSize: "0.7rem", color: "var(--text-muted)", marginBottom: 4 }}>you played</div><div style={{ fontFamily: "monospace", fontSize: "0.95rem", fontWeight: 700, color: "#ef4444" }}>{blunder.san}</div></div>
-                          {blunder.eval_before && blunder.eval_after && <div><div style={{ fontSize: "0.7rem", color: "var(--text-muted)", marginBottom: 4 }}>eval</div><div style={{ fontFamily: "monospace", fontSize: "0.9rem", color: "var(--text)" }}>{blunder.eval_before}<span style={{ color: "var(--text-muted)", margin: "0 6px" }}>→</span><span style={{ color: "#ef4444" }}>{blunder.eval_after}</span></div></div>}
-                          {blunder.drop_str && <div><div style={{ fontSize: "0.7rem", color: "var(--text-muted)", marginBottom: 4 }}>drop</div><div style={{ fontFamily: "monospace", fontSize: "0.9rem", color: "#f97316", fontWeight: 600 }}>{blunder.drop_str}</div></div>}
-                        </div>
-                      </div>
+                      {(() => {
+                        const r = explainResult(blunder);
+                        return (
+                          <div style={{ padding: "12px 14px", background: "var(--bg-2)", border: "1px solid var(--border)", borderRadius: 6 }}>
+                            <div style={{ fontSize: "0.68rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: r.severityColor, marginBottom: 10 }}>{r.severityLabel}</div>
+                            <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
+                              <div style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>Before: <span style={{ color: "var(--text)" }}>{r.before}</span></div>
+                              <div style={{ fontSize: "0.82rem", color: "var(--text-muted)" }}>After: <span style={{ color: r.severityColor, fontWeight: 500 }}>{r.after}</span></div>
+                            </div>
+                          </div>
+                        );
+                      })()}
                     </div>
                   )}
                   <div style={{ display: "flex", gap: 8 }}>
