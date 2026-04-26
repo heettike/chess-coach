@@ -97,10 +97,15 @@ function renderText(text: string): React.ReactNode[] {
   );
 }
 
+interface SfLine { rank: number; firstMoveSan: string; eval: string; sanMoves: string[] }
+interface SfResult { lines: SfLine[]; depth: number; error?: string }
+
 export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum, opponent, onBoardUpdate }: Props) {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
+  const [sfData, setSfData] = useState<SfResult | null>(null);
+  const [sfLoading, setSfLoading] = useState(false);
   const [streaming, setStreaming] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -112,7 +117,19 @@ export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum,
   useEffect(() => {
     setMessages([]);
     setInput("");
+    setSfData(null);
   }, [fen]);
+
+  // Fetch Stockfish analysis when chat opens
+  useEffect(() => {
+    if (!open || sfData || sfLoading) return;
+    setSfLoading(true);
+    fetch(`/api/stockfish?fen=${encodeURIComponent(fen)}`)
+      .then((r) => r.json())
+      .then((d) => setSfData(d))
+      .catch(() => setSfData({ lines: [], depth: 0, error: "unavailable" }))
+      .finally(() => setSfLoading(false));
+  }, [open, fen, sfData, sfLoading]);
 
   useEffect(() => {
     if (open) setTimeout(() => inputRef.current?.focus(), 50);
@@ -129,15 +146,23 @@ export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum,
     if (pattern) lines.push(`Blunder pattern: ${pattern.replace(/_/g, " ")}`);
     if (playedUci) lines.push(`Played move (the blunder): ${uciLabel(playedUci)}`);
     if (bestUci) lines.push(`Engine best move: ${uciLabel(bestUci)}`);
-    lines.push(`
-IMPORTANT RULES FOR THIS CHAT:
-- Before describing any move or variation, verify it against the piece list above. A queen on f8 cannot move to f6 if there is a pawn on f7 blocking the path.
-- Never claim a piece defends a square if another piece blocks the line.
-- If you are not certain a move is legal, say so instead of guessing.
-- Keep explanations short and plain — explain every chess term you use.
-- When showing a position, use [FEN: ...] so it appears on the board.`);
+
+    // Inject real Stockfish lines — Viktor explains these, never invents his own
+    if (sfData?.lines?.length) {
+      lines.push(`\n== STOCKFISH ENGINE ANALYSIS (depth ${sfData.depth}) — THIS IS GROUND TRUTH ==`);
+      lines.push(`Do NOT calculate independently. Only describe moves from these lines.`);
+      sfData.lines.forEach((l) => {
+        const moveLine = l.sanMoves.slice(0, 5).join(" ");
+        lines.push(`Option ${l.rank}: ${l.firstMoveSan} [${l.eval}]  line: ${moveLine}`);
+      });
+      lines.push(`Any move NOT in these lines is unverified — do not mention it.`);
+    } else {
+      lines.push(`\nNo engine data available. Only describe moves you can verify from the piece list. Say "I'm not certain" rather than guessing.`);
+    }
+
+    lines.push(`\nKeep answers short and plain. Explain chess terms. Use [FEN: ...] to show positions on the board.`);
     return lines.join("\n");
-  }, [fen, moveNum, color, opponent, pattern, playedUci, bestUci]);
+  }, [fen, moveNum, color, opponent, pattern, playedUci, bestUci, sfData]);
 
   const send = useCallback(async (text: string) => {
     if (!text.trim() || streaming) return;
@@ -192,7 +217,7 @@ IMPORTANT RULES FOR THIS CHAT:
     } finally {
       setStreaming(false);
     }
-  }, [messages, streaming, buildContext, onBoardUpdate]);
+  }, [messages, streaming, buildContext, onBoardUpdate, sfData]);
 
   const patternLabel = pattern ? pattern.replace(/_/g, " ") : null;
 
@@ -229,7 +254,15 @@ IMPORTANT RULES FOR THIS CHAT:
             <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
               <span style={{ width: 20, height: 20, borderRadius: "50%", background: "var(--bg-2)", border: "1px solid var(--border)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.65rem", fontWeight: 700, color: "var(--accent)", flexShrink: 0 }}>V</span>
               <span style={{ fontSize: "0.75rem", fontWeight: 600 }}>Viktor</span>
-              <span style={{ fontSize: "0.68rem", color: "var(--text-muted)" }}>— ask about this position</span>
+              {sfLoading && (
+                <span style={{ fontSize: "0.65rem", color: "var(--text-dim)" }}>· fetching engine...</span>
+              )}
+              {!sfLoading && sfData && !sfData.error && sfData.lines.length > 0 && (
+                <span style={{ fontSize: "0.65rem", color: "var(--win)" }}>· engine ready (depth {sfData.depth})</span>
+              )}
+              {!sfLoading && (!sfData || sfData.error || sfData.lines.length === 0) && (
+                <span style={{ fontSize: "0.65rem", color: "var(--text-dim)" }}>— ask about this position</span>
+              )}
             </div>
             <button onClick={() => setOpen(false)} style={{ background: "none", border: "none", color: "var(--text-muted)", cursor: "pointer", fontSize: "0.75rem", padding: "2px 6px" }}>✕</button>
           </div>
