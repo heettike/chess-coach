@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { Chess } from "chess.js";
 import gameDataRaw from "@/public/game_data.json";
 import chessKnowledgeRaw from "@/public/chess_knowledge.json";
+import { PositionChat } from "@/components/PositionChat";
 
 const Chessboard = dynamic(
   () => import("react-chessboard").then((m) => m.Chessboard),
@@ -696,6 +697,15 @@ function DrillView({ pool, week, onBack, onMarkComplete, isComplete }: {
                     <button onClick={() => goTo(index + 1)} disabled={index >= total - 1} style={navBtnStyle(index >= total - 1)}>next</button>
                     <button onClick={() => { setIndex(Math.floor(Math.random() * total)); setRevealed(false); }} style={{ background: "transparent", border: "1px solid var(--border)", borderRadius: 5, color: "var(--text-muted)", padding: "8px 14px", fontSize: "0.82rem", cursor: "pointer" }}>random</button>
                   </div>
+                  <PositionChat
+                    fen={blunder.fen_before}
+                    playedUci={blunder.played_uci}
+                    bestUci={blunder.best_uci}
+                    pattern={blunder.pattern}
+                    color={blunder.color}
+                    moveNum={blunder.move_num}
+                    opponent={blunder.opponent}
+                  />
                 </div>
               </div>
               {!isComplete && (

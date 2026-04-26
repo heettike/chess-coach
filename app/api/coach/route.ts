@@ -90,16 +90,20 @@ You know their game history deeply. Draw on it when relevant.`;
 }
 
 export async function POST(req: NextRequest) {
-  const { messages } = await req.json();
+  const { messages, positionContext } = await req.json();
 
   if (!process.env.ANTHROPIC_API_KEY) {
     return NextResponse.json({ error: "ANTHROPIC_API_KEY not set" }, { status: 500 });
   }
 
+  const system = positionContext
+    ? `${buildSystemPrompt()}\n\n== CURRENT DRILL POSITION (answer questions about this) ==\n${positionContext}`
+    : buildSystemPrompt();
+
   const stream = await client.messages.stream({
     model: "claude-sonnet-4-6",
-    max_tokens: 1024,
-    system: buildSystemPrompt(),
+    max_tokens: 800,
+    system,
     messages,
   });
 

@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import dynamic from "next/dynamic";
 import gameDataRaw from "@/public/game_data.json";
+import { PositionChat } from "@/components/PositionChat";
 
 const Chessboard = dynamic(
   () => import("react-chessboard").then((m) => m.Chessboard),
@@ -435,6 +436,17 @@ function DrillView({ pool, onBack }: { pool: any[]; onBack: () => void }) {
               random
             </button>
           </div>
+
+          {/* Viktor chat */}
+          <PositionChat
+            fen={blunder.fen_before}
+            playedUci={blunder.played_uci}
+            bestUci={blunder.best_uci}
+            pattern={blunder.pattern}
+            color={blunder.color}
+            moveNum={blunder.move_num}
+            opponent={blunder.opponent}
+          />
         </div>
       </div>
     </div>
