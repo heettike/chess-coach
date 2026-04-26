@@ -466,7 +466,7 @@ def build_patterns(blunders):
     counts = Counter(b["pattern"] for b in blunders)
     result = []
     for pattern, count in counts.most_common(25):
-        if count < 5:
+        if count < 3:
             break
         examples = [b for b in blunders if b["pattern"] == pattern][:8]
         result.append({
@@ -548,11 +548,12 @@ def main():
         })
     opening_summary.sort(key=lambda x: -x["games"])
 
-    losses_list = [(g, c) for g in reversed(target) for c, o in [player_result(g)] if o == "loss" and c]
+    # Include both losses AND draws — blunders happen in drawn games too
+    losses_list = [(g, c) for g in reversed(target) for c, o in [player_result(g)] if o in ("loss", "draw") and c]
 
     # Recent losses for review
     recent_losses = []
-    for g, color in losses_list[:50]:
+    for g, color in [(g, c) for g, c in losses_list if player_result(g)[1] == "loss"][:50]:
         moves = clean_moves(g.get("_moves_raw",""))
         if len(moves) < 10: continue
         pgn_str = "".join(f'[{k} "{g.get(k,"?")}"]\n' for k in ["Event","White","Black","Result","Date","TimeControl","Termination"])
@@ -561,20 +562,20 @@ def main():
                                "result": g.get("Result",""), "time_control": tc_label(g.get("TimeControl","")),
                                "termination": g.get("Termination",""), "color": color, "moves": moves, "pgn": pgn_str})
 
-    # Blunder analysis
+    # Blunder analysis — 2000 games (losses + draws), keep top 500
     blunder_positions = []
     pattern_summary = []
     if HAS_CHESS and Path(STOCKFISH_PATH).exists():
-        print(f"\nStockfish analysis on last 1000 losses (5m/10m)...")
+        print(f"\nStockfish analysis on last 2000 losses+draws (5m/10m)...")
         sf = Stockfish(STOCKFISH_PATH)
-        blunder_positions = analyze_games(losses_list, sf, max_games=1000)
+        blunder_positions = analyze_games(losses_list, sf, max_games=2000)
         sf.close()
         blunder_positions.sort(key=lambda x: -x["drop_cp"])
         pattern_summary = build_patterns(blunder_positions)
         print(f"Done — {len(blunder_positions)} blunders | {len(pattern_summary)} patterns")
         for p in pattern_summary:
             print(f"  {p['label']}: {p['count']}")
-        blunder_positions = blunder_positions[:200]
+        blunder_positions = blunder_positions[:500]
     else:
         print("Stockfish not found")
 

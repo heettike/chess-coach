@@ -29,15 +29,26 @@ export interface BlunderPosition {
   move_num: number;
   san: string;
   fen_before: string;
-  fen_after: string;
-  eval_before: number;
-  eval_after: number;
-  best_move: string;
-  drop: number;
-  type: string;
+  fen_after?: string;
+  eval_before: string | number;
+  eval_after: string | number;
+  best_uci?: string;
+  played_uci?: string;
+  drop_cp?: number;
+  drop_str?: string;
+  pattern?: string;
   game_date: string;
   opponent: string;
   color: string;
+  time_control?: string;
+}
+
+export interface PatternGroup {
+  pattern: string;
+  label: string;
+  count: number;
+  advice?: string;
+  examples: BlunderPosition[];
 }
 
 export interface GameRecord {
@@ -75,6 +86,9 @@ export interface GameData {
   };
   recent_losses: GameRecord[];
   blunder_positions: BlunderPosition[];
+  pattern_summary?: PatternGroup[];
+  coaching_insights?: Record<string, string>;
+  daily_learn_last_run?: string;
   weak_openings: WeakOpening[];
 }
 
