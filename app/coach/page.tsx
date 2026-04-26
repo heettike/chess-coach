@@ -60,13 +60,20 @@ function movesToFen(movesStr: string): string | null {
 }
 
 // Split a message into alternating text/board segments for inline rendering
+// Supports: [MOVES: e4 e5 | PLAYED: e2e4 | BEST: d2d4] for guess-the-move boards
 type MsgSegment =
   | { kind: "text"; content: string }
-  | { kind: "board"; fen: string; label: string };
+  | { kind: "board"; fen: string; label: string; playedUci?: string; bestUci?: string };
+
+function parseUciArrow(uci: string | undefined): { from: string; to: string } | null {
+  if (!uci || uci.length < 4) return null;
+  return { from: uci.slice(0, 2), to: uci.slice(2, 4) };
+}
 
 function parseSegments(text: string): MsgSegment[] {
   const segs: MsgSegment[] = [];
-  const re = /\[MOVES:\s*([^\]]+)\]|\[FEN:\s*([^\]]+)\]/g;
+  // Match [MOVES: ...] or [FEN: ...], optionally with | PLAYED: uci | BEST: uci
+  const re = /\[MOVES:\s*([^\]|]+)(?:\|\s*PLAYED:\s*([a-h][1-8][a-h][1-8][qrbn]?))?(?:\|\s*BEST:\s*([a-h][1-8][a-h][1-8][qrbn]?))?\]|\[FEN:\s*([^\]|]+)(?:\|\s*PLAYED:\s*([a-h][1-8][a-h][1-8][qrbn]?))?(?:\|\s*BEST:\s*([a-h][1-8][a-h][1-8][qrbn]?))?\]/g;
   let last = 0;
   let match: RegExpExecArray | null;
   while ((match = re.exec(text)) !== null) {
@@ -74,12 +81,16 @@ function parseSegments(text: string): MsgSegment[] {
       segs.push({ kind: "text", content: text.slice(last, match.index) });
     }
     const movesStr = match[1];
-    const fenStr = match[2];
+    const playedUci1 = match[2];
+    const bestUci1 = match[3];
+    const fenStr = match[4];
+    const playedUci2 = match[5];
+    const bestUci2 = match[6];
     if (movesStr) {
-      const fen = movesToFen(movesStr);
-      if (fen) segs.push({ kind: "board", fen, label: movesStr.trim() });
+      const fen = movesToFen(movesStr.trim());
+      if (fen) segs.push({ kind: "board", fen, label: movesStr.trim(), playedUci: playedUci1, bestUci: bestUci1 });
     } else if (fenStr) {
-      segs.push({ kind: "board", fen: fenStr.trim(), label: "" });
+      segs.push({ kind: "board", fen: fenStr.trim(), label: "", playedUci: playedUci2, bestUci: bestUci2 });
     }
     last = match.index + match[0].length;
   }
@@ -907,7 +918,34 @@ function NavButton({
   );
 }
 
-function InlineBoard({ fen, label, onExpand }: { fen: string; label: string; onExpand: (fen: string, moves: string) => void }) {
+function InlineBoard({
+  fen,
+  label,
+  playedUci,
+  bestUci,
+  onExpand,
+}: {
+  fen: string;
+  label: string;
+  playedUci?: string;
+  bestUci?: string;
+  onExpand: (fen: string, moves: string) => void;
+}) {
+  const [revealed, setRevealed] = useState(false);
+  const hasGuess = !!(playedUci || bestUci);
+
+  const playedArrow = parseUciArrow(playedUci);
+  const bestArrow = parseUciArrow(bestUci);
+
+  const arrows = useMemo(() => {
+    const a: { startSquare: string; endSquare: string; color: string }[] = [];
+    if (playedArrow)
+      a.push({ startSquare: playedArrow.from, endSquare: playedArrow.to, color: "rgba(239,68,68,0.9)" });
+    if (revealed && bestArrow)
+      a.push({ startSquare: bestArrow.from, endSquare: bestArrow.to, color: "rgba(74,222,128,0.9)" });
+    return a;
+  }, [revealed, playedArrow, bestArrow]);
+
   return (
     <div
       style={{
@@ -928,6 +966,7 @@ function InlineBoard({ fen, label, onExpand }: { fen: string; label: string; onE
           lightSquareStyle: { backgroundColor: "#f0d9b5" },
           allowDragging: false,
           showAnimations: false,
+          arrows: arrows.length > 0 ? arrows : undefined,
         }}
       />
       <div
@@ -940,10 +979,34 @@ function InlineBoard({ fen, label, onExpand }: { fen: string; label: string; onE
           gap: 8,
         }}
       >
-        {label && (
-          <span style={{ fontFamily: "monospace", fontSize: "0.68rem", color: "var(--text-dim)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", flex: 1 }}>
-            {label}
-          </span>
+        {hasGuess ? (
+          revealed ? (
+            <span style={{ fontSize: "0.68rem", color: "var(--text-dim)" }}>
+              red = played · green = best
+            </span>
+          ) : (
+            <button
+              onClick={() => setRevealed(true)}
+              style={{
+                background: "var(--accent)",
+                color: "#000",
+                border: "none",
+                borderRadius: 4,
+                padding: "4px 10px",
+                fontSize: "0.72rem",
+                fontWeight: 600,
+                cursor: "pointer",
+              }}
+            >
+              What&apos;s the best move? →
+            </button>
+          )
+        ) : (
+          label && (
+            <span style={{ fontFamily: "monospace", fontSize: "0.68rem", color: "var(--text-dim)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", flex: 1 }}>
+              {label}
+            </span>
+          )
         )}
         <button
           onClick={() => onExpand(fen, label)}
@@ -1011,7 +1074,7 @@ function MessageBubble({ message, onBoardExpand }: { message: Message; onBoardEx
             seg.kind === "text" ? (
               <div key={i}>{renderTextBlock(seg.content)}</div>
             ) : (
-              <InlineBoard key={i} fen={seg.fen} label={seg.label} onExpand={onBoardExpand} />
+              <InlineBoard key={i} fen={seg.fen} label={seg.label} playedUci={seg.playedUci} bestUci={seg.bestUci} onExpand={onBoardExpand} />
             )
           )
         ) : null}
