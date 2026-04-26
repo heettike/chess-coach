@@ -120,49 +120,37 @@ export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum,
     setSfData(null);
   }, [fen]);
 
-  // Fetch Stockfish analysis when chat opens
+  // Pre-fetch Stockfish on mount so data is ready before user opens chat
   useEffect(() => {
-    if (!open || sfData || sfLoading) return;
+    if (sfData || sfLoading) return;
     setSfLoading(true);
     fetch(`/api/stockfish?fen=${encodeURIComponent(fen)}`)
       .then((r) => r.json())
       .then((d) => setSfData(d))
       .catch(() => setSfData({ lines: [], depth: 0, error: "unavailable" }))
       .finally(() => setSfLoading(false));
-  }, [open, fen, sfData, sfLoading]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fen]);
 
   useEffect(() => {
     if (open) setTimeout(() => inputRef.current?.focus(), 50);
   }, [open]);
 
   const buildContext = useCallback(() => {
-    const lines: string[] = [
-      `FEN: ${fen}`,
-      fenToPieceList(fen, color ?? "white"),
-    ];
-    if (moveNum) lines.push(`Move number: ${moveNum}`);
-    if (color) lines.push(`Player was: ${color}`);
-    if (opponent) lines.push(`Opponent: ${opponent}`);
-    if (pattern) lines.push(`Blunder pattern: ${pattern.replace(/_/g, " ")}`);
-    if (playedUci) lines.push(`Played move (the blunder): ${uciLabel(playedUci)}`);
-    if (bestUci) lines.push(`Engine best move: ${uciLabel(bestUci)}`);
+    const best = sfData?.lines?.[0];
+    const bestLine = best ? `${best.firstMoveSan} (${best.eval}) — line: ${best.sanMoves.slice(0, 4).join(" ")}` : null;
 
-    // Inject real Stockfish lines — Viktor explains these, never invents his own
-    if (sfData?.lines?.length) {
-      lines.push(`\n== STOCKFISH ENGINE ANALYSIS (depth ${sfData.depth}) — THIS IS GROUND TRUTH ==`);
-      lines.push(`Do NOT calculate independently. Only describe moves from these lines.`);
-      sfData.lines.forEach((l) => {
-        const moveLine = l.sanMoves.slice(0, 5).join(" ");
-        lines.push(`Option ${l.rank}: ${l.firstMoveSan} [${l.eval}]  line: ${moveLine}`);
-      });
-      lines.push(`Any move NOT in these lines is unverified — do not mention it.`);
-    } else {
-      lines.push(`\nNo engine data available. Only describe moves you can verify from the piece list. Say "I'm not certain" rather than guessing.`);
-    }
+    const parts: string[] = [fenToPieceList(fen, color ?? "white")];
+    if (color) parts.push(`Playing as: ${color}, move ${moveNum ?? "?"}`);
+    if (opponent) parts.push(`Opponent: ${opponent}`);
+    if (pattern) parts.push(`Pattern: ${pattern.replace(/_/g, " ")}`);
+    if (playedUci) parts.push(`Their move (the mistake): ${uciLabel(playedUci)}`);
+    if (bestLine) parts.push(`Engine says best was: ${bestLine}`);
+    else parts.push(`No engine data — only describe what you can verify from the piece list.`);
 
-    lines.push(`\nKeep answers short and plain. Explain chess terms. Use [FEN: ...] to show positions on the board.`);
-    return lines.join("\n");
-  }, [fen, moveNum, color, opponent, pattern, playedUci, bestUci, sfData]);
+    parts.push(`\nTone: friendly, casual, 2-3 sentences max per answer. Explain like you're texting a friend who just started chess. No jargon without explanation. Only reference moves from the engine line above — never invent your own. Use [FEN: ...] if showing a position.`);
+    return parts.join("\n");
+  }, [fen, moveNum, color, opponent, pattern, playedUci, sfData]);
 
   const send = useCallback(async (text: string) => {
     if (!text.trim() || streaming) return;
@@ -217,7 +205,7 @@ export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum,
     } finally {
       setStreaming(false);
     }
-  }, [messages, streaming, buildContext, onBoardUpdate, sfData]);
+  }, [messages, streaming, buildContext, onBoardUpdate]);
 
   const patternLabel = pattern ? pattern.replace(/_/g, " ") : null;
 
