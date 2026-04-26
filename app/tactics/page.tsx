@@ -594,24 +594,26 @@ function DrillView({ pool, week, onBack, onMarkComplete, isComplete }: {
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [tab, setTab] = useState<"theory" | "drill">("theory");
+  const [overrideFen, setOverrideFen] = useState<string | null>(null);
 
   const total = pool.length;
   const blunder = pool[index];
   const playedArrow = parseUCI(blunder?.played_uci ?? "");
   const bestArrow = parseUCI(blunder?.best_uci ?? "");
 
+  const viktorFen = overrideFen;
+  const boardFen = viktorFen ?? blunder?.fen_before;
+
   const arrows = useMemo(() => {
-    if (tab !== "drill") return [];
+    if (tab !== "drill" || viktorFen) return [];
     const a: any[] = [];
-    // Red always shown — this is your mistake
     if (playedArrow) a.push({ startSquare: playedArrow.from, endSquare: playedArrow.to, color: "rgba(239,68,68,0.9)" });
-    // Green only after you guess
     if (revealed && bestArrow) a.push({ startSquare: bestArrow.from, endSquare: bestArrow.to, color: "rgba(74,222,128,0.9)" });
     return a;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [revealed, index, tab]);
+  }, [revealed, index, tab, viktorFen]);
 
-  function goTo(n: number) { setIndex(Math.max(0, Math.min(total - 1, n))); setRevealed(false); }
+  function goTo(n: number) { setIndex(Math.max(0, Math.min(total - 1, n))); setRevealed(false); setOverrideFen(null); }
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 20, maxWidth: 940 }}>
@@ -668,9 +670,11 @@ function DrillView({ pool, week, onBack, onMarkComplete, isComplete }: {
               <div style={{ fontSize: "0.78rem", color: "var(--text-muted)", fontVariantNumeric: "tabular-nums" }}>position {index + 1} of {total}</div>
               <div style={{ display: "flex", gap: 36, alignItems: "flex-start", flexWrap: "wrap" }}>
                 <div style={{ flexShrink: 0 }}>
-                  <Chessboard options={{ position: blunder.fen_before, boardOrientation: blunder.color === "white" ? "white" : "black", boardStyle: { width: 420, height: 420 }, darkSquareStyle: { backgroundColor: "#b58863" }, lightSquareStyle: { backgroundColor: "#f0d9b5" }, arrows, allowDragging: false }} />
-                  <div style={{ marginTop: 8, fontSize: "0.7rem", color: "var(--text-muted)", textAlign: "center" }}>
-                    {revealed ? "red = your move  ·  green = best move" : `move ${blunder.move_num} · ${blunder.color} · ${blunder.time_control ?? "blitz"}`}
+                  <Chessboard options={{ position: boardFen, boardOrientation: blunder.color === "white" ? "white" : "black", boardStyle: { width: 420, height: 420 }, darkSquareStyle: { backgroundColor: "#b58863" }, lightSquareStyle: { backgroundColor: "#f0d9b5" }, arrows, allowDragging: false }} />
+                  <div style={{ marginTop: 8, fontSize: "0.7rem", color: "var(--text-muted)", textAlign: "center", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
+                    {viktorFen ? (
+                      <><span style={{ color: "var(--accent)" }}>Viktor&apos;s position</span><button onClick={() => setOverrideFen(null)} style={{ background: "none", border: "none", color: "var(--text-dim)", fontSize: "0.68rem", cursor: "pointer", textDecoration: "underline", padding: 0 }}>reset</button></>
+                    ) : revealed ? "red = your move  ·  green = best move" : `move ${blunder.move_num} · ${blunder.color} · ${blunder.time_control ?? "blitz"}`}
                   </div>
                 </div>
                 <div style={{ flex: 1, minWidth: 240, display: "flex", flexDirection: "column", gap: 14 }}>
@@ -710,6 +714,7 @@ function DrillView({ pool, week, onBack, onMarkComplete, isComplete }: {
                     color={blunder.color}
                     moveNum={blunder.move_num}
                     opponent={blunder.opponent}
+                    onBoardUpdate={setOverrideFen}
                   />
                 </div>
               </div>

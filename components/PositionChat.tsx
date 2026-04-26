@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
+import { Chess } from "chess.js";
 
 interface Msg {
   role: "user" | "assistant";
-  content: string;
+  content: string;       // raw (may contain [FEN:] markers)
   streaming?: boolean;
 }
 
@@ -16,14 +17,87 @@ interface Props {
   color?: string;
   moveNum?: number;
   opponent?: string;
+  onBoardUpdate?: (fen: string) => void;   // called when Viktor references a position
 }
 
-function uciToSan(uci: string): string {
+function uciLabel(uci: string): string {
   if (!uci || uci.length < 4) return uci;
   return `${uci.slice(0, 2)}-${uci.slice(2, 4)}`;
 }
 
-export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum, opponent }: Props) {
+function movesToFen(movesStr: string): string | null {
+  const moves = movesStr.trim().split(/\s+/).filter(Boolean);
+  const chess = new Chess();
+  for (const m of moves) {
+    try { chess.move(m); } catch { break; }
+  }
+  return chess.fen();
+}
+
+// Extract the first [FEN: ...] or [MOVES: ...] from Viktor's response
+function extractBoardFen(text: string): string | null {
+  const fenMatch = text.match(/\[FEN:\s*([^\]|]+)/);
+  if (fenMatch) return fenMatch[1].trim();
+  const movesMatch = text.match(/\[MOVES:\s*([^\]|]+)/);
+  if (movesMatch) return movesToFen(movesMatch[1].trim());
+  return null;
+}
+
+// Strip [FEN: ...] and [MOVES: ...] markers from display, replace with a small indicator
+function cleanForDisplay(text: string): string {
+  return text
+    .replace(/\[FEN:[^\]]+\]/g, "↑ board updated")
+    .replace(/\[MOVES:[^\]|]+(?:\|[^\]]+)?\]/g, "↑ board updated")
+    .trim();
+}
+
+// Parse FEN into a plain-English piece list so Viktor knows exactly where things are
+function fenToPieceList(fen: string, playerColor: string): string {
+  const boardStr = fen.split(" ")[0];
+  const ranks = boardStr.split("/");
+  const files = "abcdefgh";
+  const map: Record<string, string[]> = {};
+
+  ranks.forEach((rank, ri) => {
+    const rankNum = 8 - ri;
+    let fi = 0;
+    for (const ch of rank) {
+      if (ch >= "1" && ch <= "8") { fi += parseInt(ch); continue; }
+      const sq = files[fi] + rankNum;
+      if (!map[ch]) map[ch] = [];
+      map[ch].push(sq);
+      fi++;
+    }
+  });
+
+  const names: Record<string, string> = { K: "King", Q: "Queen", R: "Rook", B: "Bishop", N: "Knight", P: "Pawn" };
+  const isWhite = playerColor !== "black";
+  const yours = isWhite ? "KQRBNP" : "kqrbnp";
+  const theirs = isWhite ? "kqrbnp" : "KQRBNP";
+
+  function describe(keys: string, label: string) {
+    const parts: string[] = [];
+    for (const k of keys) {
+      const sqs = map[k];
+      if (sqs?.length) parts.push(`${names[k.toUpperCase()]}${sqs.length > 1 ? "s" : ""} on ${sqs.join(", ")}`);
+    }
+    return `${label}: ${parts.join("; ") || "none"}`;
+  }
+
+  return [describe(yours, "Your pieces"), describe(theirs, "Opponent pieces")].join("\n");
+}
+
+// Very simple inline renderer: bold **text** support
+function renderText(text: string): React.ReactNode[] {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((p, i) =>
+    p.startsWith("**") && p.endsWith("**")
+      ? <strong key={i}>{p.slice(2, -2)}</strong>
+      : p
+  );
+}
+
+export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum, opponent, onBoardUpdate }: Props) {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
@@ -35,26 +109,33 @@ export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum,
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Reset chat when position changes
   useEffect(() => {
     setMessages([]);
     setInput("");
   }, [fen]);
 
   useEffect(() => {
-    if (open) {
-      setTimeout(() => inputRef.current?.focus(), 50);
-    }
+    if (open) setTimeout(() => inputRef.current?.focus(), 50);
   }, [open]);
 
-  const buildPositionContext = useCallback(() => {
-    const lines: string[] = [`FEN: ${fen}`];
+  const buildContext = useCallback(() => {
+    const lines: string[] = [
+      `FEN: ${fen}`,
+      fenToPieceList(fen, color ?? "white"),
+    ];
     if (moveNum) lines.push(`Move number: ${moveNum}`);
     if (color) lines.push(`Player was: ${color}`);
     if (opponent) lines.push(`Opponent: ${opponent}`);
     if (pattern) lines.push(`Blunder pattern: ${pattern.replace(/_/g, " ")}`);
-    if (playedUci) lines.push(`Played move (the blunder): ${uciToSan(playedUci)}`);
-    if (bestUci) lines.push(`Engine best move: ${uciToSan(bestUci)}`);
+    if (playedUci) lines.push(`Played move (the blunder): ${uciLabel(playedUci)}`);
+    if (bestUci) lines.push(`Engine best move: ${uciLabel(bestUci)}`);
+    lines.push(`
+IMPORTANT RULES FOR THIS CHAT:
+- Before describing any move or variation, verify it against the piece list above. A queen on f8 cannot move to f6 if there is a pawn on f7 blocking the path.
+- Never claim a piece defends a square if another piece blocks the line.
+- If you are not certain a move is legal, say so instead of guessing.
+- Keep explanations short and plain — explain every chess term you use.
+- When showing a position, use [FEN: ...] so it appears on the board.`);
     return lines.join("\n");
   }, [fen, moveNum, color, opponent, pattern, playedUci, bestUci]);
 
@@ -66,8 +147,7 @@ export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum,
     setInput("");
     setStreaming(true);
 
-    const placeholder: Msg = { role: "assistant", content: "", streaming: true };
-    setMessages([...history, placeholder]);
+    setMessages([...history, { role: "assistant", content: "", streaming: true }]);
 
     try {
       const res = await fetch("/api/coach", {
@@ -75,7 +155,7 @@ export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: history.map(({ role, content }) => ({ role, content })),
-          positionContext: buildPositionContext(),
+          positionContext: buildContext(),
         }),
       });
 
@@ -94,6 +174,10 @@ export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum,
         });
       }
 
+      // When streaming finishes, check for a board directive and fire callback
+      const boardFen = extractBoardFen(full);
+      if (boardFen && onBoardUpdate) onBoardUpdate(boardFen);
+
       setMessages((prev) => {
         const next = [...prev];
         next[next.length - 1] = { role: "assistant", content: full };
@@ -108,7 +192,9 @@ export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum,
     } finally {
       setStreaming(false);
     }
-  }, [messages, streaming, buildPositionContext]);
+  }, [messages, streaming, buildContext, onBoardUpdate]);
+
+  const patternLabel = pattern ? pattern.replace(/_/g, " ") : null;
 
   return (
     <div style={{ marginTop: 16 }}>
@@ -130,161 +216,91 @@ export function PositionChat({ fen, playedUci, bestUci, pattern, color, moveNum,
             gap: 8,
             transition: "border-color 0.15s, color 0.15s",
           }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = "var(--accent)";
-            e.currentTarget.style.color = "var(--text)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = "var(--border)";
-            e.currentTarget.style.color = "var(--text-muted)";
-          }}
+          onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--accent)"; e.currentTarget.style.color = "var(--text)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--border)"; e.currentTarget.style.color = "var(--text-muted)"; }}
         >
           <span style={{ color: "var(--accent)", fontWeight: 700, fontSize: "0.75rem" }}>V</span>
           Ask Viktor about this position
         </button>
       ) : (
-        <div
-          style={{
-            border: "1px solid var(--border)",
-            borderRadius: 8,
-            overflow: "hidden",
-            background: "var(--bg-2)",
-          }}
-        >
+        <div style={{ border: "1px solid var(--border)", borderRadius: 8, overflow: "hidden", background: "var(--bg-2)" }}>
           {/* Header */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              padding: "8px 12px",
-              borderBottom: "1px solid var(--border)",
-              background: "var(--bg-3)",
-            }}
-          >
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 12px", borderBottom: "1px solid var(--border)", background: "var(--bg-3)" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
-              <span
-                style={{
-                  width: 20, height: 20, borderRadius: "50%",
-                  background: "var(--bg-2)", border: "1px solid var(--border)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: "0.65rem", fontWeight: 700, color: "var(--accent)", flexShrink: 0,
-                }}
-              >
-                V
-              </span>
+              <span style={{ width: 20, height: 20, borderRadius: "50%", background: "var(--bg-2)", border: "1px solid var(--border)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "0.65rem", fontWeight: 700, color: "var(--accent)", flexShrink: 0 }}>V</span>
               <span style={{ fontSize: "0.75rem", fontWeight: 600 }}>Viktor</span>
               <span style={{ fontSize: "0.68rem", color: "var(--text-muted)" }}>— ask about this position</span>
             </div>
-            <button
-              onClick={() => setOpen(false)}
-              style={{
-                background: "none", border: "none", color: "var(--text-muted)",
-                cursor: "pointer", fontSize: "0.75rem", padding: "2px 6px",
-              }}
-            >
-              ✕
-            </button>
+            <button onClick={() => setOpen(false)} style={{ background: "none", border: "none", color: "var(--text-muted)", cursor: "pointer", fontSize: "0.75rem", padding: "2px 6px" }}>✕</button>
           </div>
 
           {/* Messages */}
-          <div
-            style={{
-              maxHeight: 260,
-              overflowY: "auto",
-              padding: "12px 14px",
-              display: "flex",
-              flexDirection: "column",
-              gap: 12,
-            }}
-          >
+          <div style={{ maxHeight: 300, overflowY: "auto", padding: "12px 14px", display: "flex", flexDirection: "column", gap: 12 }}>
             {messages.length === 0 && (
-              <div style={{ fontSize: "0.78rem", color: "var(--text-muted)", lineHeight: 1.6 }}>
-                {pattern
-                  ? `This is a <strong>${pattern.replace(/_/g, " ")}</strong> position. Ask me why the played move was wrong, what makes the best move correct, or anything else about this position.`
-                  : "Ask me anything about this position — why a move was played, what the best plan is, or how to avoid this mistake."}
+              <div style={{ fontSize: "0.78rem", color: "var(--text-muted)", lineHeight: 1.65 }}>
+                {patternLabel
+                  ? <>This is a <strong style={{ color: "var(--text)" }}>{patternLabel}</strong> position. Ask me why the move was wrong, what the best response is, or how to avoid this in future games.</>
+                  : "Ask me anything about this position."}
+                {onBoardUpdate && <div style={{ marginTop: 6, fontSize: "0.7rem", color: "var(--text-dim)" }}>When I reference a different position, the board on the left will update.</div>}
               </div>
             )}
-            {messages.map((msg, i) => (
-              <div
-                key={i}
-                style={{
-                  alignSelf: msg.role === "user" ? "flex-end" : "flex-start",
-                  maxWidth: "90%",
-                  fontSize: "0.8rem",
-                  lineHeight: 1.6,
-                  color: msg.role === "user" ? "var(--text)" : "var(--text)",
-                  background: msg.role === "user" ? "var(--bg-3)" : "transparent",
-                  border: msg.role === "user" ? "1px solid var(--border)" : "none",
-                  borderRadius: 6,
-                  padding: msg.role === "user" ? "6px 10px" : "0",
-                }}
-              >
-                {msg.content === "" && msg.streaming ? (
-                  <span style={{ color: "var(--text-muted)" }}>...</span>
-                ) : (
-                  msg.content
-                )}
-              </div>
-            ))}
+            {messages.map((msg, i) => {
+              const isUser = msg.role === "user";
+              const displayText = isUser ? msg.content : cleanForDisplay(msg.content);
+              return (
+                <div
+                  key={i}
+                  style={{
+                    alignSelf: isUser ? "flex-end" : "flex-start",
+                    maxWidth: "95%",
+                    fontSize: "0.8rem",
+                    lineHeight: 1.65,
+                    background: isUser ? "var(--bg-3)" : "transparent",
+                    border: isUser ? "1px solid var(--border)" : "none",
+                    borderRadius: 6,
+                    padding: isUser ? "6px 10px" : "0",
+                  }}
+                >
+                  {msg.content === "" && msg.streaming ? (
+                    <span style={{ color: "var(--text-muted)" }}>...</span>
+                  ) : (
+                    displayText.split("\n").map((line, li) => {
+                      if (line === "↑ board updated") {
+                        return (
+                          <div key={li} style={{ fontSize: "0.68rem", color: "var(--accent)", margin: "4px 0", fontStyle: "italic" }}>
+                            ↑ board updated above
+                          </div>
+                        );
+                      }
+                      if (line === "") return <div key={li} style={{ height: "0.4em" }} />;
+                      return <div key={li}>{renderText(line)}</div>;
+                    })
+                  )}
+                </div>
+              );
+            })}
             <div ref={bottomRef} />
           </div>
 
           {/* Input */}
-          <div
-            style={{
-              padding: "8px 10px",
-              borderTop: "1px solid var(--border)",
-              display: "flex",
-              gap: 7,
-              alignItems: "flex-end",
-            }}
-          >
+          <div style={{ padding: "8px 10px", borderTop: "1px solid var(--border)", display: "flex", gap: 7, alignItems: "flex-end" }}>
             <textarea
               ref={inputRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === "Enter" && !e.shiftKey) {
-                  e.preventDefault();
-                  send(input);
-                }
+                if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(input); }
               }}
               placeholder="Why was this move wrong?"
               rows={1}
-              style={{
-                flex: 1,
-                background: "var(--bg-3)",
-                border: "1px solid var(--border)",
-                borderRadius: 6,
-                padding: "6px 10px",
-                color: "var(--text)",
-                fontSize: "0.78rem",
-                lineHeight: 1.5,
-                resize: "none",
-                outline: "none",
-                fontFamily: "inherit",
-                overflowY: "hidden",
-                transition: "border-color 0.15s",
-              }}
+              style={{ flex: 1, background: "var(--bg-3)", border: "1px solid var(--border)", borderRadius: 6, padding: "6px 10px", color: "var(--text)", fontSize: "0.78rem", lineHeight: 1.5, resize: "none", outline: "none", fontFamily: "inherit", overflowY: "hidden", transition: "border-color 0.15s" }}
               onFocus={(e) => { e.currentTarget.style.borderColor = "var(--accent)"; }}
               onBlur={(e) => { e.currentTarget.style.borderColor = "var(--border)"; }}
             />
             <button
               onClick={() => send(input)}
               disabled={!input.trim() || streaming}
-              style={{
-                background: !input.trim() || streaming ? "var(--bg-3)" : "var(--accent)",
-                color: !input.trim() || streaming ? "var(--text-muted)" : "#000",
-                border: !input.trim() || streaming ? "1px solid var(--border)" : "none",
-                borderRadius: 6,
-                padding: "6px 12px",
-                fontSize: "0.75rem",
-                fontWeight: 600,
-                cursor: !input.trim() || streaming ? "default" : "pointer",
-                flexShrink: 0,
-                height: 32,
-              }}
+              style={{ background: !input.trim() || streaming ? "var(--bg-3)" : "var(--accent)", color: !input.trim() || streaming ? "var(--text-muted)" : "#000", border: !input.trim() || streaming ? "1px solid var(--border)" : "none", borderRadius: 6, padding: "6px 12px", fontSize: "0.75rem", fontWeight: 600, cursor: !input.trim() || streaming ? "default" : "pointer", flexShrink: 0, height: 32 }}
             >
               →
             </button>
