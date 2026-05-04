@@ -4660,6 +4660,38 @@
   ],
   "blunder_positions": [
     {
+      "fen_before": "r1b2rk1/ppbp1ppp/8/q1pQ2B1/4PP2/8/PPP3PP/2KR1B1R w - - 1 13",
+      "san": "Be7",
+      "played_uci": "g5e7",
+      "best_uci": "e4e5",
+      "eval_before": "+2.1",
+      "eval_after": "-0.6",
+      "drop_str": "\u22122.7 pawns",
+      "drop_cp": 273,
+      "pattern": "missed_fork",
+      "color": "white",
+      "move_num": 13,
+      "time_control": "300",
+      "game_date": "2026.05.02",
+      "opponent": "Bubik1981"
+    },
+    {
+      "fen_before": "rn1B1rk1/p1p2ppp/3b4/1p6/4p3/1bP3P1/PP2PPBP/RN3RK1 w - - 0 14",
+      "san": "axb3",
+      "played_uci": "a2b3",
+      "best_uci": "d8c7",
+      "eval_before": "+4.6",
+      "eval_after": "+2.5",
+      "drop_str": "\u22122.0 pawns",
+      "drop_cp": 205,
+      "pattern": "missed_fork",
+      "color": "white",
+      "move_num": 14,
+      "time_control": "300",
+      "game_date": "2026.05.02",
+      "opponent": "vasa555555"
+    },
+    {
       "fen_before": "6k1/1b1nbppp/ppq1p3/3pP3/3P4/PN2BNP1/1P1Q1P1P/6K1 w - - 0 26",
       "san": "Qc3",
       "played_uci": "d2c3",
@@ -12973,48 +13005,46 @@
       "opponent": "leuciscus",
       "color": "black",
       "time_control": "blitz"
-    },
-    {
-      "move_num": 54,
-      "san": "g5",
-      "played_uci": "g7g5",
-      "best_uci": "b4d2",
-      "fen_before": "1k2r3/1p4pp/4N3/p3R3/1b3PP1/7P/PP6/2R3K1 b - - 0 27",
-      "fen_after": "1k2r3/1p5p/4N3/p3R1p1/1b3PP1/7P/PP6/2R3K1 w - - 0 28",
-      "eval_before": "+5.7",
-      "eval_after": "-5.8",
-      "drop_cp": 1000,
-      "drop_str": "\u221210.0 pawns",
-      "pattern": "missed_fork",
-      "game_date": "2023.10.01",
-      "opponent": "leuciscus",
-      "color": "black",
-      "time_control": "blitz"
-    },
-    {
-      "move_num": 34,
-      "san": "Nxd5",
-      "played_uci": "f6d5",
-      "best_uci": "f6g4",
-      "fen_before": "1k1r1b1r/2pbqpp1/Bp3n2/3Pn1Np/3Q1B2/P1N4P/1P3PP1/R4RK1 b - - 2 17",
-      "fen_after": "1k1r1b1r/2pbqpp1/Bp6/3nn1Np/3Q1B2/P1N4P/1P3PP1/R4RK1 w - - 0 18",
-      "eval_before": "+4.7",
-      "eval_after": "-6.2",
-      "drop_cp": 1000,
-      "drop_str": "\u221210.0 pawns",
-      "pattern": "hanging_piece",
-      "game_date": "2023.10.02",
-      "opponent": "shahzar01",
-      "color": "black",
-      "time_control": "blitz"
     }
   ],
   "pattern_summary": [
     {
       "pattern": "missed_fork",
       "label": "Missed forks",
-      "count": 165,
+      "count": 166,
       "examples": [
+        {
+          "fen_before": "r1b2rk1/ppbp1ppp/8/q1pQ2B1/4PP2/8/PPP3PP/2KR1B1R w - - 1 13",
+          "san": "Be7",
+          "played_uci": "g5e7",
+          "best_uci": "e4e5",
+          "eval_before": "+2.1",
+          "eval_after": "-0.6",
+          "drop_str": "\u22122.7 pawns",
+          "drop_cp": 273,
+          "pattern": "missed_fork",
+          "color": "white",
+          "move_num": 13,
+          "time_control": "300",
+          "game_date": "2026.05.02",
+          "opponent": "Bubik1981"
+        },
+        {
+          "fen_before": "rn1B1rk1/p1p2ppp/3b4/1p6/4p3/1bP3P1/PP2PPBP/RN3RK1 w - - 0 14",
+          "san": "axb3",
+          "played_uci": "a2b3",
+          "best_uci": "d8c7",
+          "eval_before": "+4.6",
+          "eval_after": "+2.5",
+          "drop_str": "\u22122.0 pawns",
+          "drop_cp": 205,
+          "pattern": "missed_fork",
+          "color": "white",
+          "move_num": 14,
+          "time_control": "300",
+          "game_date": "2026.05.02",
+          "opponent": "vasa555555"
+        },
         {
           "fen_before": "r1b1r1k1/ppbpBppp/8/q1pQ4/4PP2/8/PPP3PP/2KR1B1R w - - 3 14",
           "san": "Bc4",
@@ -13110,38 +13140,6 @@
           "time_control": "300",
           "game_date": "2026.04.10",
           "opponent": "Alex_Skiper"
-        },
-        {
-          "fen_before": "6k1/ppp2pp1/2b5/6qp/1Q1p1N2/3P2P1/PP3P1P/6K1 w - - 0 23",
-          "san": "Qxd4",
-          "played_uci": "b4d4",
-          "best_uci": "g1f1",
-          "eval_before": "-1.0",
-          "eval_after": "-2.8",
-          "drop_str": "\u22121.8 pawns",
-          "drop_cp": 180,
-          "pattern": "missed_fork",
-          "color": "white",
-          "move_num": 23,
-          "time_control": "300",
-          "game_date": "2026.04.10",
-          "opponent": "Alex_Skiper"
-        },
-        {
-          "fen_before": "r1bq1rk1/ppp2pp1/2n2n1p/2b5/3p1B2/3P1NP1/PP2PPBP/RN1Q1RK1 w - - 2 10",
-          "san": "e3",
-          "played_uci": "e2e3",
-          "best_uci": "d1c1",
-          "eval_before": "-0.5",
-          "eval_after": "-2.2",
-          "drop_str": "\u22121.7 pawns",
-          "drop_cp": 169,
-          "pattern": "missed_fork",
-          "color": "white",
-          "move_num": 10,
-          "time_control": "300",
-          "game_date": "2026.04.10",
-          "opponent": "ilysupafly"
         }
       ]
     },
@@ -13283,7 +13281,7 @@
     {
       "pattern": "hanging_piece",
       "label": "Hanging pieces",
-      "count": 116,
+      "count": 115,
       "examples": [
         {
           "fen_before": "r4rk1/2p3pp/p1B1b3/8/3P4/6P1/PB2N2P/3n1RK1 w - - 0 20",
@@ -13733,5 +13731,5 @@
       "issue": "below 45%"
     }
   ],
-  "daily_learn_last_run": "2026-05-03"
+  "daily_learn_last_run": "2026-05-04"
 }
