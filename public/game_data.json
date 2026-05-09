@@ -4877,6 +4877,54 @@
   ],
   "blunder_positions": [
     {
+      "fen_before": "r3r1k1/pb1n1pbp/1p1p1qp1/3Pp3/2B5/2N2N2/PPPQ1PPP/R3R1K1 w - - 4 14",
+      "san": "Nb5",
+      "played_uci": "c3b5",
+      "best_uci": "c4b5",
+      "eval_before": "+0.2",
+      "eval_after": "-1.5",
+      "drop_str": "\u22121.6 pawns",
+      "drop_cp": 163,
+      "pattern": "missed_fork",
+      "color": "white",
+      "move_num": 14,
+      "time_control": "300",
+      "game_date": "2026.05.07",
+      "opponent": "cryolezier"
+    },
+    {
+      "fen_before": "2r1r1k1/pb1n1pbp/1p1p1qp1/1N1Pp3/2B5/5N2/PPPQ1PPP/R3R1K1 w - - 6 15",
+      "san": "b3",
+      "played_uci": "b2b3",
+      "best_uci": "d2b4",
+      "eval_before": "+0.2",
+      "eval_after": "-3.0",
+      "drop_str": "\u22123.2 pawns",
+      "drop_cp": 323,
+      "pattern": "missed_fork",
+      "color": "white",
+      "move_num": 15,
+      "time_control": "300",
+      "game_date": "2026.05.07",
+      "opponent": "cryolezier"
+    },
+    {
+      "fen_before": "r3rbk1/p4p1n/2pp1q2/4pP1Q/8/3BR2P/PPP2PP1/R5K1 w - - 1 21",
+      "san": "Rg3+",
+      "played_uci": "e3g3",
+      "best_uci": "e3e4",
+      "eval_before": "-0.4",
+      "eval_after": "-2.0",
+      "drop_str": "\u22121.5 pawns",
+      "drop_cp": 154,
+      "pattern": "missed_fork",
+      "color": "white",
+      "move_num": 21,
+      "time_control": "300",
+      "game_date": "2026.05.06",
+      "opponent": "Rikki_Tikk1"
+    },
+    {
       "fen_before": "r4rk1/pppb1ppp/3p3q/3Pn2B/4P3/5QN1/PP3PP1/R4RK1 w - - 5 19",
       "san": "Qe3",
       "played_uci": "f3e3",
@@ -13147,65 +13195,62 @@
       "opponent": "devvratagarwal",
       "color": "black",
       "time_control": "blitz"
-    },
-    {
-      "move_num": 34,
-      "san": "Ng6",
-      "played_uci": "e7g6",
-      "best_uci": "f6f5",
-      "fen_before": "r4rk1/2p1n1pp/pp1q1p2/3p4/3P4/PQ2PB1P/1P1B1PP1/R4RK1 b - - 1 17",
-      "fen_after": "r4rk1/2p3pp/pp1q1pn1/3p4/3P4/PQ2PB1P/1P1B1PP1/R4RK1 w - - 2 18",
-      "eval_before": "+5.4",
-      "eval_after": "-6.8",
-      "drop_cp": 1000,
-      "drop_str": "\u221210.0 pawns",
-      "pattern": "walked_into_pin",
-      "game_date": "2024.12.29",
-      "opponent": "devvratagarwal",
-      "color": "black",
-      "time_control": "blitz"
-    },
-    {
-      "move_num": 40,
-      "san": "c5",
-      "played_uci": "c7c5",
-      "best_uci": "g6h4",
-      "fen_before": "r6k/2p3pp/pp1q1pn1/8/3P4/PQ2P2P/1P1B1PP1/2R2RK1 b - - 1 20",
-      "fen_after": "r6k/6pp/pp1q1pn1/2p5/3P4/PQ2P2P/1P1B1PP1/2R2RK1 w - - 0 21",
-      "eval_before": "+6.3",
-      "eval_after": "-6.6",
-      "drop_cp": 1000,
-      "drop_str": "\u221210.0 pawns",
-      "pattern": "positional",
-      "game_date": "2024.12.29",
-      "opponent": "devvratagarwal",
-      "color": "black",
-      "time_control": "blitz"
-    },
-    {
-      "move_num": 42,
-      "san": "cxd4",
-      "played_uci": "c5d4",
-      "best_uci": "g6h4",
-      "fen_before": "r6k/6pp/pp1q1pn1/2p5/3P4/PQ2P2P/1P1B1PP1/2RR2K1 b - - 1 21",
-      "fen_after": "r6k/6pp/pp1q1pn1/8/3p4/PQ2P2P/1P1B1PP1/2RR2K1 w - - 0 22",
-      "eval_before": "+6.2",
-      "eval_after": "-6.7",
-      "drop_cp": 1000,
-      "drop_str": "\u221210.0 pawns",
-      "pattern": "positional",
-      "game_date": "2024.12.29",
-      "opponent": "devvratagarwal",
-      "color": "black",
-      "time_control": "blitz"
     }
   ],
   "pattern_summary": [
     {
       "pattern": "missed_fork",
       "label": "Missed forks",
-      "count": 177,
+      "count": 180,
       "examples": [
+        {
+          "fen_before": "r3r1k1/pb1n1pbp/1p1p1qp1/3Pp3/2B5/2N2N2/PPPQ1PPP/R3R1K1 w - - 4 14",
+          "san": "Nb5",
+          "played_uci": "c3b5",
+          "best_uci": "c4b5",
+          "eval_before": "+0.2",
+          "eval_after": "-1.5",
+          "drop_str": "\u22121.6 pawns",
+          "drop_cp": 163,
+          "pattern": "missed_fork",
+          "color": "white",
+          "move_num": 14,
+          "time_control": "300",
+          "game_date": "2026.05.07",
+          "opponent": "cryolezier"
+        },
+        {
+          "fen_before": "2r1r1k1/pb1n1pbp/1p1p1qp1/1N1Pp3/2B5/5N2/PPPQ1PPP/R3R1K1 w - - 6 15",
+          "san": "b3",
+          "played_uci": "b2b3",
+          "best_uci": "d2b4",
+          "eval_before": "+0.2",
+          "eval_after": "-3.0",
+          "drop_str": "\u22123.2 pawns",
+          "drop_cp": 323,
+          "pattern": "missed_fork",
+          "color": "white",
+          "move_num": 15,
+          "time_control": "300",
+          "game_date": "2026.05.07",
+          "opponent": "cryolezier"
+        },
+        {
+          "fen_before": "r3rbk1/p4p1n/2pp1q2/4pP1Q/8/3BR2P/PPP2PP1/R5K1 w - - 1 21",
+          "san": "Rg3+",
+          "played_uci": "e3g3",
+          "best_uci": "e3e4",
+          "eval_before": "-0.4",
+          "eval_after": "-2.0",
+          "drop_str": "\u22121.5 pawns",
+          "drop_cp": 154,
+          "pattern": "missed_fork",
+          "color": "white",
+          "move_num": 21,
+          "time_control": "300",
+          "game_date": "2026.05.06",
+          "opponent": "Rikki_Tikk1"
+        },
         {
           "fen_before": "r4rk1/pppb1ppp/3p3q/3Pn2B/4P3/5QN1/PP3PP1/R4RK1 w - - 5 19",
           "san": "Qe3",
@@ -13285,61 +13330,13 @@
           "time_control": "300",
           "game_date": "2026.05.07",
           "opponent": "cryolezier"
-        },
-        {
-          "fen_before": "2r1r1k1/1b3pbp/p2p1qp1/1p1Pp3/2B1R3/1P3N2/P1PQ1PPP/R5K1 w - - 0 19",
-          "san": "Bd3",
-          "played_uci": "c4d3",
-          "best_uci": "c4f1",
-          "eval_before": "-0.7",
-          "eval_after": "-3.8",
-          "drop_str": "\u22123.1 pawns",
-          "drop_cp": 311,
-          "pattern": "missed_fork",
-          "color": "white",
-          "move_num": 19,
-          "time_control": "300",
-          "game_date": "2026.05.07",
-          "opponent": "cryolezier"
-        },
-        {
-          "fen_before": "2r1r1k1/1b2qpbp/p2p2p1/1p1Pp3/4R3/1P1B1N2/P1PQ1PPP/R5K1 w - - 2 20",
-          "san": "Qg5",
-          "played_uci": "d2g5",
-          "best_uci": "d3f1",
-          "eval_before": "-1.7",
-          "eval_after": "-3.9",
-          "drop_str": "\u22122.2 pawns",
-          "drop_cp": 224,
-          "pattern": "missed_fork",
-          "color": "white",
-          "move_num": 20,
-          "time_control": "300",
-          "game_date": "2026.05.07",
-          "opponent": "cryolezier"
-        },
-        {
-          "fen_before": "r3r1k1/p4pbn/2pp1q2/4pP1Q/8/3B2RP/PPP2PP1/R5K1 w - - 3 22",
-          "san": "Be4",
-          "played_uci": "d3e4",
-          "best_uci": "f2f3",
-          "eval_before": "-2.0",
-          "eval_after": "-3.6",
-          "drop_str": "\u22121.6 pawns",
-          "drop_cp": 158,
-          "pattern": "missed_fork",
-          "color": "white",
-          "move_num": 22,
-          "time_control": "300",
-          "game_date": "2026.05.06",
-          "opponent": "Rikki_Tikk1"
         }
       ]
     },
     {
       "pattern": "positional",
       "label": "Positional errors",
-      "count": 136,
+      "count": 134,
       "examples": [
         {
           "fen_before": "3r1r2/1p3pkp/6p1/p2bn3/5R2/P3P1N1/1P2B1P1/2R3K1 w - - 0 28",
@@ -13609,7 +13606,7 @@
     {
       "pattern": "walked_into_pin",
       "label": "Walked into pins",
-      "count": 30,
+      "count": 29,
       "examples": [
         {
           "move_num": 28,
@@ -13918,5 +13915,5 @@
       "issue": "below 45%"
     }
   ],
-  "daily_learn_last_run": "2026-05-08"
+  "daily_learn_last_run": "2026-05-09"
 }
