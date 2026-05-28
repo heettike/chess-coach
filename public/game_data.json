@@ -5037,6 +5037,38 @@
   ],
   "blunder_positions": [
     {
+      "fen_before": "r6r/ppp2kp1/5p2/5P2/4N1n1/2P5/PP1B2Pb/4RR1K w - - 4 26",
+      "san": "g3",
+      "played_uci": "g2g3",
+      "best_uci": "e1e2",
+      "eval_before": "-2.1",
+      "eval_after": "-4.5",
+      "drop_str": "\u22122.4 pawns",
+      "drop_cp": 241,
+      "pattern": "missed_fork",
+      "color": "white",
+      "move_num": 26,
+      "time_control": "300",
+      "game_date": "2026.05.26",
+      "opponent": "LogicAbhi1"
+    },
+    {
+      "fen_before": "r1b1k2r/1p1n1pp1/p1p1p1np/q2p4/Pb1P4/1P1BPNB1/2P1NPPP/R2Q1RK1 w kq - 5 12",
+      "san": "Rc1",
+      "played_uci": "a1c1",
+      "best_uci": "d3g6",
+      "eval_before": "+3.7",
+      "eval_after": "+1.7",
+      "drop_str": "\u22122.0 pawns",
+      "drop_cp": 202,
+      "pattern": "positional",
+      "color": "white",
+      "move_num": 12,
+      "time_control": "300",
+      "game_date": "2026.05.26",
+      "opponent": "amvunom"
+    },
+    {
       "fen_before": "r3k1nr/ppq3pp/2nbbp2/2p1p3/4P3/2N1BNP1/PPP2PBP/R2Q1RK1 w kq - 2 11",
       "san": "Qe2",
       "played_uci": "d1e2",
@@ -13367,40 +13399,6 @@
       "opponent": "burhanmangensiga",
       "color": "black",
       "time_control": "blitz"
-    },
-    {
-      "move_num": 36,
-      "san": "Qc6",
-      "played_uci": "f6c6",
-      "best_uci": "f6d6",
-      "fen_before": "r1b1k2r/p1p1bppp/5q2/3N4/8/4B1P1/PP2QP1P/3RR1K1 b kq - 0 18",
-      "fen_after": "r1b1k2r/p1p1bppp/2q5/3N4/8/4B1P1/PP2QP1P/3RR1K1 w kq - 1 19",
-      "eval_before": "+7.0",
-      "eval_after": "-7.3",
-      "drop_cp": 1000,
-      "drop_str": "\u221210.0 pawns",
-      "pattern": "positional",
-      "game_date": "2026.04.25",
-      "opponent": "burhanmangensiga",
-      "color": "black",
-      "time_control": "blitz"
-    },
-    {
-      "move_num": 24,
-      "san": "Qc4",
-      "played_uci": "e6c4",
-      "best_uci": "e6g4",
-      "fen_before": "r1b2rk1/ppp1nppp/2npq3/2b1P1N1/4BB2/2N5/PP3PPP/R2Q1RK1 b - - 1 12",
-      "fen_after": "r1b2rk1/ppp1nppp/2np4/2b1P1N1/2q1BB2/2N5/PP3PPP/R2Q1RK1 w - - 2 13",
-      "eval_before": "+0.3",
-      "eval_after": "-11.3",
-      "drop_cp": 1000,
-      "drop_str": "\u221210.0 pawns",
-      "pattern": "missed_fork",
-      "game_date": "2026.04.25",
-      "opponent": "nnayak",
-      "color": "black",
-      "time_control": "blitz"
     }
   ],
   "pattern_summary": [
@@ -13409,6 +13407,22 @@
       "label": "Missed forks",
       "count": 167,
       "examples": [
+        {
+          "fen_before": "r6r/ppp2kp1/5p2/5P2/4N1n1/2P5/PP1B2Pb/4RR1K w - - 4 26",
+          "san": "g3",
+          "played_uci": "g2g3",
+          "best_uci": "e1e2",
+          "eval_before": "-2.1",
+          "eval_after": "-4.5",
+          "drop_str": "\u22122.4 pawns",
+          "drop_cp": 241,
+          "pattern": "missed_fork",
+          "color": "white",
+          "move_num": 26,
+          "time_control": "300",
+          "game_date": "2026.05.26",
+          "opponent": "LogicAbhi1"
+        },
         {
           "fen_before": "r3k1nr/ppq3pp/2nbbp2/2p1p3/4P3/2N1BNP1/PPP2PBP/R2Q1RK1 w kq - 2 11",
           "san": "Qe2",
@@ -13520,22 +13534,6 @@
           "time_control": "300",
           "game_date": "2026.05.26",
           "opponent": "Edgarlobowood"
-        },
-        {
-          "fen_before": "1k6/p2q1p1r/bp1p2p1/3Pp3/4P3/P3QBP1/1P6/2R3K1 w - - 4 29",
-          "san": "Be2",
-          "played_uci": "f3e2",
-          "best_uci": "e3g5",
-          "eval_before": "-1.2",
-          "eval_after": "-2.8",
-          "drop_str": "\u22121.6 pawns",
-          "drop_cp": 155,
-          "pattern": "missed_fork",
-          "color": "white",
-          "move_num": 29,
-          "time_control": "300",
-          "game_date": "2026.05.26",
-          "opponent": "Edgarlobowood"
         }
       ]
     },
@@ -13544,6 +13542,22 @@
       "label": "Positional errors",
       "count": 134,
       "examples": [
+        {
+          "fen_before": "r1b1k2r/1p1n1pp1/p1p1p1np/q2p4/Pb1P4/1P1BPNB1/2P1NPPP/R2Q1RK1 w kq - 5 12",
+          "san": "Rc1",
+          "played_uci": "a1c1",
+          "best_uci": "d3g6",
+          "eval_before": "+3.7",
+          "eval_after": "+1.7",
+          "drop_str": "\u22122.0 pawns",
+          "drop_cp": 202,
+          "pattern": "positional",
+          "color": "white",
+          "move_num": 12,
+          "time_control": "300",
+          "game_date": "2026.05.26",
+          "opponent": "amvunom"
+        },
         {
           "fen_before": "1k1r3r/pb1pqpp1/1p6/3Pp2p/4P1n1/P5P1/1P1N1PBP/R2Q1RK1 w - - 3 16",
           "san": "Rc1",
@@ -13655,22 +13669,6 @@
           "time_control": "300",
           "game_date": "2026.04.24",
           "opponent": "Devil411"
-        },
-        {
-          "fen_before": "1q3rk1/p4ppp/2p1p3/3pP3/3P1PPn/P1P5/3B3P/1Q3RK1 w - - 1 19",
-          "san": "h3",
-          "played_uci": "h2h3",
-          "best_uci": "b1c2",
-          "eval_before": "+0.5",
-          "eval_after": "-5.7",
-          "drop_str": "\u22126.2 pawns",
-          "drop_cp": 621,
-          "pattern": "positional",
-          "color": "white",
-          "move_num": 19,
-          "time_control": "300",
-          "game_date": "2026.04.23",
-          "opponent": "Gowhar_Mir"
         }
       ]
     },
@@ -14118,5 +14116,5 @@
       "issue": "below 45%"
     }
   ],
-  "daily_learn_last_run": "2026-05-27"
+  "daily_learn_last_run": "2026-05-28"
 }
